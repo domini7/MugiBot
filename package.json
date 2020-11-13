@@ -1,0 +1,22 @@
+{
+  "name": "moogs-bot",
+  "version": "1.0.0",
+  "description": "a discord bot",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domini7/moogs-bot.git"
+  },
+  "author": "Dominic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/domini7/moogs-bot/issues"
+  },
+  "homepage": "https://github.com/domini7/moogs-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.4.1"
+  }
+}
