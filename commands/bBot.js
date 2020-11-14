@@ -1,4 +1,4 @@
-let replies = [
+const replies = [
 	"fuck you",
 	"eat shit",
 	"suck my dick",

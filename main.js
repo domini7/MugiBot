@@ -29,31 +29,32 @@ client.on("message", (message) => {
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-
+	
 	if (command === "meatspin") {
 		client.commands.get("meatspin").execute(message, args);
-	}
-	if (command === "image") {
+	} else if (command === "image") {
 		image(message);
 	}
 
-	if (message.content.includes("will giving pt help rookies prog")) {
-		client.commands.get("pt").execute(message);
-	} else if (message.content.includes("luka is the best player in the nba")) {
-		client.commands.get("strings").execute(message);
-	} else if (message.content.includes("good bot")) {
+	if (message.content.toLowerCase().includes("good bot")) {
 		client.commands.get("gBot").execute(message);
 		message.react("😇");
-	} else if (message.content.includes("bad bot")) {
+	} else if (message.content.toLowerCase().includes("bad bot")) {
 		client.commands.get("bBot").execute(message);
-	} else if (message.content === "fuck you bot") {
+	} else if (message.content.toLowerCase() === "fuck you bot") {
 		client.commands.get("bBot").execute(message);
-	} else if (message.content.includes("miguel")) {
+	} else if (message.content.toLowerCase().includes("miguel")) {
 		message.react("🇲🇽");
-	} else if (message.content.includes("lamo")) {
+	} else if (message.content.toLowerCase().includes("lamo")) {
 		message.react("😎");
-	} else if (message.content.includes("daniel" && "howey")) {
+	} else if (message.content.toLowerCase().includes("howey")) {
 		message.react("👨‍❤️‍💋‍👨");
+	} else if (message.content.toLowerCase().includes("daniel")) {
+		message.react("👨‍❤️‍💋‍👨");
+	} else if (message.content.toLowerCase().includes("mugi")) {
+		message.react("🤖");
+	} else if (message.content.toLowerCase().includes("bot")) {
+		message.react("🤖");
 	}
 });
 
