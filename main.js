@@ -1,7 +1,5 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-
-const prefix = "!";
 const fs = require("fs");
 
 // for !image command
@@ -9,6 +7,8 @@ const cheerio = require("cheerio");
 const request = require("request");
 
 client.commands = new Discord.Collection();
+
+const prefix = "!";
 
 const commandFiles = fs
 	.readdirSync("./commands/")
@@ -34,6 +34,8 @@ client.on("message", (message) => {
 		client.commands.get("meatspin").execute(message, args);
 	} else if (command === "image") {
 		image(message);
+	} else if (command === "basic") {
+		client.commands.get("basic").execute(message, args, Discord);
 	}
 
 	if (message.content.toLowerCase().includes("good bot")) {
@@ -43,7 +45,9 @@ client.on("message", (message) => {
 		client.commands.get("bBot").execute(message);
 	} else if (message.content.toLowerCase() === "fuck you bot") {
 		client.commands.get("bBot").execute(message);
-	} else if (message.content.toLowerCase().includes("miguel")) {
+	}
+
+	if (message.content.toLowerCase().includes("miguel")) {
 		message.react("🇲🇽");
 	} else if (message.content.toLowerCase().includes("lamo")) {
 		message.react("😎");

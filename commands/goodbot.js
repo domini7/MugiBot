@@ -7,7 +7,6 @@ const replies = [
 	"thx bud",
 	"u'r the best",
 	"i love u",
-	"yesss suck my dick more",
 	"ur cool too i guess",
 	"indeed",
 	"yeaaaahh booooii",
