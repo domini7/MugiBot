@@ -6,8 +6,11 @@ const fs = require("fs");
 const cheerio = require("cheerio");
 const request = require("request");
 
-client.commands = new Discord.Collection();
+const { Player } = require("discord-player");
+const player = new Player(client);
+client.player = player;
 
+client.commands = new Discord.Collection();
 const prefix = "!";
 
 const commandFiles = fs
@@ -24,12 +27,13 @@ client.once("ready", () => {
 	client.user.setActivity("with your mom");
 });
 
-client.on("message", (message) => {
+client.on("message", async (message) => {
 	if (message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-	
+
+	// commands
 	if (command === "meatspin") {
 		client.commands.get("meatspin").execute(message, args);
 	} else if (command === "image") {
@@ -38,15 +42,33 @@ client.on("message", (message) => {
 		client.commands.get("basic").execute(message, args, Discord);
 	}
 
+	if (command === "play") {
+		let track = await client.player.play(
+			message.member.voice.channel,
+			args[0],
+			message.member.user.tag
+		);
+		message.channel.send(
+			"Currently playing ${track.name}. - Requested by ${track.requestedBy}"
+		);
+	} else if (command === "stop") {
+		let track = await client.player.stop(message.guild.id);
+		message.channel.send("stopped");
+	}
+
+	// reads and responds
 	if (message.content.toLowerCase().includes("good bot")) {
 		client.commands.get("gBot").execute(message);
 		message.react("😇");
 	} else if (message.content.toLowerCase().includes("bad bot")) {
 		client.commands.get("bBot").execute(message);
-	} else if (message.content.toLowerCase() === "fuck you bot") {
+	} else if (message.content.toLowerCase().includes("fuck you bot")) {
 		client.commands.get("bBot").execute(message);
+	} else if (message.content.toLowerCase().includes("are drugs bad")) {
+		message.channel.send("Yes.");
 	}
 
+	// reactions
 	if (message.content.toLowerCase().includes("miguel")) {
 		message.react("🇲🇽");
 	} else if (message.content.toLowerCase().includes("lamo")) {
@@ -59,6 +81,10 @@ client.on("message", (message) => {
 		message.react("🤖");
 	} else if (message.content.toLowerCase().includes("bot")) {
 		message.react("🤖");
+	} else if (message.content.toLowerCase() === "ok") {
+		message.react("🆗");
+	} else if (message.content.toLowerCase() === "k") {
+		message.react("🇰");
 	}
 });
 
