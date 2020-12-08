@@ -34,15 +34,20 @@ client.on("message", async (message) => {
 	const command = args.shift().toLowerCase();
 
 	// commands
-	if (command === "meatspin") {
-		client.commands.get("meatspin").execute(message, args);
-	} else if (command === "image") {
-		image(message);
-	} else if (command === "basic") {
-		client.commands.get("basic").execute(message, args, Discord);
+	if (message.content.startsWith(prefix)) {
+		if (command === "meatspin") {
+			client.commands.get("meatspin").execute(message, args);
+		} else if (command === "image") {
+			image(message);
+		} else if (command === "basic") {
+			client.commands.get("basic").execute(message, args, Discord);
+		} else if (command === "flip") {
+			client.commands.get("flip").execute(message, args, Discord);
+		}
 	}
 
-	if (command === "play") {
+	// "aaaaa" here just to temp disable the command
+	if (command === "playaaaaa") {
 		let track = await client.player.play(
 			message.member.voice.channel,
 			args[0],
@@ -51,7 +56,7 @@ client.on("message", async (message) => {
 		message.channel.send(
 			"Currently playing ${track.name}. - Requested by ${track.requestedBy}"
 		);
-	} else if (command === "stop") {
+	} else if (command === "stopaaaaaa") {
 		let track = await client.player.stop(message.guild.id);
 		message.channel.send("stopped");
 	}
