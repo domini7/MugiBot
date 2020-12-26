@@ -6,12 +6,8 @@ const fs = require("fs");
 const cheerio = require("cheerio");
 const request = require("request");
 
-const { Player } = require("discord-player");
-const player = new Player(client);
-client.player = player;
-
 client.commands = new Discord.Collection();
-const prefix = "!";
+const prefix = "m-";
 
 const commandFiles = fs
 	.readdirSync("./commands/")
@@ -24,7 +20,7 @@ for (const file of commandFiles) {
 
 client.once("ready", () => {
 	console.log("MugiBot is now on.");
-	client.user.setActivity("with your mom");
+	client.user.setActivity("bot stuff");
 });
 
 client.on("message", async (message) => {
@@ -32,33 +28,23 @@ client.on("message", async (message) => {
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
+	const swearWords = ["darn", "shucks", "frak", "heck", "crap"];
 
 	// commands
-	if (message.content.startsWith(prefix)) {
+	if (message.content.toLowerCase().startsWith(prefix)) {
 		if (command === "meatspin") {
-			client.commands.get("meatspin").execute(message, args);
+			message.author.send("https://meatspin.com/files/meatspin.gif");
 		} else if (command === "image") {
 			image(message);
 		} else if (command === "basic") {
 			client.commands.get("basic").execute(message, args, Discord);
 		} else if (command === "flip") {
 			client.commands.get("flip").execute(message, args, Discord);
+		} else if (command === "play") {
+			client.commands.get("play").execute(message, args);
+		} else if (command === "stop") {
+			client.commands.get("stop").execute(message, args);
 		}
-	}
-
-	// "aaaaa" here just to temp disable the command
-	if (command === "playaaaaa") {
-		let track = await client.player.play(
-			message.member.voice.channel,
-			args[0],
-			message.member.user.tag
-		);
-		message.channel.send(
-			"Currently playing ${track.name}. - Requested by ${track.requestedBy}"
-		);
-	} else if (command === "stopaaaaaa") {
-		let track = await client.player.stop(message.guild.id);
-		message.channel.send("stopped");
 	}
 
 	// reads and responds
@@ -69,8 +55,10 @@ client.on("message", async (message) => {
 		client.commands.get("bBot").execute(message);
 	} else if (message.content.toLowerCase().includes("fuck you bot")) {
 		client.commands.get("bBot").execute(message);
-	} else if (message.content.toLowerCase().includes("are drugs bad")) {
-		message.channel.send("Yes.");
+	} else if (message.content.toLowerCase() === "are drugs bad") {
+		message.channel.send(`yes ${message.author.username}`);
+	} else if (swearWords.some((word) => message.content.includes(word))) {
+		message.reply("Oh no you said a bad word!!!");
 	}
 
 	// reactions
@@ -93,6 +81,7 @@ client.on("message", async (message) => {
 	}
 });
 
+// function is for the m-image command
 function image(message) {
 	const image2 = message.content.slice(0);
 	const options = {
