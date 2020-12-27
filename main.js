@@ -6,6 +6,8 @@ const fs = require("fs");
 const cheerio = require("cheerio");
 const request = require("request");
 
+const rps = require('./responses/responses.js');
+
 client.commands = new Discord.Collection();
 const prefix = "m-";
 
@@ -59,25 +61,13 @@ client.on("message", async (message) => {
 		message.channel.send(`yes ${message.author.username}`);
 	} else if (swearWords.some((word) => message.content.includes(word))) {
 		message.reply("Oh no you said a bad word!!!");
+	} else if (rps.responseObject[message.content.toLowerCase()]) {
+		message.channel.send(rps.responseObject[message.content.toLowerCase()]);
 	}
 
 	// reactions
-	if (message.content.toLowerCase().includes("miguel")) {
-		message.react("🇲🇽");
-	} else if (message.content.toLowerCase().includes("lamo")) {
-		message.react("😎");
-	} else if (message.content.toLowerCase().includes("howey")) {
-		message.react("👨‍❤️‍💋‍👨");
-	} else if (message.content.toLowerCase().includes("daniel")) {
-		message.react("👨‍❤️‍💋‍👨");
-	} else if (message.content.toLowerCase().includes("mugi")) {
-		message.react("🤖");
-	} else if (message.content.toLowerCase().includes("bot")) {
-		message.react("🤖");
-	} else if (message.content.toLowerCase() === "ok") {
-		message.react("🆗");
-	} else if (message.content.toLowerCase() === "k") {
-		message.react("🇰");
+	if (rps.reactObject[message.content.toLowerCase()]) {
+		message.react(rps.reactObject[message.content.toLowerCase()]);
 	}
 });
 

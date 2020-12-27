@@ -38,7 +38,7 @@ module.exports = {
 				voiceChannel.leave();
 			});
 
-			await message.reply(`Now playing your link`);
+			await message.reply("Now playing your link");
 
 			return;
 		}
