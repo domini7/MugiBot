@@ -1,12 +1,13 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const fs = require("fs");
+const NBA = require("nba");
 
 // for !image command
 const cheerio = require("cheerio");
 const request = require("request");
 
-const rps = require('./responses/responses.js');
+const rps = require("./responses/responses.js");
 
 client.commands = new Discord.Collection();
 const prefix = "m-";
@@ -34,7 +35,9 @@ client.on("message", async (message) => {
 
 	// commands
 	if (message.content.toLowerCase().startsWith(prefix)) {
-		if (command === "meatspin") {
+		if (command === "version") {
+			message.channel.send("Version: 0.11 - 2021/1/3");
+		} else if (command === "meatspin") {
 			message.author.send("https://meatspin.com/files/meatspin.gif");
 		} else if (command === "image") {
 			image(message);
@@ -46,6 +49,8 @@ client.on("message", async (message) => {
 			client.commands.get("play").execute(message, args);
 		} else if (command === "stop") {
 			client.commands.get("stop").execute(message, args);
+		} else if (command === "playerstats") {
+			client.commands.get("playerstats").execute(message, args);
 		}
 	}
 
@@ -100,6 +105,6 @@ function image(message) {
 		// sends result
 		message.channel.send(urls[Math.floor(Math.random() * urls.length)]);
 	});
-}
+};
 
-client.login("Nzc2NjgxNzM4NjU0NTgwNzQ2.X64bPA.HTKKbL_1ae3ijjSjZyl0xv3rOII");
+client.login("Nzc2NjgxNzM4NjU0NTgwNzQ2.X64bPA.hx4qAGzAs1FcDyj1lfryf0U2-5w");
