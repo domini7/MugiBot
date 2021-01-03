@@ -50,7 +50,7 @@ client.on("message", async (message) => {
 		} else if (command === "stop") {
 			client.commands.get("stop").execute(message, args);
 		} else if (command === "playerstats") {
-			client.commands.get("playerstats").execute(message, args);
+			client.commands.get("playerstats").execute(message, args, Discord);
 		}
 	}
 
