@@ -23,7 +23,7 @@ for (const file of commandFiles) {
 
 client.once("ready", () => {
 	console.log("MugiBot is now on.");
-	client.user.setActivity("bot stuff");
+	client.user.setActivity("m-help");
 });
 
 client.on("message", async (message) => {
@@ -36,26 +36,26 @@ client.on("message", async (message) => {
 	// commands
 	if (message.content.toLowerCase().startsWith(prefix)) {
 		if (command === "version") {
-			message.channel.send("Version: 0.11 - 2021/1/3");
+			client.commands.get("version").execute(message, Discord);
+		} else if (command === "help") {
+			client.commands.get("help").execute(message, Discord);
 		} else if (command === "meatspin") {
 			message.author.send("https://meatspin.com/files/meatspin.gif");
 		} else if (command === "image") {
 			image(message);
-		} else if (command === "basic") {
-			client.commands.get("basic").execute(message, args, Discord);
 		} else if (command === "flip") {
 			client.commands.get("flip").execute(message, args, Discord);
 		} else if (command === "play") {
-			client.commands.get("play").execute(message, args);
+			client.commands.get("play").execute(message, args, Discord);
 		} else if (command === "stop") {
-			client.commands.get("stop").execute(message, args);
-		} else if (command === "playerstats") {
-			client.commands.get("playerstats").execute(message, args, Discord);
+			client.commands.get("stop").execute(message, args, Discord);
+		} else if (command === "pstats") {
+			client.commands.get("pstats").execute(message, args, Discord);
 		}
 	}
 
-	// reads and responds
-	if (message.content.toLowerCase().includes("good bot")) {
+	// reads and responds (TEMP DISABLED)
+	/* if (message.content.toLowerCase().includes("good bot")) {
 		client.commands.get("gBot").execute(message);
 		message.react("😇");
 	} else if (message.content.toLowerCase().includes("bad bot")) {
@@ -69,6 +69,7 @@ client.on("message", async (message) => {
 	} else if (rps.responseObject[message.content.toLowerCase()]) {
 		message.channel.send(rps.responseObject[message.content.toLowerCase()]);
 	}
+	*/
 
 	// reactions
 	if (rps.reactObject[message.content.toLowerCase()]) {

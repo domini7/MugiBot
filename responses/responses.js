@@ -13,6 +13,8 @@ const reactObject = {
 	daniel: "👨‍❤️‍💋‍👨",
 	mugi: "🤖",
 	bot: "🤖",
+	ok: "🆗",
+	k: "🇰",
 };
 
 exports.reactObject = reactObject;
