@@ -5,7 +5,9 @@ module.exports = {
 		const newEmbed = new Discord.MessageEmbed()
 			.setColor("#808080")
 			.setThumbnail("https://i.imgur.com/MINhF0h.jpg")
-			.setTitle("Public Commands")
+			.setTitle("MugiBot")
+			.setURL("https://github.com/domini7/MugiBot")
+			.setDescription("Commands")
 			.addFields(
 				{
 					name: "**`m-version`**",
