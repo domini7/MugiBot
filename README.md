@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/MINhF0h.jpg" width="150" height="125">
+<img src="https://i.imgur.com/MINhF0h.jpg" width="154" height="102">
 
 # MugiBot
 This is a multi-purpose personal Discord bot built using JavaScript.
