@@ -5,7 +5,7 @@ module.exports = {
 	description: "Displays basic NBA player stats",
 	async execute(message, args, Discord) {
 		if (!args.length)
-			return message.channel.send("You need to search a player name. Example: `m-pstats lillard`");
+			return message.reply("You need to search a player name. Example: `m-pstats lillard`");
 
 		// Takes in arg and seaches for that player
 		const player = args.join(" ");

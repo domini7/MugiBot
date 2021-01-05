@@ -1,7 +1,7 @@
 module.exports = {
 	name: "help",
 	description: "Displays public commands",
-	execute(message, Discord) {
+	execute(message, args, Discord) {
 		const newEmbed = new Discord.MessageEmbed()
 			.setColor("#808080")
 			.setThumbnail("https://i.imgur.com/MINhF0h.jpg")
@@ -25,7 +25,7 @@ module.exports = {
 				},
 				{
 					name: "**`m-image (keyword)`**",
-					value: "Get a random image, keyword is optional",
+					value: "Get a random image based off keyword",
 					inline: false,
 				},
 				{
