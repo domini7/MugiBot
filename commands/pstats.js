@@ -23,9 +23,13 @@ module.exports = {
 
 		if (pid) {
 			const stats = await NBA.stats.playerProfile({ PlayerID: pid.playerId });
+			// info needed for team and position
+			const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
 			// returns last season a player played in
 			const latest = stats.seasonTotalsRegularSeason.length - 1;
 
+			const team = info["commonPlayerInfo"][0].teamName;
+			const pos = info["commonPlayerInfo"][0].position;
 			const mpg = stats["seasonTotalsRegularSeason"][latest].min;
 			const gp = stats["seasonTotalsRegularSeason"][latest].gp;
 			const gs = stats["seasonTotalsRegularSeason"][latest].gs;
@@ -45,6 +49,7 @@ module.exports = {
 			.setColor("#FF0000")
 			.setTitle(`${pid.fullName}`)
 			.setURL('https://www.nba.com/player/' + pid.playerId)
+			.setDescription(`${team} - ${pos}`)
 			.addFields(
 				{name: 'GP / GS / MPG', value: `${gp} / ${gs} / ${mpg}`},
 				{name: 'PPG / TRB / AST', value: `${pts} / ${trb} / ${ast}`},

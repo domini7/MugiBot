@@ -21,8 +21,8 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`m-pstats (player name)`**",
-					value: "Check a NBA player's basic season stats",
+					name: "**`m-pstats/pbio (player name)`**",
+					value: "Check a NBA player's basic season stats/info",
 					inline: false,
 				},
 				{
