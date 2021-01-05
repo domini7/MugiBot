@@ -58,5 +58,5 @@ client.on("message", async (message) => {
 		message.react(rps.reactObject[message.content.toLowerCase()]);
 	}
 });
-
-client.login("Nzc2NjgxNzM4NjU0NTgwNzQ2.X64bPA.hx4qAGzAs1FcDyj1lfryf0U2-5w");
+// login removed pre-commit (PAST TOKENS IN OLDER COMMITS ARE INVALID)
+client.login("");
