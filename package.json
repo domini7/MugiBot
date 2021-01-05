@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/domini7/moogs-bot.git"
+    "url": "git+https://github.com/domini7/MugiBot.git"
   },
   "author": "Dominic",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/domini7/moogs-bot/issues"
+    "url": "https://github.com/domini7/MugiBot/issues"
   },
-  "homepage": "https://github.com/domini7/moogs-bot#readme",
+  "homepage": "https://github.com/domini7/MugiBot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.3.3",
     "discord-player": "^3.0.2",

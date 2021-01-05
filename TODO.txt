@@ -10,8 +10,6 @@ Queue system for music
 
 Add more comments explaining code
 
-Move image command to it's own file in /commands
-
 Less vulgar bad bot responses
 
 A WPM calculator, call with (m-type) then give 60 seconds to type a short prompt, calculate WPM with (length / 5 / seconds * 60)

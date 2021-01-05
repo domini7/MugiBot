@@ -28,7 +28,8 @@ client.on("message", async (message) => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 
-
+	// command handler checks for prefix then checks if command is valid
+	// commands MUST execute with message and args as params
 	if (message.content.toLowerCase().startsWith(prefix)) {
 		if (client.commands.has(command)) {
 			try {
@@ -44,7 +45,7 @@ client.on("message", async (message) => {
 
 	// good/bad bot
 	if (message.content.toLowerCase().includes("good bot")) {
-		client.commands.get("gBot").execute(message);
+		client.commands.get("gBot").execute(message, args);
 		message.react("😇");
 	} else if (message.content.toLowerCase().includes("bad bot")) {
 		client.commands.get("bBot").execute(message);
