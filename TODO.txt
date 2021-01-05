@@ -1,0 +1,32 @@
+Rename repo to MugiBot
+Better readme
+
+Should switch to using Commando (command framework)
+	Maybe start using typescript
+
+Some sort of blacklist to add users to that will have a command cooldown to prevent spam
+
+Queue system for music
+
+Add more comments explaining code
+
+Move image command to it's own file in /commands
+
+Less vulgar bad bot responses
+
+A WPM calculator, call with (m-type) then give 60 seconds to type a short prompt, calculate WPM with (length / 5 / seconds * 60)
+
+Log to CMD commands being called to detect spam
+	Also log servers currently in
+
+NBA stats
+	Needs own prefix (nba-)
+	pstats
+		Add third argument to check for specific seasons (rookie,year,career)
+			Default to last season
+				Fourth arg for season/playoffs
+	Add league leaders command (pleaders)
+	Need basic team roster command (display players and basic info) (troster)
+	Standings (lstandings)
+	Daily games (games)
+	WNBA stats
