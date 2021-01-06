@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/domini7/MugiBot.git"
   },
-  "author": "Dominic",
-  "license": "ISC",
+  "author": "domini7",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/domini7/MugiBot/issues"
   },
