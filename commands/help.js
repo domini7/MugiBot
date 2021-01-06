@@ -21,8 +21,28 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`m-image (keyword)`**",
+					value: "Get a random image based off keyword",
+					inline: false,
+				},
+				{
+					name: "**`m-flip`**",
+					value: "Flip a coin",
+					inline: false,
+				},
+			);
+		const nbacommands = new Discord.MessageEmbed()
+			.setColor("#808080")
+			.setTitle("NBA Commands")
+			.addFields(
+				{
 					name: "**`m-pstats/pbio (player name)`**",
 					value: "Check a NBA player's basic season stats/info",
+					inline: false,
+				},
+				{
+					name: "**`m-pbio (player name)`**",
+					value: "Check a NBA player's basic info",
 					inline: false,
 				},
 				{
@@ -35,18 +55,9 @@ module.exports = {
 					value: "Displays current NBA standings",
 					inline: false,
 				},
-				{
-					name: "**`m-image (keyword)`**",
-					value: "Get a random image based off keyword",
-					inline: false,
-				},
-				{
-					name: "**`m-flip`**",
-					value: "Flip a coin",
-					inline: false,
-				},
 			);
 
 		message.channel.send(newEmbed);
+		message.channel.send(nbacommands);
 	},
 };
