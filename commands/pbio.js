@@ -37,7 +37,7 @@ module.exports = {
 
 			const newEmbed = new Discord.MessageEmbed()
 			.setThumbnail('https://cdn.nba.com/headshots/nba/latest/1040x760/' + pid.playerId + '.png')
-			.setColor("#FF0000")
+			.setColor("#FFA500")
 			.setTitle(`${pid.fullName}`)
 			.setURL('https://www.nba.com/player/' + pid.playerId)
 			.setDescription(`${team}`)

@@ -26,6 +26,11 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`m-tstats (team city/name)`**",
+					value: "Displays basic NBA team stats",
+					inline: false,
+				},
+				{
 					name: "**`m-image (keyword)`**",
 					value: "Get a random image based off keyword",
 					inline: false,
