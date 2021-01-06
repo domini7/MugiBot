@@ -28,35 +28,22 @@ module.exports = {
 			// returns last season a player played in
 			const latest = stats.seasonTotalsRegularSeason.length - 1;
 
-			const team = info["commonPlayerInfo"][0].teamName;
-			const pos = info["commonPlayerInfo"][0].position;
-			const mpg = stats["seasonTotalsRegularSeason"][latest].min;
-			const gp = stats["seasonTotalsRegularSeason"][latest].gp;
-			const gs = stats["seasonTotalsRegularSeason"][latest].gs;
-			const pts = stats["seasonTotalsRegularSeason"][latest].pts;
-			const trb = stats["seasonTotalsRegularSeason"][latest].reb;
-			const ast = stats["seasonTotalsRegularSeason"][latest].ast;
-			const tov = stats["seasonTotalsRegularSeason"][latest].tov;
-			const stl = stats["seasonTotalsRegularSeason"][latest].stl;
-			const blk = stats["seasonTotalsRegularSeason"][latest].blk;
-			const fgp = stats["seasonTotalsRegularSeason"][latest].fgPct;
-			const tpp = stats["seasonTotalsRegularSeason"][latest].fg3Pct;
-			const ftp = stats["seasonTotalsRegularSeason"][latest].ftPct;
-			const season = stats["seasonTotalsRegularSeason"][latest].seasonId;
+			const p = stats["seasonTotalsRegularSeason"][latest];
+			const playerInfo = info["commonPlayerInfo"][0];
 
 			const newEmbed = new Discord.MessageEmbed()
 			.setThumbnail('https://cdn.nba.com/headshots/nba/latest/1040x760/' + pid.playerId + '.png')
 			.setColor("#FF0000")
 			.setTitle(`${pid.fullName}`)
 			.setURL('https://www.nba.com/player/' + pid.playerId)
-			.setDescription(`${team} - ${pos}`)
+			.setDescription(`${playerInfo.teamName} - ${playerInfo.position}`)
 			.addFields(
-				{name: 'GP / GS / MPG', value: `${gp} / ${gs} / ${mpg}`},
-				{name: 'PPG / TRB / AST', value: `${pts} / ${trb} / ${ast}`},
-				{name: 'STL / BLK / TOV', value: `${stl} / ${blk} / ${tov}`},
-				{name: 'FG% / 3P% / FT%', value: `${fgp} / ${tpp} / ${ftp}`},
+				{name: 'GP / GS / MPG', value: `${p.gp} / ${p.gs} / ${p.min}`},
+				{name: 'PPG / TRB / AST', value: `${p.pts} / ${p.reb} / ${p.ast}`},
+				{name: 'STL / BLK / TOV', value: `${p.stl} / ${p.blk} / ${p.tov}`},
+				{name: 'FG% / 3P% / FT%', value: `${p.fgPct} / ${p.fg3Pct} / ${p.ftPct}`},
 			)
-			.setFooter(`Basic ${season} stats`);
+			.setFooter(`Basic ${p.seasonId} stats`);
 			message.channel.send(newEmbed);
 		} else { 
 			message.channel.send("No player found"); 

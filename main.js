@@ -39,21 +39,21 @@ client.on("message", async (message) => {
 				// Logs commands called to console. Needed incase of spam
 				if (dm) {
 					console.log(
-						`Command: ${command} ${args} User: ${message.author.username} Server: DMs`
+						`User: ${message.author.username} | Server: DMs | Command: ${command} ${args}`
 					);
 				} else {
 					console.log(
-						`Command: ${command} ${args} User: ${message.author.username} Server: ${message.guild.name}`
+						`User: ${message.author.username} | Server: ${message.guild.name} | Command: ${command} ${args}`
 					);
 				}
 			} catch (error) {
 				if (dm) {
 					console.log(
-						`ERROR: Command: ${command} ${args} User: ${message.author.username} Server: DMs`
+						`ERROR: User: ${message.author.username} | Server: DMs | Command: ${command} ${args}`
 					);
 				} else {
 					console.log(
-						`ERROR: Command: ${command} ${args} User: ${message.author.username} Server: ${message.guild.name}`
+						`ERROR: User: ${message.author.username} | Server: ${message.guild.name} | Command: ${command} ${args}`
 					);
 				}
 				console.error(error);

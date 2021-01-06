@@ -31,6 +31,11 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`m-standings`**",
+					value: "Displays current NBA standings",
+					inline: false,
+				},
+				{
 					name: "**`m-image (keyword)`**",
 					value: "Get a random image based off keyword",
 					inline: false,

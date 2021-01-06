@@ -23,34 +23,24 @@ module.exports = {
 
 		if (pid) {
 			const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
-
-			const team = info["commonPlayerInfo"][0].teamName;
-			const pos = info["commonPlayerInfo"][0].position;
-			const hgt = info["commonPlayerInfo"][0].height;
-			const wgt = info["commonPlayerInfo"][0].weight;
-			const jersey = info["commonPlayerInfo"][0].jersey;
-			const exp = info["commonPlayerInfo"][0].seasonExp;
-			const country = info["commonPlayerInfo"][0].country;
-			const school = info["commonPlayerInfo"][0].school;
-			const draftYear = info["commonPlayerInfo"][0].draftYear;
-			const draftNum = info["commonPlayerInfo"][0].draftNumber;
+			const p = info["commonPlayerInfo"][0]
 
 			const newEmbed = new Discord.MessageEmbed()
 			.setThumbnail('https://cdn.nba.com/headshots/nba/latest/1040x760/' + pid.playerId + '.png')
 			.setColor("#FFA500")
 			.setTitle(`${pid.fullName}`)
 			.setURL('https://www.nba.com/player/' + pid.playerId)
-			.setDescription(`${team}`)
+			.setDescription(`${p.teamName}`)
 			.addFields(
-				{name: 'Position', value: `${pos}`, inline: true},
-				{name: 'Height', value: `${hgt}`, inline: true},
-				{name: 'Weight', value: `${wgt}`, inline: true},
-				{name: 'Jersey', value: `${jersey}`, inline: true},
-				{name: 'Exp.', value: `${exp}`, inline: true},
-				{name: 'Country', value: `${country}`, inline: true},
-				{name: 'School', value: `${school}`, inline: true},
-				{name: 'Draft', value: `${draftYear}`, inline: true},
-				{name: 'Pick', value: `${draftNum}`, inline: true},
+				{name: 'Position', value: `${p.position}`, inline: true},
+				{name: 'Height', value: `${p.height}`, inline: true},
+				{name: 'Weight', value: `${p.weight}`, inline: true},
+				{name: 'Jersey', value: `${p.jersey}`, inline: true},
+				{name: 'Exp.', value: `${p.seasonExp}`, inline: true},
+				{name: 'Country', value: `${p.country}`, inline: true},
+				{name: 'School', value: `${p.school}`, inline: true},
+				{name: 'Draft', value: `${p.draftYear}`, inline: true},
+				{name: 'Pick', value: `${p.draftNumber}`, inline: true},
 			);
 			message.channel.send(newEmbed);
 		} else { 

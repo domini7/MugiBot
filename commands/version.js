@@ -4,8 +4,8 @@ module.exports = {
 	execute(message, args, Discord) {
 		const newEmbed = new Discord.MessageEmbed()
 		.addFields(
-			{name: "Version", value: "0.17", inline: true},
-			{name: "Last updated", value: "Jan 5th, 2021", inline: true}
+			{name: "Version", value: "0.18", inline: true},
+			{name: "Last updated", value: "Jan 6th, 2021", inline: true}
 		)
 
 		message.channel.send(newEmbed);

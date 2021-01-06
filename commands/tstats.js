@@ -13,36 +13,18 @@ module.exports = {
 
 		if (tid) {
 			const info = await NBA.stats.teamInfoCommon({Season: "2020-21", TeamID: tid});
-
-			const abbrev = info["teamInfoCommon"][0].teamAbbreviation;
-			const teamCity = info["teamInfoCommon"][0].teamCity;
-			const teamName = info["teamInfoCommon"][0].teamName;
-			const season = info["teamInfoCommon"][0].seasonYear;
-
-			const seed = info["teamInfoCommon"][0].confRank;
-			const won = info["teamInfoCommon"][0].w;
-			const lost = info["teamInfoCommon"][0].l;
-			const pct = info["teamInfoCommon"][0].pct;
-
-			const ppg = info["teamSeasonRanks"][0].ptsPg;
-			const ppgRnk = info["teamSeasonRanks"][0].ptsRank;
-			const oppg = info["teamSeasonRanks"][0].oppPtsPg;
-			const oppgRnk = info["teamSeasonRanks"][0].oppPtsRank;
-
-			const reb = info["teamSeasonRanks"][0].rebPg;
-			const rebRnk = info["teamSeasonRanks"][0].rebRank;
-			const ast = info["teamSeasonRanks"][0].astPg;
-			const astRnk = info["teamSeasonRanks"][0].astRank;
+			const basicInfo = info["teamInfoCommon"][0];
+			const stats = info["teamSeasonRanks"][0];
 
 			const newEmbed = new Discord.MessageEmbed()
-			.setColor("#0000ff")
-			.setTitle(`${teamCity}` + ' ' + `${teamName}`)
+			.setColor("#89CFF0")
+			.setTitle(`${basicInfo.teamCity}` + ' ' + `${basicInfo.teamName}`)
 			.setURL('https://www.nba.com/stats/team/' + tid)
-			.setDescription(`${season} season`)
+			.setDescription(`${basicInfo.seasonYear} season`)
 			.addFields(
-				{name: 'W-L | Win%', value: `${seed}. ${won}-${lost} | ${pct}`},
-				{name: 'PPG | oPPG', value: `${ppg} (${ppgRnk}) | ${oppg} (${oppgRnk})`},
-				{name: 'RPG | APG', value: `${reb} (${rebRnk}) | ${ast} (${astRnk})`},
+				{name: 'W-L | Win%', value: `${basicInfo.confRank}. ${basicInfo.w}-${basicInfo.l} | ${basicInfo.pct}`},
+				{name: 'PPG | oPPG', value: `${stats.ptsPg} (${stats.ptsRank}) | ${stats.oppPtsPg} (${stats.oppPtsRank})`},
+				{name: 'RPG | APG', value: `${stats.rebPg} (${stats.rebRank}) | ${stats.astPg} (${stats.astRank})`},
 			);
 			message.channel.send(newEmbed);
 		} else { 
