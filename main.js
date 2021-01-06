@@ -27,6 +27,7 @@ client.on("message", async (message) => {
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
+	const dm = message.channel instanceof Discord.DMChannel;
 
 	// command handler checks for prefix then checks if command is valid
 	// commands MUST execute with message and args as params
@@ -34,13 +35,35 @@ client.on("message", async (message) => {
 		if (client.commands.has(command)) {
 			try {
 				client.commands.get(command).execute(message, args, Discord);
+
+				// Logs commands called to console. Needed incase of spam
+				if (dm) {
+					console.log(
+						`Command: ${command} ${args} User: ${message.author.username} Server: DMs`
+					);
+				} else {
+					console.log(
+						`Command: ${command} ${args} User: ${message.author.username} Server: ${message.guild.name}`
+					);
+				}
 			} catch (error) {
+				if (dm) {
+					console.log(
+						`ERROR: Command: ${command} ${args} User: ${message.author.username} Server: DMs`
+					);
+				} else {
+					console.log(
+						`ERROR: Command: ${command} ${args} User: ${message.author.username} Server: ${message.guild.name}`
+					);
+				}
 				console.error(error);
 				message.reply(
 					"There was an error trying to execute that command!"
 				);
 			}
-		} else { message.reply("that command doesnt exist")}
+		} else {
+			message.reply("that command doesnt exist");
+		}
 	}
 
 	// good/bad bot
