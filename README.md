@@ -4,15 +4,21 @@
 
 This is a multi-purpose personal Discord bot built using JavaScript.
 
-## Public Commands
+## General Commands
 
 ```
 m-version               | Checks current version and date last updated
-m-play/stop             | Play and stop music (Must be in channel) (No queue system)
-m-pstats (player name)  | Check a NBA player's basic season stats
-m-pbio (player name)    | Check a NBA player's basic info
-m-tstats (team)         | Check a NBA team's basic stats
-m-standings             | Check current NBA standings
+m-play                  | Play music from title or youtube URL (Must be in channel) (No queue system)
+m-stop                  | Stop current music
 m-image (keyword)       | Get a random image based off keyword
 m-flip                  | Flip a coin
+```
+## NBA Commands
+
+```
+m-pstats (player)       | Check a NBA player's basic season stats
+m-pbio (player)         | Check a NBA player's basic info
+m-plastgame (player)    | Check a player's last game.
+m-tstats (team)         | Check a NBA team's basic stats
+m-standings             | Check current NBA standings
 ```

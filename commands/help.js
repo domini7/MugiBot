@@ -36,13 +36,18 @@ module.exports = {
 			.setTitle("NBA Commands")
 			.addFields(
 				{
-					name: "**`m-pstats/pbio (player name)`**",
-					value: "Check a NBA player's basic season stats/info",
+					name: "**`m-pstats (player name)`**",
+					value: "Check a NBA player's basic season stats",
 					inline: false,
 				},
 				{
 					name: "**`m-pbio (player name)`**",
 					value: "Check a NBA player's basic info",
+					inline: false,
+				},
+				{
+					name: "**`m-plastgame (player name)`**",
+					value: "Check a player's last game.",
 					inline: false,
 				},
 				{
@@ -57,7 +62,7 @@ module.exports = {
 				},
 			);
 
-		message.channel.send(newEmbed);
-		message.channel.send(nbacommands);
+		message.author.send(newEmbed);
+		message.author.send(nbacommands);
 	},
 };

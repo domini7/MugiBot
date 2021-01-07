@@ -67,10 +67,10 @@ client.on("message", async (message) => {
 	}
 
 	// good/bad bot
-	/* if (message.content.toLowerCase().includes("good bot")) {
+	if (message.content.toLowerCase().includes("good bot")) {
 		client.commands.get("gBot").execute(message, args);
 		message.react("😇");
-	} else if (message.content.toLowerCase().includes("bad bot")) {
+	} /* else if (message.content.toLowerCase().includes("bad bot")) {
 		client.commands.get("bBot").execute(message);
 	} else if (message.content.toLowerCase().includes("fuck you bot")) {
 		client.commands.get("bBot").execute(message);

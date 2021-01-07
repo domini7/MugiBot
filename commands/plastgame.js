@@ -1,12 +1,12 @@
 const NBA = require("nba");
 
 module.exports = {
-	name: "pstats",
-	description: "Displays basic NBA player stats",
+	name: "plastgame",
+	description: "Check a player's last game.",
 	async execute(message, args, Discord) {
 		if (!args.length)
 			return message.reply(
-				"You need to search a player name. Example: `m-pstats lillard`"
+				"You need to search a player name. Example: `m-plastgame lebron`"
 			);
 
 		// Takes in arg and seaches for that player
@@ -24,15 +24,15 @@ module.exports = {
 		*/
 
 		if (pid) {
-			const stats = await NBA.stats.playerProfile({
+			const stats = await NBA.stats.playerSplits({
+				Season: "2020-21",
 				PlayerID: pid.playerId,
+				LastNGames: "1",
 			});
 			// info needed for team and position
 			const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
-			// returns last season a player played in
-			const latest = stats.seasonTotalsRegularSeason.length - 1;
 
-			const p = stats["seasonTotalsRegularSeason"][latest];
+			const p = stats["overallPlayerDashboard"][0];
 			const playerInfo = info["commonPlayerInfo"][0];
 
 			const newEmbed = new Discord.MessageEmbed()
@@ -42,18 +42,12 @@ module.exports = {
 						".png"
 				)
 				.setColor("#FF0000")
-				.setTitle(`${pid.fullName}`)
+				.setTitle(`${pid.fullName}'s last game`)
 				.setURL("https://www.nba.com/player/" + pid.playerId)
-				.setDescription(
-					`${playerInfo.teamName} - ${playerInfo.position}`
-				)
+				.setDescription(`${playerInfo.teamName} - ${playerInfo.position}`)
 				.addFields(
 					{
-						name: "GP / GS / MPG",
-						value: `${p.gp} / ${p.gs} / ${p.min}`,
-					},
-					{
-						name: "PPG / TRB / AST",
+						name: "PTS / TRB / AST",
 						value: `${p.pts} / ${p.reb} / ${p.ast}`,
 					},
 					{
@@ -61,11 +55,14 @@ module.exports = {
 						value: `${p.stl} / ${p.blk} / ${p.tov}`,
 					},
 					{
-						name: "FG% / 3P% / FT%",
-						value: `${p.fgPct} / ${p.fg3Pct} / ${p.ftPct}`,
+						name: "FG / 3P / FT",
+						value: `(${p.fgm}|${p.fga}) / (${p.fG3M}|${p.fG3A}) / (${p.ftm}|${p.fta})`,
+					},
+					{
+						name: "MIN | +/-",
+						value: `${p.min} / ${p.plusMinus}`,
 					}
-				)
-				.setFooter(`Basic ${p.seasonId} stats`);
+				);
 			message.channel.send(newEmbed);
 		} else {
 			message.channel.send("No player found");
