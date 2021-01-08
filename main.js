@@ -6,6 +6,11 @@ const rps = require("./responses/responses.js");
 
 client.commands = new Discord.Collection();
 const prefix = "m-";
+// Anti-spam cooldown
+const cooldown = new Set();
+// User IDs of users who can't use the bot. ID's removed pre-commit.
+const blacklist = [];
+const spamChannels = ["spam", "bot-spam"];
 
 const commandFiles = fs
 	.readdirSync("./commands/")
@@ -23,7 +28,8 @@ client.once("ready", () => {
 });
 
 client.on("message", async (message) => {
-	if (message.author.bot) return;
+	// Bot won't respond to itself or blacklisted users
+	if (message.author.bot || blacklist.includes(message.author.id)) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
@@ -34,7 +40,29 @@ client.on("message", async (message) => {
 	if (message.content.toLowerCase().startsWith(prefix)) {
 		if (client.commands.has(command)) {
 			try {
-				client.commands.get(command).execute(message, args, Discord);
+				if (message.channel.name === "bot-spam" || dm) {
+					client.commands
+						.get(command)
+						.execute(message, args, Discord);
+				} else {
+					if (cooldown.has(message.author.id)) {
+						message.author.send(
+							"Wait 20 seconds before entering another command in non-spam channels or DM's " +
+								message.author.username
+						);
+					} else {
+						client.commands
+							.get(command)
+							.execute(message, args, Discord);
+
+						// Gives user a cooldown to prevent spam
+						cooldown.add(message.author.id);
+						setTimeout(() => {
+							// Removes the cooldown after 20 seconds
+							cooldown.delete(message.author.id);
+						}, 20000);
+					}
+				}
 
 				// Logs commands called to console. Needed incase of spam
 				if (dm) {
@@ -70,11 +98,11 @@ client.on("message", async (message) => {
 	if (message.content.toLowerCase().includes("good bot")) {
 		client.commands.get("gBot").execute(message, args);
 		message.react("😇");
-	} /* else if (message.content.toLowerCase().includes("bad bot")) {
+	} else if (message.content.toLowerCase().includes("bad bot")) {
 		client.commands.get("bBot").execute(message);
 	} else if (message.content.toLowerCase().includes("fuck you bot")) {
 		client.commands.get("bBot").execute(message);
-	} */
+	}
 
 	// reactions
 	if (rps.reactObject[message.content.toLowerCase()]) {
