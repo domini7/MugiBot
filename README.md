@@ -2,7 +2,8 @@
 
 # MugiBot
 
-This is a multi-purpose personal Discord bot built using JavaScript.
+
+This is a multi-purpose personal Discord bot built using JavaScript. DM's are open for commands at MugiBot#9444
 
 ## General Commands
 
