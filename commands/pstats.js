@@ -1,24 +1,8 @@
 const NBA = require("nba");
 // rounds to nearest tenth, needed for fg%'s to return 50% instead of 0.5
-function dec(type, value, exp) {
-  // If the exp is undefined or zero...
-  if (typeof exp === 'undefined' || +exp === 0) {
-    return Math[type](value);
-  }
-  value = +value;
-  exp = +exp;
-  // If the value is not a number or the exp is not an integer...
-  if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
-    return NaN;
-  }
-  // Shift
-  value = value.toString().split('e');
-  value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
-  // Shift back
-  value = value.toString().split('e');
-  return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+function rnd(x) {
+  return Number.parseFloat(x).toFixed(1);
 }
-const rnd = (value, exp) => dec('round', value, exp);
 
 module.exports = {
 	name: "pstats",
@@ -82,7 +66,7 @@ module.exports = {
 					},
 					{
 						name: "FG% / 3P% / FT%",
-						value: `${rnd(p.fgPct*100, -1)}% / ${rnd(p.fg3Pct*100, -1)}% / ${rnd(p.ftPct*100, -1)}%`,
+						value: `${rnd(p.fgPct*100)}% / ${rnd(p.fg3Pct*100)}% / ${rnd(p.ftPct*100)}%`,
 					}
 				)
 				.setFooter(`Basic ${p.seasonId} stats`);
