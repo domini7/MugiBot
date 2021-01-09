@@ -8,9 +8,9 @@ client.commands = new Discord.Collection();
 const prefix = "m-";
 // Anti-spam cooldown
 const cooldown = new Set();
-// User IDs of users who can't use the bot. ID's removed pre-commit.
+// User IDs of users who can't use the bot.
 const blacklist = [];
-const spamChannels = ["spam", "bot-spam"];
+const spamChannels = ["bot-spam"];
 
 const commandFiles = fs
 	.readdirSync("./commands/")
@@ -34,6 +34,10 @@ client.on("message", async (message) => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 	const dm = message.channel instanceof Discord.DMChannel;
+	const secs = new Date(message.createdTimestamp);
+	const commandLogger = `Time: ${secs.getUTCSeconds()} | User: ${
+		message.author.username
+	},${message.author.id} | Command: ${command} ${args}`;
 
 	// command handler checks for prefix then checks if command is valid
 	// commands MUST execute with message and args as params
@@ -44,46 +48,29 @@ client.on("message", async (message) => {
 					client.commands
 						.get(command)
 						.execute(message, args, Discord);
+					console.log(commandLogger);
 				} else {
 					if (cooldown.has(message.author.id)) {
 						message.author.send(
-							"Wait 20 seconds before entering another command in non-spam channels or DM's " +
-								message.author.username
+							"Wait 45 seconds before entering another command in non-spam channels " +
+								message.author.username +
+								", (DM's and bot-spam excluded)"
 						);
 					} else {
 						client.commands
 							.get(command)
 							.execute(message, args, Discord);
+						console.log(commandLogger);
 
 						// Gives user a cooldown to prevent spam
 						cooldown.add(message.author.id);
 						setTimeout(() => {
-							// Removes the cooldown after 20 seconds
+							// Removes the cooldown after 45 seconds
 							cooldown.delete(message.author.id);
-						}, 20000);
+						}, 45000);
 					}
 				}
-
-				// Logs commands called to console. Needed incase of spam
-				if (dm) {
-					console.log(
-						`User: ${message.author.username} | Server: DMs | Command: ${command} ${args}`
-					);
-				} else {
-					console.log(
-						`User: ${message.author.username} | Server: ${message.guild.name} | Command: ${command} ${args}`
-					);
-				}
 			} catch (error) {
-				if (dm) {
-					console.log(
-						`ERROR: User: ${message.author.username} | Server: DMs | Command: ${command} ${args}`
-					);
-				} else {
-					console.log(
-						`ERROR: User: ${message.author.username} | Server: ${message.guild.name} | Command: ${command} ${args}`
-					);
-				}
 				console.error(error);
 				message.reply(
 					"There was an error trying to execute that command!"
@@ -94,14 +81,17 @@ client.on("message", async (message) => {
 		}
 	}
 
+	const wordLogger = `Time: ${secs.getUTCSeconds()} | User: ${
+		message.author.username
+	},${message.author.id}, ${message.content}`;
 	// good/bad bot
 	if (message.content.toLowerCase().includes("good bot")) {
 		client.commands.get("gBot").execute(message, args);
 		message.react("😇");
+		console.log(wordLogger);
 	} else if (message.content.toLowerCase().includes("bad bot")) {
 		client.commands.get("bBot").execute(message);
-	} else if (message.content.toLowerCase().includes("fuck you bot")) {
-		client.commands.get("bBot").execute(message);
+		console.log(wordLogger);
 	}
 
 	// reactions
