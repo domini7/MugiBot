@@ -28,7 +28,7 @@
     "node-fetch": "^2.6.1",
     "spotify-url-info": "^2.2.0",
     "yt-search": "^2.5.1",
-    "ytdl-core": "^4.4.0",
+    "ytdl-core": "^4.4.1",
     "ytpl": "^1.0.1",
     "ytsr": "^1.0.4"
   }
