@@ -32,36 +32,34 @@ module.exports = {
 		downcaseName
 		*/
 
-		if (pid) {
-			const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
-			const p = info["commonPlayerInfo"][0];
-			const age = new birth(p.birthdate).calculateAge();
+		if (!pid) return message.channel.send("No Player Found");
+		
+		const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
+		const p = info["commonPlayerInfo"][0];
+		const age = new birth(p.birthdate).calculateAge();
 
-			const newEmbed = new Discord.MessageEmbed()
-				.setThumbnail(
-					"https://cdn.nba.com/headshots/nba/latest/1040x760/" +
-						pid.playerId +
-						".png"
-				)
-				.setColor("#FFA500")
-				.setTitle(`${pid.fullName}`)
-				.setURL("https://www.nba.com/player/" + pid.playerId)
-				.setDescription(`${p.teamName}`)
-				.addFields(
-					{ name: "Age", value: `${age}`, inline: true },
-					{ name: "Height", value: `${p.height}`, inline: true },
-					{ name: "Weight", value: `${p.weight}`, inline: true },
-					{ name: "Position", value: `${p.position}`, inline: true },
-					{ name: "Jersey", value: `#${p.jersey}`, inline: true },
-					{ name: "Exp.", value: `${p.seasonExp}`, inline: true },
-					{ name: "Country", value: `${p.country}`, inline: true },
-					{ name: "School", value: `${p.school}`, inline: true },
-					{ name: "Draft", value: `${p.draftYear}`, inline: true },
-					{ name: "Pick", value: `${p.draftNumber}`, inline: true }
-				);
-			message.channel.send(newEmbed);
-		} else {
-			message.channel.send("No player found");
-		}
+		const newEmbed = new Discord.MessageEmbed()
+			.setThumbnail(
+				"https://cdn.nba.com/headshots/nba/latest/1040x760/" +
+					pid.playerId +
+					".png"
+			)
+			.setColor("#FFA500")
+			.setTitle(`${pid.fullName}`)
+			.setURL("https://www.nba.com/player/" + pid.playerId)
+			.setDescription(`${p.teamName}`)
+			.addFields(
+				{ name: "Age", value: `${age}`, inline: true },
+				{ name: "Height", value: `${p.height}`, inline: true },
+				{ name: "Weight", value: `${p.weight}`, inline: true },
+				{ name: "Position", value: `${p.position}`, inline: true },
+				{ name: "Jersey", value: `#${p.jersey}`, inline: true },
+				{ name: "Exp.", value: `${p.seasonExp}`, inline: true },
+				{ name: "Country", value: `${p.country}`, inline: true },
+				{ name: "School", value: `${p.school}`, inline: true },
+				{ name: "Draft", value: `${p.draftYear}`, inline: true },
+				{ name: "Pick", value: `${p.draftNumber}`, inline: true }
+			);
+		message.channel.send(newEmbed);
 	},
 };
