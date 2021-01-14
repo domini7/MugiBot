@@ -1,5 +1,15 @@
 const NBA = require("nba");
 
+function birth(dob) {
+	// new Date(dateString)
+	this.birthday = new Date(dob); // transform birthday in date-object
+	this.calculateAge = function () {
+		const diff = Date.now() - this.birthday.getTime();
+		const ageDate = new Date(diff);
+		return Math.abs(ageDate.getUTCFullYear() - 1970);
+	};
+}
+
 module.exports = {
 	name: "pbio",
 	description: "Displays basic NBA player info",
@@ -20,12 +30,12 @@ module.exports = {
 		teamId
 		fullName
 		downcaseName
-		We'll be using playerId for this command
 		*/
 
 		if (pid) {
 			const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
 			const p = info["commonPlayerInfo"][0];
+			const age = new birth(p.birthdate).calculateAge();
 
 			const newEmbed = new Discord.MessageEmbed()
 				.setThumbnail(
@@ -38,10 +48,11 @@ module.exports = {
 				.setURL("https://www.nba.com/player/" + pid.playerId)
 				.setDescription(`${p.teamName}`)
 				.addFields(
-					{ name: "Position", value: `${p.position}`, inline: true },
+					{ name: "Age", value: `${age}`, inline: true },
 					{ name: "Height", value: `${p.height}`, inline: true },
 					{ name: "Weight", value: `${p.weight}`, inline: true },
-					{ name: "Jersey", value: `${p.jersey}`, inline: true },
+					{ name: "Position", value: `${p.position}`, inline: true },
+					{ name: "Jersey", value: `#${p.jersey}`, inline: true },
 					{ name: "Exp.", value: `${p.seasonExp}`, inline: true },
 					{ name: "Country", value: `${p.country}`, inline: true },
 					{ name: "School", value: `${p.school}`, inline: true },
