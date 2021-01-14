@@ -23,17 +23,33 @@ module.exports = {
 		We'll be using playerId for this command
 		*/
 
+		
+
 		if (pid) {
+			const profile = await NBA.stats.playerProfile({
+				PlayerID: pid.playerId,
+			});
+
+			// searches for last season a player played in and gets the seasonID
+			const latest = profile.seasonTotalsRegularSeason.length - 1;
+			const lastSeason = profile["seasonTotalsRegularSeason"][latest].seasonId;
+
 			const stats = await NBA.stats.playerSplits({
-				Season: "2020-21",
+				Season: lastSeason,
 				PlayerID: pid.playerId,
 				LastNGames: "1",
 			});
+
 			// info needed for team and position
 			const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
 
 			const p = stats["overallPlayerDashboard"][0];
 			const playerInfo = info["commonPlayerInfo"][0];
+			let result = 'Won';
+
+			if (p.l > p.w){
+				result = 'Lost'
+			}
 
 			const newEmbed = new Discord.MessageEmbed()
 				.setThumbnail(
@@ -42,7 +58,7 @@ module.exports = {
 						".png"
 				)
 				.setColor("#FF0000")
-				.setTitle(`${pid.fullName}'s last game`)
+				.setTitle(`${pid.fullName}'s last game (${result})`)
 				.setURL("https://www.nba.com/player/" + pid.playerId)
 				.setDescription(`${playerInfo.teamName} - ${playerInfo.position}`)
 				.addFields(
