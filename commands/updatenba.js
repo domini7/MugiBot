@@ -7,11 +7,7 @@ module.exports = {
 		if (message.author.id != "188530356394131456")
 				return message.channel.send("You don't have permission for this command.")
 		
-			await NBA.updatePlayers();
-
-			const newEmbed = new Discord.MessageEmbed()
-				.setColor("#C0C0C0")
-				.setTitle("Players updated!")
-			message.channel.send(newEmbed);
+		await NBA.updatePlayers();
+		message.channel.send('Players updated')
 	}
 };
