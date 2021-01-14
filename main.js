@@ -63,6 +63,7 @@ client.on("message", async (message) => {
 						console.log(commandLogger);
 
 						// Gives user a cooldown to prevent spam
+						if (message.author.id === "188530356394131456") return;
 						cooldown.add(message.author.id);
 						setTimeout(() => {
 							// Removes the cooldown after 45 seconds
@@ -86,11 +87,11 @@ client.on("message", async (message) => {
 		message.author.username
 	},${message.author.id}, ${message.content}`;
 	// good/bad bot
-	if (message.content.toLowerCase().includes("good bot")) {
+	if (message.content.toLowerCase() === "good bot") {
 		client.commands.get("gBot").execute(message, args);
 		message.react("😇");
 		console.log(wordLogger);
-	} else if (message.content.toLowerCase().includes("bad bot")) {
+	} else if (message.content.toLowerCase() === "bad bot") {
 		client.commands.get("bBot").execute(message);
 		console.log(wordLogger);
 	}
