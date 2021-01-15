@@ -1,6 +1,6 @@
 {
   "name": "MugiBot",
-  "version": "0.23",
+  "version": "0.24",
   "description": "a discord bot",
   "main": "main.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "nba": "^4.13.0",
     "node-fetch": "^2.6.1",
     "spotify-url-info": "^2.2.0",
+    "unirest": "^0.6.0",
     "yt-search": "^2.5.1",
     "ytdl-core": "^4.4.1",
     "ytpl": "^1.0.1",

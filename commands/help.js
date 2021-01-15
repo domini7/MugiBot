@@ -26,6 +26,11 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`m-define (keyword)`**",
+					value: "Define a word using urban dictionary. NSFW warning",
+					inline: false,
+				},
+				{
 					name: "**`m-flip`**",
 					value: "Flip a coin",
 					inline: false,

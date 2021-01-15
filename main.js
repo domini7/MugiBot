@@ -51,6 +51,7 @@ client.on("message", async (message) => {
 					console.log(commandLogger);
 				} else {
 					if (cooldown.has(message.author.id)) {
+						console.log(commandLogger);
 						message.author.send(
 							"Wait 45 seconds before entering another command in non-spam channels " +
 								message.author.username +
@@ -72,7 +73,7 @@ client.on("message", async (message) => {
 					}
 				}
 			} catch (error) {
-				console.log(commandLogger);
+				console.log('Error: ' + commandLogger);
 				console.error(error);
 				message.reply(
 					"There was an error trying to execute that command!"
@@ -88,11 +89,23 @@ client.on("message", async (message) => {
 	},${message.author.id}, ${message.content}`;
 	// good/bad bot
 	if (message.content.toLowerCase() === "good bot") {
-		client.commands.get("gBot").execute(message, args);
+		client.commands.get("gBot").execute(message);
 		message.react("😇");
 		console.log(wordLogger);
 	} else if (message.content.toLowerCase() === "bad bot") {
 		client.commands.get("bBot").execute(message);
+		console.log(wordLogger);
+	}
+	// this crap is for a specific nfl channel
+	if (
+		message.channel.name === "football-gm-discussion" &&
+		message.content.toLowerCase().includes("nfl roster") ||
+		message.content.toLowerCase().includes("nfl file") ||
+		message.content.toLowerCase().includes("nfl league")
+	) {
+		message.channel.send(
+			"<https://www.dropbox.com/s/e31zctcm4bj3fpx/FBGM2020preseason.json?dl=0>"
+		);
 		console.log(wordLogger);
 	}
 

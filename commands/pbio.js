@@ -56,9 +56,8 @@ module.exports = {
 				{ name: "Jersey", value: `#${p.jersey}`, inline: true },
 				{ name: "Exp.", value: `${p.seasonExp}`, inline: true },
 				{ name: "Country", value: `${p.country}`, inline: true },
-				{ name: "School", value: `${p.school}`, inline: true },
-				{ name: "Draft", value: `${p.draftYear}`, inline: true },
-				{ name: "Pick", value: `${p.draftNumber}`, inline: true }
+				{ name: "Draft-Pick", value: `${p.draftYear}-${p.draftNumber}`, inline: true },
+				{ name: "School", value: `${p.school}`, inline: true }
 			);
 		message.channel.send(newEmbed);
 	},
