@@ -9,7 +9,7 @@ const prefix = "m-";
 // Anti-spam cooldown
 const cooldown = new Set();
 // User IDs of users who can't use the bot.
-const blacklist = [];
+const blacklist = [""];
 const spamChannels = ["bot-spam"];
 
 const commandFiles = fs

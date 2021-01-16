@@ -54,7 +54,7 @@ module.exports = {
 				{ name: "Weight", value: `${p.weight}`, inline: true },
 				{ name: "Position", value: `${p.position}`, inline: true },
 				{ name: "Jersey", value: `#${p.jersey}`, inline: true },
-				{ name: "Exp.", value: `${p.seasonExp}`, inline: true },
+				{ name: "Exp.", value: `${p.seasonExp + 1}`, inline: true },
 				{ name: "Country", value: `${p.country}`, inline: true },
 				{ name: "Draft-Pick", value: `${p.draftYear}-${p.draftNumber}`, inline: true },
 				{ name: "School", value: `${p.school}`, inline: true }
