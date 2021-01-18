@@ -56,7 +56,7 @@ const replies2 = [
 
 module.exports = {
 	name: "bBot",
-	execute(message, args) {
+	execute(client, message, args) {
 		message.channel.send(
 			replies[Math.floor(Math.random() * replies.length)] + " " +
 			message.author.username +

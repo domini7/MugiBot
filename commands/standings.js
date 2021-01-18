@@ -3,7 +3,8 @@ const NBA = require("nba");
 module.exports = {
 	name: "standings",
 	description: "Displays current NBA standings",
-	async execute(message, args, Discord) {
+	cooldown: 600,
+	async execute(client, message, args, Discord) {
 		const stats = await NBA.stats.scoreboard({ gameDate: "01/01/9999" });
 		const east = stats["eastConfStandingsByDay"];
 		const west = stats["westConfStandingsByDay"];

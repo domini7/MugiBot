@@ -3,7 +3,8 @@ const NBA = require("nba");
 module.exports = {
 	name: "tstats",
 	description: "Displays basic NBA team stats",
-	async execute(message, args, Discord) {
+	cooldown: 35,
+	async execute(client, message, args, Discord) {
 		if (!args.length)
 			return message.reply(
 				"You need to search a team city/name. Example: `m-tstats warriors"

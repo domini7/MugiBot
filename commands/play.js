@@ -4,7 +4,7 @@ const ytSearch = require("yt-search");
 module.exports = {
 	name: "play",
 	description: "Joins and plays a video from youtube",
-	async execute(message, args, Discord) {
+	async execute(client, message, args, Discord) {
 		// checks if user is sending from a dm or server
 		if (message.channel instanceof Discord.DMChannel)
 			return message.channel.send("You cannot use this command in DMs");

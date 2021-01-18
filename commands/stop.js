@@ -1,7 +1,7 @@
 module.exports = {
 	name: "stop",
 	description: "Stops the bot and leaves the channel",
-	async execute(message, args, Discord) {
+	async execute(client, message, args, Discord) {
 		// checks if user is sending command from dm or channel
 		if (message.channel instanceof Discord.DMChannel) {
 			message.channel.send("You cannot use this command in DMs");

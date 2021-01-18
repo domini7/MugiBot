@@ -3,7 +3,8 @@ const unirest = require("unirest");
 module.exports = {
 	name: "covid",
 	description: "Check CoronaVirus stats",
-	execute(message, args, Discord) {
+	cooldown: 35,
+	execute(client, message, args, Discord) {
 
 		// if there is no arg, command will search global
 		let search = "country";
@@ -53,7 +54,7 @@ module.exports = {
 						},
 						{
 							name: "Active",
-							value: `${(stats.confirmed - stats.recovered).toLocaleString()}`,
+							value: `${(stats.confirmed - stats.recovered - stats.deaths).toLocaleString()}`,
 							inline: true,
 						},
 						{

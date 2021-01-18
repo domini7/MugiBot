@@ -13,7 +13,8 @@ function birth(dob) {
 module.exports = {
 	name: "pbio",
 	description: "Displays basic NBA player info",
-	async execute(message, args, Discord) {
+	cooldown: 35,
+	async execute(client, message, args, Discord) {
 		if (!args.length)
 			return message.reply(
 				"You need to search a player name. Example: `m-pbio lillard`"

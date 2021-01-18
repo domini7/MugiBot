@@ -4,7 +4,8 @@ const request = require("request");
 module.exports = {
 	name: "image",
 	description: "search and send random immage",
-	execute(message, args) {
+	cooldown: 120,
+	execute(client, message, args) {
 		if (!args.length)
 			return message.reply("Please add a keyword. Example: `m-image dogs`");
 

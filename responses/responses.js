@@ -1,6 +1,5 @@
 const reactObject = {
-	mugi: "🤖",
-	bot: "🤖",
+	mugibot: "🤖",
 	ok: "🆗",
 	k: "🇰",
 };

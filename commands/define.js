@@ -3,7 +3,7 @@ const unirest = require("unirest");
 module.exports = {
 	name: "define",
 	description: "search urban dictionary for a word",
-	execute(message, args, Discord) {
+	execute(client, message, args, Discord) {
 
 		if (
 			message.channel.name === "bot-spam" ||

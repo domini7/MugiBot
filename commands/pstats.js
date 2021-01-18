@@ -7,7 +7,8 @@ function rnd(x) {
 module.exports = {
 	name: "pstats",
 	description: "Displays basic NBA player stats",
-	async execute(message, args, Discord) {
+	cooldown: 40,
+	async execute(client, message, args, Discord) {
 		if (!args.length)
 			return message.reply(
 				"You need to search a player name. Example: `m-pstats lillard`"

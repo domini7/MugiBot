@@ -1,7 +1,8 @@
 module.exports = {
 	name: "help",
 	description: "Displays public commands",
-	execute(message, args, Discord) {
+	cooldown: 120,
+	execute(client, message, args, Discord) {
 		const newEmbed = new Discord.MessageEmbed()
 			.setColor("#808080")
 			.setThumbnail("https://i.imgur.com/MINhF0h.jpg")

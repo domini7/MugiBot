@@ -23,12 +23,11 @@ const replies = [
 	"yes",
 	"yup",
 	"cool bot",
-
 ];
 
 module.exports = {
 	name: "gBot",
-	execute(message, args) {
+	execute(client, message, args) {
 		message.channel.send(
 			replies[Math.floor(Math.random() * replies.length)]
 		);

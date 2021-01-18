@@ -5,7 +5,8 @@ const doHT = () => {
 
 module.exports = {
 	name: "flip",
-	execute(message, args, Discord) {
+	cooldown: 20,
+	execute(client, message, args, Discord) {
 		const embed = new Discord.MessageEmbed()
 			.setTitle("**Winner:**")
 			.setDescription("*"+doHT()+"*")
