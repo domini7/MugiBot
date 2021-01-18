@@ -7,17 +7,12 @@ module.exports = {
 			.setThumbnail("https://i.imgur.com/MINhF0h.jpg")
 			.setTitle("MugiBot")
 			.setURL("https://github.com/domini7/MugiBot")
-			.setDescription("Commands")
+			.setDescription("General Commands")
 			.addFields(
-				{
-					name: "**`m-version`**",
-					value: "Checks current version and date last updated",
-					inline: false,
-				},
 				{
 					name: "**`m-play/stop (direct URL or title)`**",
 					value:
-						"Play and stop music (Must be in channel for both) (No queue system yet)",
+						"Play and stop music (Must be in voice channel for both) (No queue system yet)",
 					inline: false,
 				},
 				{
@@ -26,13 +21,23 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`m-covid (OPTIONAL: country name)`**",
+					value: "Get coronavirus stats for the world or specific countries",
+					inline: false,
+				},
+				{
 					name: "**`m-define (keyword)`**",
-					value: "Define a word using urban dictionary. NSFW warning",
+					value: "Define a word using urban dictionary. NSFW. Restricted to #bot-spam or DM's",
 					inline: false,
 				},
 				{
 					name: "**`m-flip`**",
 					value: "Flip a coin",
+					inline: false,
+				},
+				{
+					name: "**`m-version`**",
+					value: "Checks current version and date last updated",
 					inline: false,
 				},
 			);
