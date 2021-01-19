@@ -4,7 +4,6 @@ module.exports = {
 	name: "define",
 	description: "search urban dictionary for a word",
 	execute(client, message, args, Discord) {
-
 		if (
 			message.channel.name === "bot-spam" ||
 			message.channel instanceof Discord.DMChannel ||
@@ -26,8 +25,7 @@ module.exports = {
 			});
 
 			req.headers({
-				"x-rapidapi-key":
-					process.env.API_KEY,
+				"x-rapidapi-key": process.env.API_KEY,
 				"x-rapidapi-host":
 					"mashape-community-urban-dictionary.p.rapidapi.com",
 				useQueryString: true,
@@ -56,6 +54,10 @@ module.exports = {
 					);
 				}
 			});
-		} else {message.reply("You can't use this command outside of #bot-spam or DM's!")}
+		} else {
+			message.reply(
+				"You can't use this command outside of #bot-spam or DM's!"
+			);
+		}
 	},
 };

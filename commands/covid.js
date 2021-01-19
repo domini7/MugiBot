@@ -5,7 +5,6 @@ module.exports = {
 	description: "Check CoronaVirus stats",
 	cooldown: 35,
 	execute(client, message, args, Discord) {
-
 		// if there is no arg, command will search global
 		let search = "country";
 		if (!args.length) {
@@ -24,8 +23,7 @@ module.exports = {
 		});
 
 		req.headers({
-			"x-rapidapi-key":
-				process.env.API_KEY,
+			"x-rapidapi-key": process.env.API_KEY,
 			"x-rapidapi-host": "covid-19-data.p.rapidapi.com",
 			useQueryString: true,
 		});
@@ -53,7 +51,11 @@ module.exports = {
 						},
 						{
 							name: "Active",
-							value: `${(stats.confirmed - stats.recovered - stats.deaths).toLocaleString()}`,
+							value: `${(
+								stats.confirmed -
+								stats.recovered -
+								stats.deaths
+							).toLocaleString()}`,
 							inline: true,
 						},
 						{
