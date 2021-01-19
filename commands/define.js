@@ -25,10 +25,9 @@ module.exports = {
 				term: word,
 			});
 
-			// key removed precommit
 			req.headers({
 				"x-rapidapi-key":
-					"",
+					process.env.API_KEY,
 				"x-rapidapi-host":
 					"mashape-community-urban-dictionary.p.rapidapi.com",
 				useQueryString: true,

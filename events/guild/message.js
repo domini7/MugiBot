@@ -5,7 +5,12 @@ module.exports = (Discord, client, message) => {
 
 	// User IDs of users who can't use the bot.
 	const blacklist = [""];
-	if (blacklist.includes(message.author.id)) return;
+	if (
+		blacklist.includes(message.author.id) ||
+		message.content.toLowerCase().includes("@everyone") ||
+		message.content.toLowerCase().includes("@here")
+	)
+		return;
 
 	if (message.content.toLowerCase() === "good bot") {
 		client.commands.get("gBot").execute(client, message);
@@ -14,10 +19,10 @@ module.exports = (Discord, client, message) => {
 		client.commands.get("bBot").execute(client, message);
 	} else if (rps.reactObject[message.content.toLowerCase()]) {
 		message.react(rps.reactObject[message.content.toLowerCase()]);
-	}
-
-	// this crap is for a specific discord server
-	if (
+	} else if (message.mentions.has(client.user.id)) {
+		message.channel.send("ayy");
+	} // this crap is for a specific discord server
+	else if (
 		(message.channel.name === "football-gm-discussion" &&
 			message.content.toLowerCase().includes("nfl roster")) ||
 		(message.channel.name === "football-gm-discussion" &&

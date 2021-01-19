@@ -4,7 +4,7 @@ module.exports = {
 	name: "plastgame",
 	description: "Check a player's last game.",
 	cooldown: 35,
-	async execute(message, args, Discord) {
+	async execute(client, message, args, Discord) {
 		if (!args.length)
 			return message.reply(
 				"You need to search a player name. Example: `m-plastgame lebron`"

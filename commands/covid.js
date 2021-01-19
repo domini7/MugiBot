@@ -23,10 +23,9 @@ module.exports = {
 			format: "json",
 		});
 
-		// key removed precommit
 		req.headers({
 			"x-rapidapi-key":
-				"",
+				process.env.API_KEY,
 			"x-rapidapi-host": "covid-19-data.p.rapidapi.com",
 			useQueryString: true,
 		});
