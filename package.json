@@ -1,6 +1,6 @@
 {
   "name": "MugiBot",
-  "version": "0.29",
+  "version": "0.30",
   "description": "a discord bot",
   "main": "main.js",
   "scripts": {

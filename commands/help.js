@@ -42,6 +42,11 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`m-echo`**",
+					value: "Bot repeats what you say after `m-echo`",
+					inline: false,
+				},
+				{
 					name: "**`m-version`**",
 					value: "Checks current version and date last updated",
 					inline: false,

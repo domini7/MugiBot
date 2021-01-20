@@ -15,6 +15,7 @@ m-covid (optional)      | Get coronavirus stats for the world or specific countr
 m-define (keyword)      | Define a word using urban dictionary. Potentially NSFW and restricted to DM's or #bot-spam
 m-flip                  | Flip a coin
 m-userinfo              | Displays basic user info, must be used in a server
+m-echo                  | Bot repeats what is said after 'm-echo ...'
 m-version               | Checks current version and date last updated
 ```
 ## NBA Commands
