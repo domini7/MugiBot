@@ -47,6 +47,11 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`m-gpt2 [sentence]`**",
+					value: "Bot tries to finish your sentence",
+					inline: false,
+				},
+				{
 					name: "**`m-version`**",
 					value: "Checks current version and date last updated",
 					inline: false,

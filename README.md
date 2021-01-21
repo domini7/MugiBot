@@ -16,6 +16,7 @@ m-define (keyword)      | Define a word using urban dictionary. Potentially NSFW
 m-flip                  | Flip a coin
 m-userinfo              | Displays basic user info, must be used in a server
 m-echo                  | Bot repeats what is said after 'm-echo ...'
+m-gpt2 [sentence]       | Bot tries to finish your sentence
 m-version               | Checks current version and date last updated
 ```
 ## NBA Commands
