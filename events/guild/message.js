@@ -1,14 +1,14 @@
 const rps = require("../../responses/responses.js");
+const cooldowns = new Set();
+var colors = require('colors');
 
 module.exports = (Discord, client, message) => {
-	const cooldowns = new Discord.Collection();
-
-	// User IDs of users who can't use the bot.
-	const blacklist = [""];
+	const blacklist = [];
 	if (
 		blacklist.includes(message.author.id) ||
 		message.content.toLowerCase().includes("@everyone") ||
-		message.content.toLowerCase().includes("@here")
+		message.content.toLowerCase().includes("@here")  || 
+		message.author.bot
 	)
 		return;
 
@@ -20,7 +20,7 @@ module.exports = (Discord, client, message) => {
 	} else if (rps.reactObject[message.content.toLowerCase()]) {
 		message.react(rps.reactObject[message.content.toLowerCase()]);
 	} else if (message.mentions.has(client.user.id)) {
-		message.channel.send("ayy");
+		message.react("👋");
 	} // this crap is for a specific discord server
 	else if (
 		(message.channel.name === "football-gm-discussion" &&
@@ -35,7 +35,7 @@ module.exports = (Discord, client, message) => {
 
 	const prefix = "m-";
 
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	if (!message.content.toLowerCase().startsWith(prefix)) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 
@@ -53,10 +53,29 @@ module.exports = (Discord, client, message) => {
 
 	if (command) {
 		try {
+			if (message.channel.name === "bot-spam" || dm) {
+				command.execute(client, message, args, Discord);
+				console.log(commandLogger.green);
+				return;
+			}
+
+			if (cooldowns.has(message.author.id)) {
+				message.author.send(
+					"Cooldown, wait 50 seconds. (#bot-spam or DM's excluded)"
+				);
+				console.log(commandLogger.green);
+				return;
+			}
 			command.execute(client, message, args, Discord);
-			console.log(commandLogger);
+			console.log(commandLogger.green);
+
+			if (message.author.id === "188530356394131456") return;
+			cooldowns.add(message.author.id);
+			setTimeout(() => {
+				cooldowns.delete(message.author.id);
+			}, 50000);
 		} catch (error) {
-			console.log("Error: " + commandLogger);
+			console.log("Error: " + commandLogger.green);
 			console.error(error);
 			message.reply("There was an error trying to execute that command!");
 		}
