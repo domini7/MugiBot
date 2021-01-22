@@ -11,14 +11,13 @@ module.exports = {
 	description: "search and send random immage",
 	cooldown: 120,
 	async execute(client, message, args) {
-		if (!args.length)
-			return message.reply(
-				"Please add a keyword. Example: `m-image dogs`"
-			);
+		let image_query = 'random image';
 
-		const image_query = args.join(" ");
+		if (args.length){
+			image_query = args.join(" ")
+		}
 
-		const image_results = await google.scrape(image_query, 50);
+		const image_results = await google.scrape(image_query, 150);
 		message.channel.send(
 			image_results[Math.floor(Math.random() * image_results.length)].url
 		);

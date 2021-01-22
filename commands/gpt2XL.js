@@ -5,20 +5,17 @@ module.exports = {
 	description: "Predict end of text",
 	cooldown: 120,
 	async execute(client, message, args, Discord) {
-		if (message.author.id != "188530356394131456")
-			return message.reply("You can't use this command, try `m-gpt2`");
-		if (!args.length)
-			return message.reply("Add some text after the command!");
+		let inString = 'I'
 
-		// message.reply("Processing!");
-
+		if (args.length) {
+			inString = args.join(" ")
+		}
+			
 		try {
-			const inString = args.join(" ");
-
 			const outList = await booste.gpt2XL(
 				process.env.BOOSTE,
 				inString,
-				15
+				30
 			);
 			const outString = outList.join(" ");
 			message.channel.send(`${inString}` + " " + `${outString}`);
