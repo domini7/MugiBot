@@ -15,7 +15,7 @@ module.exports = {
 			const outList = await booste.gpt2XL(
 				process.env.BOOSTE,
 				inString,
-				30
+				37
 			);
 
 			let outString = outList.join(" ");

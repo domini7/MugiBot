@@ -12,7 +12,7 @@ module.exports = {
 		}
 
 		try {
-			const outList = await booste.gpt2(process.env.BOOSTE, inString, 33);
+			const outList = await booste.gpt2(process.env.BOOSTE, inString, 40);
 
 			let outString = outList.join(" ");
 
