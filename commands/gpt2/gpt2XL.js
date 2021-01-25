@@ -19,7 +19,9 @@ module.exports = {
 			);
 
 			let outString = outList.join(" ");
+			console.log(outString);
 
+			// Hack to cut off unfinished sentences
 			outString = outString.substring(0, outString.lastIndexOf(".") + 1);
 
 			message.channel.send(`${inString}` + " " + `${outString}`);

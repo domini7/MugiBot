@@ -75,8 +75,8 @@ module.exports = {
 						value: `(${p.fgm}|${p.fga}) / (${p.fG3M}|${p.fG3A}) / (${p.ftm}|${p.fta})`,
 					},
 					{
-						name: "MIN | +/-",
-						value: `${p.min} / ${p.plusMinus}`,
+						name: "MIN | PF | +/-",
+						value: `${p.min} / ${p.pf} / ${p.plusMinus}`,
 					}
 				);
 			message.channel.send(newEmbed);

@@ -15,6 +15,7 @@ module.exports = {
 			const outList = await booste.gpt2(process.env.BOOSTE, inString, 40);
 
 			let outString = outList.join(" ");
+			console.log(outString);
 
 			// Hack to cut off unfinished sentences
 			outString = outString.substring(0, outString.lastIndexOf(".") + 1);

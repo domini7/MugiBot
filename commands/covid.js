@@ -30,8 +30,8 @@ module.exports = {
 
 		req.end(function (res) {
 			try {
-				const stats = res.body[0];
-				const date = stats.lastUpdate.slice(0, 10);
+				let stats = res.body[0];
+				let date = stats.lastUpdate.slice(0, 10);
 				let country;
 				!args.length ? (country = "World") : (country = stats.country);
 
