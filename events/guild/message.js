@@ -1,36 +1,45 @@
 const rps = require("../../responses/responses.js");
 const cooldowns = new Set();
-var colors = require('colors');
+var colors = require("colors");
 
 module.exports = (Discord, client, message) => {
-	const blacklist = [];
+	const blackList = [];
+	
+	const responseBlackList = [
+		"773612970767941654",
+		"771834997618376719",
+		"725151960449417246",
+	];
+
 	if (
-		blacklist.includes(message.author.id) ||
+		blackList.includes(message.author.id) ||
 		message.content.toLowerCase().includes("@everyone") ||
-		message.content.toLowerCase().includes("@here")  || 
+		message.content.toLowerCase().includes("@here") ||
 		message.author.bot
 	)
 		return;
 
-	if (message.content.toLowerCase() === "good bot") {
-		client.commands.get("gBot").execute(client, message);
-		message.react("😇");
-	} else if (message.content.toLowerCase() === "bad bot") {
-		client.commands.get("bBot").execute(client, message);
-	} else if (rps.reactObject[message.content.toLowerCase()]) {
-		message.react(rps.reactObject[message.content.toLowerCase()]);
-	} else if (message.mentions.has(client.user.id)) {
-		message.react("👋");
-	} // this crap is for a specific discord server
-	else if (
-		(message.channel.name === "football-gm-discussion" &&
-			message.content.toLowerCase().includes("nfl roster")) ||
-		(message.channel.name === "football-gm-discussion" &&
-			message.content.toLowerCase().includes("nfl file"))
-	) {
-		message.channel.send(
-			"<https://www.dropbox.com/s/e31zctcm4bj3fpx/FBGM2020preseason.json?dl=0>"
-		);
+	if (!responseBlackList.includes(message.author.id)) {
+		if (message.content.toLowerCase() === "good bot") {
+			client.commands.get("gBot").execute(client, message);
+			message.react("😇");
+		} else if (message.content.toLowerCase() === "bad bot") {
+			client.commands.get("bBot").execute(client, message);
+		} else if (rps.reactObject[message.content.toLowerCase()]) {
+			message.react(rps.reactObject[message.content.toLowerCase()]);
+		} else if (message.mentions.has(client.user.id)) {
+			message.react("👋");
+		} // this crap is for a specific discord server
+		else if (
+			(message.channel.name === "football-gm-discussion" &&
+				message.content.toLowerCase().includes("nfl roster")) ||
+			(message.channel.name === "football-gm-discussion" &&
+				message.content.toLowerCase().includes("nfl file"))
+		) {
+			message.channel.send(
+				"<https://www.dropbox.com/s/e31zctcm4bj3fpx/FBGM2020preseason.json?dl=0>"
+			);
+		}
 	}
 
 	const prefix = "m-";
