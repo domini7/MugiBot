@@ -48,7 +48,12 @@ module.exports = {
 				},
 				{
 					name: "**`m-gpt2 [sentence]`**",
-					value: "Bot tries to finish your sentence",
+					value: "Bot tries to finish your sentence. Processes under a minute.",
+					inline: false,
+				},
+				{
+					name: "**`m-gpt2xl [sentence]`**",
+					value: "Same function as m-gpt2 with bigger model. Can take up to 5-10 min.",
 					inline: false,
 				},
 				{

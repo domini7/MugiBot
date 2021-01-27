@@ -16,7 +16,8 @@ m-define (keyword)      | Define a word using urban dictionary. Potentially NSFW
 m-flip                  | Flip a coin
 m-userinfo              | Displays basic user info, must be used in a server
 m-echo                  | Bot repeats what is said after 'm-echo ...'
-m-gpt2 [sentence]       | Bot tries to finish your sentence
+m-gpt2 [sentence]       | Bot tries to finish your sentence, responds within a minute.
+m-gpt2xl [sentence]     | Same function as m-gpt2, but with a much larger model. Takes up to 5-10 minutes to respond.
 m-version               | Checks current version and date last updated
 ```
 ## NBA Commands
