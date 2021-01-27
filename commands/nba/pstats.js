@@ -1,4 +1,5 @@
 const NBA = require("nba");
+const fzy = require("fuzzyset.js");
 
 // rounds to nearest tenth, needed for fg%'s to return 50% instead of 0.5
 function rnd(x) {
@@ -39,61 +40,56 @@ module.exports = {
 			season = num2 + "-" + num1.slice(num1.length - 2);
 		}
 
-		const pid = NBA.findPlayer(player);
 
-		if (!pid) return message.channel.send("No Player Found");
-		/* NBA.findPlayer contains
-		firstName
-		lastName
-		playerId
-		teamId
-		fullName
-		downcaseName
-		*/
+		try {
+			const stats = await NBA.stats.playerStats({ Season: season });
 
-		const stats = await NBA.stats.playerStats({ Season: season });
+			const pName = fzy(
+				stats["leagueDashPlayerStats"].map((a) => a.playerName)
+			);
 
-		// info needed for team and position
-		const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
+			const p = stats["leagueDashPlayerStats"].find(
+				(x) => x.playerName === pName.get(player)[0][1]
+			);
 
-		const p = stats["leagueDashPlayerStats"].find(
-			(x) => x.playerId === pid.playerId
-		);
-		if (!p) return message.channel.send("No stats found! Search for a specific season.");
-
-		const playerInfo = info["commonPlayerInfo"][0];
-
-		const newEmbed = new Discord.MessageEmbed()
-			.setThumbnail(
-				"https://cdn.nba.com/headshots/nba/latest/1040x760/" +
-					pid.playerId +
-					".png"
-			)
-			.setColor("#FF0000")
-			.setTitle(`${pid.fullName}`)
-			.setURL("https://www.nba.com/player/" + pid.playerId)
-			.setDescription(`${p.teamAbbreviation} - ${playerInfo.position}`)
-			.addFields(
-				{
-					name: "GP / MPG / WIN%",
-					value: `${p.gp} / ${p.min} / ${rnd(p.wPct * 100)}%`,
-				},
-				{
-					name: "PPG / TRB / AST",
-					value: `${p.pts} / ${p.reb} / ${p.ast}`,
-				},
-				{
-					name: "STL / BLK / TOV",
-					value: `${p.stl} / ${p.blk} / ${p.tov}`,
-				},
-				{
-					name: "FG% / 3P% / FT%",
-					value: `${rnd(p.fgPct * 100)}% / ${rnd(
-						p.fg3Pct * 100
-					)}% / ${rnd(p.ftPct * 100)}%`,
-				}
-			)
-			.setFooter(`Basic ${season} stats`);
-		message.channel.send(newEmbed);
+			const newEmbed = new Discord.MessageEmbed()
+				.setThumbnail(
+					"https://cdn.nba.com/headshots/nba/latest/1040x760/" +
+						p.playerId +
+						".png"
+				)
+				.setColor("#FF0000")
+				.setTitle(`${p.playerName}`)
+				.setURL("https://www.nba.com/player/" + p.playerId)
+				.setDescription(`${p.teamAbbreviation}`)
+				.addFields(
+					{
+						name: "GP / MPG / WIN%",
+						value: `${p.gp} / ${p.min} / ${rnd(p.wPct * 100)}%`,
+					},
+					{
+						name: "PPG / TRB / AST",
+						value: `${p.pts} / ${p.reb} / ${p.ast}`,
+					},
+					{
+						name: "STL / BLK / TOV",
+						value: `${p.stl} / ${p.blk} / ${p.tov}`,
+					},
+					{
+						name: "FG / 3P / FT",
+						value: `${p.fgm} / ${p.fG3M} / ${p.ftm}`,
+					},
+					{
+						name: "FG% / 3P% / FT%",
+						value: `${rnd(p.fgPct * 100)}% / ${rnd(
+							p.fg3Pct * 100
+						)}% / ${rnd(p.ftPct * 100)}%`,
+					}
+				)
+				.setFooter(`Basic ${season} stats`);
+			message.channel.send(newEmbed);
+		} catch (error) {
+			message.channel.send('Error searching for that player and/or season!');
+		}
 	},
 };

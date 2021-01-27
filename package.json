@@ -26,6 +26,7 @@
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "ffmpeg-static": "^4.2.7",
+    "fuzzyset.js": "^1.0.6",
     "images-scraper": "^6.0.0",
     "ini": "^2.0.0",
     "merge-options": "^3.0.3",
