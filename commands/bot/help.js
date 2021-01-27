@@ -67,7 +67,7 @@ module.exports = {
 			.setTitle("NBA Commands")
 			.addFields(
 				{
-					name: "**`m-pstats (player name)`**",
+					name: "**`m-pstats (player name) [OPTIONAL: year]`**",
 					value: "Check a NBA player's basic season stats",
 					inline: false,
 				},

@@ -23,9 +23,9 @@ m-version               | Checks current version and date last updated
 ## NBA Commands
 
 ```
-m-pstats (player)       | Check a NBA player's basic season stats
-m-pbio (player)         | Check a NBA player's basic info
-m-plastgame (player)    | Check a player's last game.
+m-pstats (name) [year]  | Check a NBA player's basic season stats with season as optional arg
+m-pbio (name)           | Check a NBA player's basic info
+m-plastgame (name)      | Check a player's last game.
 m-tstats (team)         | Check a NBA team's basic stats
 m-standings             | Check current NBA standings
 ```

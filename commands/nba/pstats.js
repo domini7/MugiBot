@@ -1,4 +1,5 @@
 const NBA = require("nba");
+
 // rounds to nearest tenth, needed for fg%'s to return 50% instead of 0.5
 function rnd(x) {
 	return Number.parseFloat(x).toFixed(1);
@@ -15,9 +16,32 @@ module.exports = {
 			);
 
 		// Takes in arg and seaches for that player
-		const player = args.join(" ");
+		let player = args.join(" ");
+
+		let lastArg = args[args.length - 1];
+
+		let season = "2020-21";
+
+		// This is all for a season search, takes last arg if its a number and converts it into proper seasonId
+		if (!isNaN(lastArg)) {
+			let nameOnly = player.length - lastArg.length - 1;
+
+			player = player.slice(0, nameOnly);
+
+			let num0 = parseInt(lastArg);
+
+			const num1 = lastArg;
+
+			let num2 = num0 - 1;
+
+			toString(num2);
+
+			season = num2 + "-" + num1.slice(num1.length - 2);
+		}
+
 		const pid = NBA.findPlayer(player);
 
+		if (!pid) return message.channel.send("No Player Found");
 		/* NBA.findPlayer contains
 		firstName
 		lastName
@@ -27,17 +51,16 @@ module.exports = {
 		downcaseName
 		*/
 
-		if (!pid) return message.channel.send("No Player Found");
-		
-		const stats = await NBA.stats.playerProfile({
-			PlayerID: pid.playerId,
-		});
+		const stats = await NBA.stats.playerStats({ Season: season });
+
 		// info needed for team and position
 		const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
-		// returns last season a player played in
-		const latest = stats.seasonTotalsRegularSeason.length - 1;
 
-		const p = stats["seasonTotalsRegularSeason"][latest];
+		const p = stats["leagueDashPlayerStats"].find(
+			(x) => x.playerId === pid.playerId
+		);
+		if (!p) return message.channel.send("No stats found! Search for a specific season.");
+
 		const playerInfo = info["commonPlayerInfo"][0];
 
 		const newEmbed = new Discord.MessageEmbed()
@@ -49,11 +72,11 @@ module.exports = {
 			.setColor("#FF0000")
 			.setTitle(`${pid.fullName}`)
 			.setURL("https://www.nba.com/player/" + pid.playerId)
-			.setDescription(`${playerInfo.teamName} - ${playerInfo.position}`)
+			.setDescription(`${p.teamAbbreviation} - ${playerInfo.position}`)
 			.addFields(
 				{
-					name: "GP / GS / MPG",
-					value: `${p.gp} / ${p.gs} / ${p.min}`,
+					name: "GP / MPG / WIN%",
+					value: `${p.gp} / ${p.min} / ${rnd(p.wPct * 100)}%`,
 				},
 				{
 					name: "PPG / TRB / AST",
@@ -70,7 +93,7 @@ module.exports = {
 					)}% / ${rnd(p.ftPct * 100)}%`,
 				}
 			)
-			.setFooter(`Basic ${p.seasonId} stats`);
+			.setFooter(`Basic ${season} stats`);
 		message.channel.send(newEmbed);
 	},
 };
