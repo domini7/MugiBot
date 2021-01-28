@@ -13,37 +13,37 @@ module.exports = {
 				{
 					name: "**`m-play/stop (direct URL or title)`**",
 					value:
-						"Play and stop music (Must be in voice channel for both) (No queue system yet)",
+						"Play and stop music (Must be in voice channel for both) (No queue system yet).",
 					inline: false,
 				},
 				{
 					name: "**`m-image (keyword)`**",
-					value: "Get a random image based off keyword",
+					value: "Get a random image based off keyword.",
 					inline: false,
 				},
 				{
 					name: "**`m-covid (OPTIONAL: country name)`**",
-					value: "Get coronavirus stats for the world or specific countries",
+					value: "Get coronavirus stats for the world or specific countries.",
 					inline: false,
 				},
 				{
 					name: "**`m-define (keyword)`**",
-					value: "Define a word using urban dictionary. NSFW. Restricted to #bot-spam or DM's",
+					value: "Define a word using urban dictionary. NSFW. Restricted to #bot-spam or DM's.",
 					inline: false,
 				},
 				{
 					name: "**`m-flip`**",
-					value: "Flip a coin",
+					value: "Flip a coin.",
 					inline: false,
 				},
 				{
 					name: "**`m-userinfo`**",
-					value: "Displays basic info, must be used in a server",
+					value: "Displays basic info, must be used in a server.",
 					inline: false,
 				},
 				{
 					name: "**`m-echo`**",
-					value: "Bot repeats what you say after `m-echo`",
+					value: "Bot repeats what you say after `m-echo`.",
 					inline: false,
 				},
 				{
@@ -58,7 +58,7 @@ module.exports = {
 				},
 				{
 					name: "**`m-version`**",
-					value: "Checks current version and date last updated",
+					value: "Checks current version and date last updated.",
 					inline: false,
 				},
 			);
@@ -68,12 +68,12 @@ module.exports = {
 			.addFields(
 				{
 					name: "**`m-pstats (player name) [OPTIONAL YEAR]`**",
-					value: "Check a NBA player's basic season stats",
+					value: "Check a NBA player's basic season stats.",
 					inline: false,
 				},
 				{
 					name: "**`m-pbio (player name)`**",
-					value: "Check a NBA player's basic info",
+					value: "Check a NBA player's basic info.",
 					inline: false,
 				},
 				{
@@ -82,8 +82,8 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`m-tstats (team city/name)`**",
-					value: "Displays basic NBA team stats",
+					name: "**`m-tstats (team) [OPTIONAL YEAR]`**",
+					value: "Displays basic NBA team stats.",
 					inline: false,
 				},
 				{
