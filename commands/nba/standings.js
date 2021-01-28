@@ -5,14 +5,30 @@ module.exports = {
 	description: "Displays current NBA standings",
 	cooldown: 600,
 	async execute(client, message, args, Discord) {
-		const stats = await NBA.stats.scoreboard({ gameDate: "01/01/9999" });
+		const num = parseInt(args[0]);
+
+		let season = "06/06/2021";
+
+		if (args.length) {
+			season = "06/06/" + args[0];
+
+			if (!num)
+			return message.reply(
+				"You need to specify a season. `m-standings 2013`"
+			);
+		}
+
+		if (num < 2005 || num > 9999)
+			return message.reply(
+				"Can't search for standings before 2005, sorry!"
+			);
+
+		const stats = await NBA.stats.scoreboard({ gameDate: season });
+
 		const east = stats["eastConfStandingsByDay"];
 		const west = stats["westConfStandingsByDay"];
 
 		const standings = new Discord.MessageEmbed()
-			.setThumbnail(
-				"https://cdn.freebiesupply.com/images/large/2x/nba-logo-transparent.png"
-			)
 			.setColor("#800080")
 			.addFields(
 				{

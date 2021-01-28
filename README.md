@@ -27,5 +27,5 @@ m-pstats (name) [year]  | Check a NBA player's basic season stats with season as
 m-pbio (name)           | Check a NBA player's basic info
 m-plastgame (name)      | Check a player's last game.
 m-tstats (team)         | Check a NBA team's basic stats
-m-standings             | Check current NBA standings
+m-standings [year]      | Check current NBA standings or optionally check past seasons.
 ```
