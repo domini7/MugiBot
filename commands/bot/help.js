@@ -22,6 +22,11 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`m-inspirobot`**",
+					value: "Bot sends an inspirational image from inspirobot.",
+					inline: false,
+				},
+				{
 					name: "**`m-covid (OPTIONAL: country name)`**",
 					value: "Get coronavirus stats for the world or specific countries.",
 					inline: false,

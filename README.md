@@ -11,6 +11,7 @@ This is a multi-purpose personal Discord bot built using JavaScript. DM's are op
 m-play                  | Play music from title or youtube URL (Must be in a voice channel) (No queue system).
 m-stop                  | Stop current music.
 m-image (keyword)       | Get a random image based off keyword.
+m-inspirobot            | Bot sends an inspirational image from inspirobot.
 m-covid (optional)      | Get coronavirus stats for the world or specific countries.
 m-define (keyword)      | Define a word using urban dictionary. Potentially NSFW and restricted to DM's or #bot-spam.
 m-flip                  | Flip a coin.
