@@ -4,7 +4,7 @@ var colors = require("colors");
 
 module.exports = (Discord, client, message) => {
 	const blackList = [];
-	
+
 	const responseBlackList = [
 		"773612970767941654",
 		"771834997618376719",
@@ -62,27 +62,28 @@ module.exports = (Discord, client, message) => {
 
 	if (command) {
 		try {
-			if (message.channel.name === "bot-spam" || dm) {
-				command.execute(client, message, args, Discord);
-				console.log(commandLogger.green);
-				return;
-			}
-
 			if (cooldowns.has(message.author.id)) {
 				message.author.send(
-					"Cooldown, wait 50 seconds. (#bot-spam or DM's excluded)"
+					"Cooldowns enabled in that server, wait 50 seconds. (#bot-spam excluded)"
 				);
 				console.log(commandLogger.green);
 				return;
 			}
+			
 			command.execute(client, message, args, Discord);
 			console.log(commandLogger.green);
 
 			if (message.author.id === "188530356394131456") return;
-			cooldowns.add(message.author.id);
-			setTimeout(() => {
-				cooldowns.delete(message.author.id);
-			}, 50000);
+
+			if (
+				message.channel.name != "bot-spam" &&
+				message.guild.id === "290013534023057409"
+			) {
+				cooldowns.add(message.author.id);
+				setTimeout(() => {
+					cooldowns.delete(message.author.id);
+				}, 50000);
+			}
 		} catch (error) {
 			console.log("Error: " + commandLogger.green);
 			console.error(error);

@@ -33,7 +33,7 @@ module.exports = {
 				},
 				{
 					name: "**`m-define (keyword)`**",
-					value: "Define a word using urban dictionary. NSFW. Restricted to #bot-spam or DM's.",
+					value: "Define a word using urban dictionary. Potentially NSFW.",
 					inline: false,
 				},
 				{

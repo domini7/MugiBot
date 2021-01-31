@@ -13,7 +13,7 @@ m-stop                  | Stop current music.
 m-image (keyword)       | Get a random image based off keyword.
 m-inspirobot            | Bot sends an inspirational image from inspirobot.
 m-covid (optional)      | Get coronavirus stats for the world or specific countries.
-m-define (keyword)      | Define a word using urban dictionary. Potentially NSFW and restricted to DM's or #bot-spam.
+m-define (keyword)      | Define a word using urban dictionary. Potentially NSFW
 m-flip                  | Flip a coin.
 m-userinfo              | Displays basic user info, must be used in a server.
 m-echo                  | Bot repeats what is said after 'm-echo ...'.
