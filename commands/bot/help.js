@@ -77,6 +77,11 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`m-pstats-per36`**",
+					value: "Same as pstats but with per 36 min numbers.",
+					inline: false,
+				},
+				{
 					name: "**`m-pbio (player name)`**",
 					value: "Check a NBA player's basic info.",
 					inline: false,

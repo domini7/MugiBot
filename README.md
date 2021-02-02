@@ -25,6 +25,7 @@ m-version               | Checks current version and date last updated.
 
 ```
 m-pstats (name) [year]  | Check a NBA player's basic season stats with season as optional arg.
+m-pstats-per36          | Same as pstats but with per 36 min numbers.
 m-pbio (name)           | Check a NBA player's basic info.
 m-plastgame (name)      | Check a player's last game.
 m-tstats (team) [year]  | Check a NBA team's current or *optionally* past season stats.
