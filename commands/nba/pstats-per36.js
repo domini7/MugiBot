@@ -8,7 +8,7 @@ function rnd(x) {
 
 module.exports = {
 	name: "pstats-per36",
-	description: "Displays basic NBA player stats",
+	description: "Displays pstats per 36",
 	cooldown: 40,
 	async execute(client, message, args, Discord) {
 		if (!args.length)
