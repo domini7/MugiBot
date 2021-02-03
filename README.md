@@ -18,7 +18,7 @@ m-inspirobot            | Bot sends an inspirational image from inspirobot.
 m-covid (optional)      | Get coronavirus stats for the world or specific countries.
 m-define (keyword)      | Define a word using urban dictionary. Potentially NSFW
 m-flip                  | Flip a coin.
-m-rate [name]           | Bot will rate you/someone from 0-10.
+m-calc                  | Bot will solve math expressions.
 m-userinfo              | Displays basic user info, must be used in a server.
 m-version               | Checks current version and date last updated.
 ```
@@ -45,6 +45,7 @@ m-stop                  | Stop current music.
 m-echo                  | Bot repeats what is said after 'm-echo ...'.
 m-gpt2 [sentence]       | Bot tries to finish your sentence, responds within a minute.
 m-gpt2xl [sentence]     | Same function as m-gpt2, but with a much larger model. Takes up to 5-10 minutes to respond.
+m-rate [name]           | Bot will rate you/someone from 0-10.
 ```
 
 ## Installation

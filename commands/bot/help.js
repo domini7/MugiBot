@@ -65,8 +65,8 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`m-rate [name]`**",
-					value: "Bot will rate you/someone from 0-10.",
+					name: "**`m-calc [math]`**",
+					value: "Bot will solve math expressions.",
 					inline: false,
 				},
 				{
@@ -150,7 +150,12 @@ module.exports = {
 				value:
 					"Same function as m-gpt2 with bigger model. Can take up to 5-10 min.",
 				inline: false,
-			}
+			},
+			{
+				name: "**`m-rate [name]`**",
+				value: "Bot will rate you/someone from 0-10.",
+				inline: false,
+			},
 		);
 
 		const dm = message.author;
