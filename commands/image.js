@@ -17,7 +17,7 @@ module.exports = {
 			image_query = args.join(" ")
 		}
 
-		const image_results = await google.scrape(image_query, 150);
+		const image_results = await google.scrape(image_query, 65);
 		message.channel.send(
 			image_results[Math.floor(Math.random() * image_results.length)].url
 		);
