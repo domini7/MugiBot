@@ -5,9 +5,9 @@
 
 This is a multi-purpose personal Discord bot built using JavaScript. DM's are open for commands at MugiBot#9444
 
-# Commands
+## Commands
 
-## General
+### General
 
 ```
 m-help                  | DM's you the list of commands.
@@ -43,3 +43,6 @@ m-echo                  | Bot repeats what is said after 'm-echo ...'.
 m-gpt2 [sentence]       | Bot tries to finish your sentence, responds within a minute.
 m-gpt2xl [sentence]     | Same function as m-gpt2, but with a much larger model. Takes up to 5-10 minutes to respond.
 ```
+
+## Installation
+Coming soon
