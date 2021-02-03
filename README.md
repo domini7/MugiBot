@@ -8,6 +8,7 @@ This is a multi-purpose personal Discord bot built using JavaScript. DM's are op
 ## General Commands
 
 ```
+m-help                  | DM's you the list of commands.
 m-play                  | Play music from title or youtube URL (Must be in a voice channel) (No queue system).
 m-stop                  | Stop current music.
 m-image (keyword)       | Get a random image based off keyword.
@@ -30,4 +31,5 @@ m-pbio (name)           | Check a NBA player's basic info.
 m-plastgame (name)      | Check a player's last game.
 m-tstats (team) [year]  | Check a NBA team's current or *optionally* past season stats.
 m-standings [year]      | Check current NBA standings or optionally check past seasons.
+m-leaders [year]        | Displays league leaders.
 ```

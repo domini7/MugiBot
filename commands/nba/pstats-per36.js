@@ -33,6 +33,17 @@ module.exports = {
 			// convert season arg into a number to subtract from
 			let num0 = parseInt(lastArg);
 
+			if (num0 < 1999)
+				return message.reply(
+					"Cant search for years before 1999, sorry!"
+				);
+
+			if (num0 === 2000)
+				return message.reply("Cant search for stats in 2000, sorry!");
+
+			if (num0 > 2021)
+				return message.reply("That season hasn't happened yet!");
+
 			const num1 = lastArg;
 
 			let num2 = num0 - 1;

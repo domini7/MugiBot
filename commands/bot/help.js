@@ -88,7 +88,7 @@ module.exports = {
 				},
 				{
 					name: "**`m-plastgame (player name)`**",
-					value: "Check a player's last game.",
+					value: "Check a player's last game. (Can't check players who didn't play their team's last game!)",
 					inline: false,
 				},
 				{
@@ -98,9 +98,14 @@ module.exports = {
 				},
 				{
 					name: "**`m-standings [OPTIONAL YEAR]`**",
-					value: "Displays current NBA standings",
+					value: "Displays current NBA standings.",
 					inline: false,
-				},
+				},,
+				{
+					name: "**`m-leaders [OPTIONAL YEAR]`**",
+					value: "Displays league leaders.",
+					inline: false,
+				}
 			);
 
 		message.author.send(newEmbed);

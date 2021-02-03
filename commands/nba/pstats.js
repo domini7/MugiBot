@@ -25,11 +25,24 @@ module.exports = {
 
 		// This is all for a season search, takes last arg if its a number and converts it into proper seasonId
 		if (!isNaN(lastArg)) {
+			// nameOnly will be used to seperate the arg searching for a name from the year
 			let nameOnly = player.length - lastArg.length - 1;
 
 			player = player.slice(0, nameOnly);
 
+			// convert season arg into a number to subtract from
 			let num0 = parseInt(lastArg);
+
+			if (num0 < 1999)
+				return message.reply(
+					"Cant search for years before 1999, sorry!"
+				);
+
+			if (num0 === 2000)
+				return message.reply("Cant search for stats in 2000, sorry!");
+
+			if (num0 > 2021)
+				return message.reply("That season hasn't happened yet!");
 
 			const num1 = lastArg;
 
@@ -39,7 +52,6 @@ module.exports = {
 
 			season = num2 + "-" + num1.slice(num1.length - 2);
 		}
-
 
 		try {
 			const stats = await NBA.stats.playerStats({ Season: season });
@@ -89,7 +101,9 @@ module.exports = {
 				.setFooter(`Basic ${season} stats`);
 			message.channel.send(newEmbed);
 		} catch (error) {
-			message.channel.send('Error searching for that player and/or season!');
+			message.channel.send(
+				"Error searching for that player and/or season!"
+			);
 		}
 	},
 };
