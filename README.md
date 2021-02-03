@@ -5,7 +5,7 @@
 
 This is a multi-purpose personal Discord bot built using JavaScript. DM's are open for commands at MugiBot#9444
 
-## Commands
+# Commands
 
 ## General
 
@@ -19,7 +19,7 @@ m-flip                  | Flip a coin.
 m-userinfo              | Displays basic user info, must be used in a server.
 m-version               | Checks current version and date last updated.
 ```
-## NBA
+### NBA
 
 ```
 m-pstats (name) [year]  | Check a NBA player's basic season stats with season as optional arg.
@@ -30,13 +30,13 @@ m-tstats (team) [year]  | Check a NBA team's current or *optionally* past season
 m-standings [year]      | Check current NBA standings or optionally check past seasons.
 m-leaders [year]        | Displays league leaders.
 ```
-## Music
+### Music
 
 ```
 m-play                  | Play music from title or youtube URL (Must be in a voice channel) (No queue system).
 m-stop                  | Stop current music.
 ```
-## Bot Commands
+### Bot Commands
 
 ```
 m-echo                  | Bot repeats what is said after 'm-echo ...'.
