@@ -18,6 +18,7 @@ m-inspirobot            | Bot sends an inspirational image from inspirobot.
 m-covid (optional)      | Get coronavirus stats for the world or specific countries.
 m-define (keyword)      | Define a word using urban dictionary. Potentially NSFW
 m-flip                  | Flip a coin.
+m-rate [name]           | Bot will rate you/someone from 0-10.
 m-userinfo              | Displays basic user info, must be used in a server.
 m-version               | Checks current version and date last updated.
 ```

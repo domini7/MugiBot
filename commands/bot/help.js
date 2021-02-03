@@ -65,6 +65,11 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`m-rate [name]`**",
+					value: "Bot will rate you/someone from 0-10.",
+					inline: false,
+				},
+				{
 					name: "**`m-userinfo`**",
 					value: "Displays basic info, must be used in a server.",
 					inline: false,
