@@ -161,6 +161,11 @@ module.exports = {
 				value: "Bot will rate you/someone from 0-10.",
 				inline: false,
 			},
+			{
+				name: "**`m-ship [@user, @user]`**",
+				value: "Combines two users for a ship.",
+				inline: false,
+			}
 		);
 
 		const dm = message.author;

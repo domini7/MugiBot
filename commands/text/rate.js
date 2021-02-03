@@ -2,6 +2,7 @@ const reaction = require("../../assets/json/looks");
 
 module.exports = {
 	name: "rate",
+	description: "Rates you/someone on a 0-10 scale",
 	cooldown: 20,
 	async execute(client, message, args) {
 		if (!args.length) {

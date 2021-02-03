@@ -2,6 +2,7 @@ const math = require("mathjs");
 
 module.exports = {
 	name: "calc",
+	description: "Evaluate math expressions.",
 	cooldown: 20,
 	async execute(client, message, args) {
 		try {

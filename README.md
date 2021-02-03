@@ -47,6 +47,7 @@ m-leet                  | Bot repeats what you say but turns it into leet text.
 m-gpt2 [sentence]       | Bot tries to finish your sentence, responds within a minute.
 m-gpt2xl [sentence]     | Same function as m-gpt2, but with a much larger model. Takes up to 5-10 minutes to respond.
 m-rate [name]           | Bot will rate you/someone from 0-10.
+m-ship [@user, @user]   | Combines two users for a ship.
 ```
 
 ## Installation
