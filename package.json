@@ -29,6 +29,7 @@
     "fuzzyset.js": "^1.0.6",
     "images-scraper": "^6.0.0",
     "ini": "^2.0.0",
+    "mathjs": "^9.1.0",
     "merge-options": "^3.0.3",
     "nba": "^4.15.0",
     "node-fetch": "^2.6.1",
