@@ -36,32 +36,25 @@ module.exports = {
 
 		const stats = await NBA.stats.playerStats({ Season: season });
 
+		const numLeaders = 3;
+
+		const categories = ["pts", "reb", "ast", "stl", "blk"];
+
 		const leaders = stats["leagueDashPlayerStats"];
 
-		const pts1 = leaders.find((x) => x.ptsRank === 1);
-		const pts2 = leaders.find((x) => x.ptsRank === 2);
-		const pts3 = leaders.find((x) => x.ptsRank === 3);
+		const p = {};
 
-		const reb1 = leaders.find((x) => x.rebRank === 1);
-		const reb2 = leaders.find((x) => x.rebRank === 2);
-		const reb3 = leaders.find((x) => x.rebRank === 3);
-
-		const ast1 = leaders.find((x) => x.astRank === 1);
-		const ast2 = leaders.find((x) => x.astRank === 2);
-		const ast3 = leaders.find((x) => x.astRank === 3);
-
-		const stl1 = leaders.find((x) => x.stlRank === 1);
-		const stl2 = leaders.find((x) => x.stlRank === 2);
-		const stl3 = leaders.find((x) => x.stlRank === 3);
-
-		const blk1 = leaders.find((x) => x.blkRank === 1);
-		const blk2 = leaders.find((x) => x.blkRank === 2);
-		const blk3 = leaders.find((x) => x.blkRank === 3);
+		for (const category of categories) {
+		    p[category] = [];
+		    for (let i = 1; i <= numLeaders; i++) {
+		       p[category].push(leaders.find(x => x[`${category}Rank`] === i));
+		    }
+		}
 
 		const newEmbed = new Discord.MessageEmbed()
 			.setThumbnail(
 				"https://cdn.nba.com/headshots/nba/latest/1040x760/" +
-					pts1.playerId +
+					p.pts[0].playerId +
 					".png"
 			)
 			.setURL(
@@ -74,23 +67,23 @@ module.exports = {
 			.addFields(
 				{
 					name: "Points",
-					value: `${pts1.playerName} - **${pts1.pts}**\n${pts2.playerName} - **${pts2.pts}**\n${pts3.playerName} - **${pts3.pts}**`,
+					value: `${p.pts[0].playerName} - **${p.pts[0].pts}**\n${p.pts[1].playerName} - **${p.pts[1].pts}**\n${p.pts[2].playerName} - **${p.pts[2].pts}**`,
 				},
 				{
 					name: "Rebounds",
-					value: `${reb1.playerName} - **${reb1.reb}**\n${reb2.playerName} - **${reb2.reb}**\n${reb3.playerName} - **${reb3.reb}**`,
+					value: `${p.reb[0].playerName} - **${p.reb[0].reb}**\n${p.reb[1].playerName} - **${p.reb[1].reb}**\n${p.reb[2].playerName} - **${p.reb[2].reb}**`,
 				},
 				{
 					name: "Assists",
-					value: `${ast1.playerName} - **${ast1.ast}**\n${ast2.playerName} - **${ast2.ast}**\n${ast3.playerName} - **${ast3.ast}**`,
+					value: `${p.ast[0].playerName} - **${p.ast[0].ast}**\n${p.ast[1].playerName} - **${p.ast[1].ast}**\n${p.ast[2].playerName} - **${p.ast[2].ast}**`,
 				},
 				{
 					name: "Steals",
-					value: `${stl1.playerName} - **${stl1.stl}**\n${stl2.playerName} - **${stl2.stl}**\n${stl3.playerName} - **${stl3.stl}**`,
+					value: `${p.stl[0].playerName} - **${p.stl[0].stl}**\n${p.stl[1].playerName} - **${p.stl[1].stl}**\n${p.stl[2].playerName} - **${p.stl[2].stl}**`,
 				},
 				{
 					name: "Blocks",
-					value: `${blk1.playerName} - **${blk1.blk}**\n${blk2.playerName} - **${blk2.blk}**\n${blk3.playerName} - **${blk3.blk}**`,
+					value: `${p.blk[0].playerName} - **${p.blk[0].blk}**\n${p.blk[1].playerName} - **${p.blk[1].blk}**\n${p.blk[2].playerName} - **${p.blk[2].blk}**`,
 				}
 			)
 			.setFooter(`${season} Leaders`);

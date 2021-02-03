@@ -22,7 +22,7 @@ module.exports = {
 			if (exp.length + evaled.length > 2000)
 				return message.channel.send(`output is too long`);
 
-			message.channel.send(`${exp} = ${evaled}`);
+			message.channel.send(`${exp} = ${evaled.toLocaleString()}`);
 		} catch (error) {
 			message.reply("Error evaluating that!");
 		}
