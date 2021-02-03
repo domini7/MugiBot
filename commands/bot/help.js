@@ -140,6 +140,11 @@ module.exports = {
 				inline: false,
 			},
 			{
+				name: "**`m-leet`**",
+				value: "Bot repeats what you say but turns it into leet text.",
+				inline: false,
+			},
+			{
 				name: "**`m-gpt2 [sentence]`**",
 				value:
 					"Bot tries to finish your sentence. Processes under a minute.",

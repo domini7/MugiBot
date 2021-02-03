@@ -1,4 +1,4 @@
-const reaction = require("../assets/json/looks");
+const reaction = require("../../assets/json/looks");
 
 module.exports = {
 	name: "rate",

@@ -27,12 +27,12 @@ module.exports = (client, Discord) => {
 		}
 	}
 
-	const gptCommandFiles = fs
-		.readdirSync("./commands/gpt2/")
+	const textCommandFiles = fs
+		.readdirSync("./commands/text/")
 		.filter((file) => file.endsWith(".js"));
 
-	for (const file of gptCommandFiles) {
-		const command = require(`../commands/gpt2/${file}`);
+	for (const file of textCommandFiles) {
+		const command = require(`../commands/text/${file}`);
 		if (command.name) {
 			client.commands.set(command.name, command);
 		} else {
