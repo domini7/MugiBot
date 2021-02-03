@@ -60,7 +60,7 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`m-flip`**",
+					name: "**`m-flip (OPTIONAL: Guess)`**",
 					value: "Flip a coin.",
 					inline: false,
 				},

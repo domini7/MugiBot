@@ -7,10 +7,17 @@ module.exports = {
 	name: "flip",
 	cooldown: 20,
 	execute(client, message, args, Discord) {
-		const embed = new Discord.MessageEmbed()
-			.setTitle("**Winner:**")
-			.setDescription("*"+doHT()+"*")
-			.setColor("#FFD700");
-		message.channel.send(embed);
+		const result = doHT();
+		message.channel.send(result);
+
+		if (args.length) {
+			guess = args[0];
+
+			if (result.toLowerCase() === guess.toLowerCase()) {
+				message.reply("You win!");
+			} else {
+				message.reply("You suck!");
+			}
+		}
 	},
 };
