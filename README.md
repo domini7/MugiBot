@@ -4,7 +4,8 @@
 
 
 This is a multi-purpose personal Discord bot built using JavaScript. DM's are open for commands at MugiBot#9444
-I am contactable at doobie mugi#2784
+
+I am contactable on Discord at doobie mugi#2784
 
 ## Commands
 
