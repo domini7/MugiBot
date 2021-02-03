@@ -75,7 +75,8 @@ module.exports = {
 		const tov5 = leaders.find((x) => x.tovRank === 5);
 
 		const newEmbed = new Discord.MessageEmbed()
-			.setColor("#FFFFFF")
+			.setURL("https://www.nba.com/stats/leaders/?Season=" + season + "&SeasonType=Regular%20Season")
+			.setColor("#C0C0C0")
 			.setTitle("League Leaders")
 			.addFields(
 				{
