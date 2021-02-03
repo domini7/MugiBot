@@ -100,7 +100,7 @@ module.exports = {
 					name: "**`m-standings [OPTIONAL YEAR]`**",
 					value: "Displays current NBA standings.",
 					inline: false,
-				},,
+				},
 				{
 					name: "**`m-leaders [OPTIONAL YEAR]`**",
 					value: "Displays league leaders.",
