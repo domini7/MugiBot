@@ -5,7 +5,7 @@
 
 This is a multi-purpose personal Discord bot built using JavaScript. DM's are open for commands at MugiBot#9444
 
-I am contactable on Discord at doobie mugi#2784
+Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?client_id=776681738654580746&scope=bot&permissions=3267648)
 
 ## Commands
 
