@@ -10,10 +10,13 @@ module.exports = {
 
 			function (error, response, body) {
 				const embed = new Discord.MessageEmbed()
-					.setTitle("Inspirobot")
-					.setURL("https://inspirobot.me/")
+					.setAuthor(
+						"Inspirobot",
+						"https://inspirobot.me/website/images/inspirobot-dark-green.png",
+						"https://inspirobot.me/"
+					)
 					.setColor("#00FF00")
-					.setImage(body)
+					.setImage(body);
 
 				message.channel.send(embed);
 			}

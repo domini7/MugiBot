@@ -8,7 +8,7 @@ const google = new Scraper({
 
 module.exports = {
 	name: "image",
-	description: "search and send random immage",
+	description: "search and send random image",
 	cooldown: 120,
 	async execute(client, message, args) {
 		let image_query = 'random image';

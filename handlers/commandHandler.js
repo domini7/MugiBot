@@ -27,19 +27,6 @@ module.exports = (client, Discord) => {
 		}
 	}
 
-	const textCommandFiles = fs
-		.readdirSync("./commands/text/")
-		.filter((file) => file.endsWith(".js"));
-
-	for (const file of textCommandFiles) {
-		const command = require(`../commands/text/${file}`);
-		if (command.name) {
-			client.commands.set(command.name, command);
-		} else {
-			continue;
-		}
-	}
-
 	const musicCommandFiles = fs
 		.readdirSync("./commands/music/")
 		.filter((file) => file.endsWith(".js"));
@@ -59,6 +46,19 @@ module.exports = (client, Discord) => {
 
 	for (const file of botCommandFiles) {
 		const command = require(`../commands/bot/${file}`);
+		if (command.name) {
+			client.commands.set(command.name, command);
+		} else {
+			continue;
+		}
+	}
+
+	const searchCommandFiles = fs
+		.readdirSync("./commands/search/")
+		.filter((file) => file.endsWith(".js"));
+
+	for (const file of searchCommandFiles) {
+		const command = require(`../commands/search/${file}`);
 		if (command.name) {
 			client.commands.set(command.name, command);
 		} else {

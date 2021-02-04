@@ -13,12 +13,7 @@ I am contactable on Discord at doobie mugi#2784
 
 ```
 m-help                  | DM's you the list of commands.
-m-image (keyword)       | Get a random image based off keyword.
-m-inspirobot            | Bot sends an inspirational image from inspirobot.
-m-covid (optional)      | Get coronavirus stats for the world or specific countries.
-m-define (keyword)      | Define a word using urban dictionary. Potentially NSFW
 m-flip                  | Flip a coin. Optionally guess the result.
-m-calc                  | Bot will solve math expressions.
 m-userinfo              | Displays basic user info, must be used in a server.
 m-version               | Checks current version and date last updated.
 ```
@@ -39,7 +34,7 @@ m-leaders [year]        | Displays league leaders.
 m-play                  | Play music from title or youtube URL (Must be in a voice channel) (No queue system).
 m-stop                  | Stop current music.
 ```
-### Bot Commands
+### Bot
 
 ```
 m-echo                  | Bot repeats what is said after 'm-echo ...'.
@@ -48,6 +43,16 @@ m-gpt2 [sentence]       | Bot tries to finish your sentence, responds within a m
 m-gpt2xl [sentence]     | Same function as m-gpt2, but with a much larger model. Takes up to 5-10 minutes to respond.
 m-rate [name]           | Bot will rate you/someone from 0-10.
 m-ship [@user, @user]   | Combines two users for a ship.
+m-calc                  | Bot will solve math expressions.
+```
+### Search
+
+```
+m-image (keyword)       | Get a random image based off keyword.
+m-inspirobot            | Bot sends an inspirational image from inspirobot.
+m-covid (optional)      | Get coronavirus stats for the world or specific countries.
+m-define (keyword)      | Define a word using urban dictionary. Potentially NSFW.
+m-wiki (query)          | Search wikipedia.
 ```
 
 ## Installation
