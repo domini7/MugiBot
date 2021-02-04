@@ -1,10 +1,6 @@
 const NBA = require("nba");
 const fzy = require("fuzzyset.js");
-
-// rounds to nearest tenth, needed for fg%'s to return 50% instead of 0.5
-function rnd(x) {
-	return Number.parseFloat(x).toFixed(1);
-}
+const { rnd } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "pstats-per36",

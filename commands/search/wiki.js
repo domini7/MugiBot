@@ -1,15 +1,16 @@
 const wiki = require("wikipedia");
-const topic = require("../../assets/json/wiki")
+const topic = require("../../assets/json/wiki");
+const { toTitleCase, shorten } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "wiki",
 	description: "Search wikipedia",
 	cooldown: 50,
 	async execute(client, message, args, Discord) {
-		let search = topic[Math.floor(Math.random() * topic.length)]
+		let search = topic[Math.floor(Math.random() * topic.length)];
 
 		if (args.length) {
-			search = args.join(" ");
+			search = toTitleCase(args.join(" "));
 		}
 
 		try {
@@ -24,8 +25,7 @@ module.exports = {
 					"https://i.imgur.com/Z7NJBK2.png",
 					"https://www.wikipedia.org/"
 				)
-				.setDescription(summary.description)
-				.setFooter(summary.extract);
+				.setFooter(shorten(summary.extract));
 
 			message.channel.send(embed);
 		} catch (error) {

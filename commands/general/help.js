@@ -205,9 +205,9 @@ module.exports = {
 		if (!args.length) {
 			dm.send(help);
 		} else {
-			const search = args[0].toLowerCase();
+			const cat = args[0].toLowerCase();
 
-			switch (search) {
+			switch (cat) {
 				case "general":
 					dm.send(general);
 					break;

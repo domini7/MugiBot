@@ -1,4 +1,5 @@
 const unirest = require("unirest");
+const { shorten } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "define",
@@ -6,7 +7,8 @@ module.exports = {
 	execute(client, message, args, Discord) {
 		if (
 			message.channel.name != "bot-spam" &&
-			message.guild.id === "290013534023057409"
+			message.guild.id === "290013534023057409" &&
+			message.author.id != "806725147263631412"
 		)
 			return message.author.send(
 				"Sorry, this command is restricted to #bot-spam in this server!"
@@ -48,8 +50,8 @@ module.exports = {
 					.setColor("#FFA500")
 					.setTitle(`${define.word}`)
 					.setURL(`${define.permalink}`)
-					.setDescription(`${def}`)
-					.setFooter(`${ex}`);
+					.setDescription(`${shorten(def, 1000)}`)
+					.setFooter(`${shorten(ex, 1000)}`);
 				message.channel.send(newEmbed);
 			} catch (error) {
 				message.reply(

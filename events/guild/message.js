@@ -37,7 +37,7 @@ module.exports = (Discord, client, message) => {
 				message.content.toLowerCase().includes("nfl file"))
 		) {
 			message.channel.send(
-				"<https://www.dropbox.com/s/e31zctcm4bj3fpx/FBGM2020preseason.json?dl=0>"
+				"<https://dl.dropbox.com/s/e31zctcm4bj3fpx/FBGM2020preseason.json?dl=0>"
 			);
 		}
 	}

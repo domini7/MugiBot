@@ -1,14 +1,5 @@
 const NBA = require("nba");
-
-function birth(dob) {
-	// new Date(dateString)
-	this.birthday = new Date(dob); // transform birthday in date-object
-	this.calculateAge = function () {
-		const diff = Date.now() - this.birthday.getTime();
-		const ageDate = new Date(diff);
-		return Math.abs(ageDate.getUTCFullYear() - 1970);
-	};
-}
+const { birth } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "pbio",
@@ -37,7 +28,7 @@ module.exports = {
 		
 		const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
 		const p = info["commonPlayerInfo"][0];
-		const age = new birth(p.birthdate).calculateAge();
+		const age = birth(p.birthdate);
 
 		const newEmbed = new Discord.MessageEmbed()
 			.setThumbnail(

@@ -1,13 +1,11 @@
-const doHT = () => {
-	const rand = ["Heads", "Tails"];
-	return rand[Math.floor(Math.random() * rand.length)];
-};
-
 module.exports = {
 	name: "flip",
 	cooldown: 20,
 	execute(client, message, args, Discord) {
-		const result = doHT();
+		let result = ["Heads", "Tails"];
+
+		result = result[Math.floor(Math.random() * result.length)];
+
 		message.channel.send(result);
 
 		if (args.length) {
