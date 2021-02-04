@@ -5,11 +5,15 @@ module.exports = {
 	execute(client, message, args, Discord) {
 		const help = new Discord.MessageEmbed()
 			.setColor("#808080")
-			.setThumbnail("https://i.imgur.com/MINhF0h.jpg")
-			.setTitle("MugiBot")
-			.setURL("https://github.com/domini7/MugiBot")
+			.setAuthor(
+				"MugiBot",
+				"",
+				"https://github.com/domini7/MugiBot"
+			)
+			.setThumbnail("https://i.imgur.com/JbQP9Zp.jpg")
+			.setTitle("Open-source Discord.js bot")
 			.setDescription(
-				"Open-source Discord.js bot\n\nTo get info about specific categories,\ndo `m-help <category>`.\nTo show all commands, do `m-help all.`"
+				"To get info about specific categories,\ndo `m-help <category>`.\nTo show all commands, do `m-help all.`"
 			)
 			.addFields(
 				{
@@ -29,7 +33,7 @@ module.exports = {
 				},
 				{
 					name: "**Bot**",
-					value: "Commands to make the bot say something.",
+					value: "Commands to make the bot do something.",
 					inline: false,
 				},
 				{
