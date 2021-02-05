@@ -4,6 +4,7 @@ const { rnd } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "pstats",
+	aliases: ['ps', 'stats'],
 	description: "Displays basic NBA player stats",
 	cooldown: 40,
 	async execute(client, message, args, Discord) {

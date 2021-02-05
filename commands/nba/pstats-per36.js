@@ -4,6 +4,7 @@ const { rnd } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "pstats-per36",
+	aliases: ['ps36', 'per36'],
 	description: "Displays pstats per 36",
 	cooldown: 40,
 	async execute(client, message, args, Discord) {

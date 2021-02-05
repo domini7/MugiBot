@@ -2,6 +2,7 @@ const request = require("request");
 
 module.exports = {
 	name: "inspirobot",
+	aliases: ['ib'],
 	description: "send an inspirational image",
 	cooldown: 120,
 	async execute(client, message, args, Discord) {

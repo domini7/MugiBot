@@ -3,6 +3,7 @@ const { birth } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "pbio",
+	aliases: ['pb'],
 	description: "Displays basic NBA player info",
 	cooldown: 35,
 	async execute(client, message, args, Discord) {

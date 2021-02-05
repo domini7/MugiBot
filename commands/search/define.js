@@ -5,15 +5,6 @@ module.exports = {
 	name: "define",
 	description: "search urban dictionary for a word",
 	execute(client, message, args, Discord) {
-		if (
-			message.channel.name != "bot-spam" &&
-			message.guild.id === "290013534023057409" &&
-			message.author.id != "806725147263631412"
-		)
-			return message.author.send(
-				"Sorry, this command is restricted to #bot-spam in this server!"
-			);
-
 		if (!args.length)
 			return message.reply(
 				"Please add a keyword. Example: `m-define douchebag`"

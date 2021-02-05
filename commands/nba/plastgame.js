@@ -2,6 +2,7 @@ const NBA = require("nba");
 
 module.exports = {
 	name: "plastgame",
+	aliases: ['plg'],
 	description: "Check a player's last game.",
 	cooldown: 35,
 	async execute(client, message, args, Discord) {

@@ -58,7 +58,9 @@ module.exports = (Discord, client, message) => {
 		message.author.username
 	},${message.author.id} | Command: ${cmd} ${args}`;
 
-	const command = client.commands.get(cmd);
+	const command =
+		client.commands.get(cmd) ||
+		client.commands.find((a) => a.aliases && a.aliases.includes(cmd));
 
 	if (command) {
 		try {
@@ -69,7 +71,7 @@ module.exports = (Discord, client, message) => {
 				console.log(commandLogger.green);
 				return;
 			}
-			
+
 			command.execute(client, message, args, Discord);
 			console.log(commandLogger.green);
 

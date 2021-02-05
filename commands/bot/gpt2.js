@@ -2,6 +2,7 @@ const booste = require("booste");
 
 module.exports = {
 	name: "gpt2",
+	aliases: ['gpt'],
 	description: "Predict end of text",
 	cooldown: 120,
 	async execute(client, message, args, Discord) {

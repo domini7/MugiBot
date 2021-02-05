@@ -2,6 +2,7 @@ const NBA = require("nba");
 
 module.exports = {
 	name: "tstats",
+	aliases: ['ts'],
 	description: "Displays basic NBA team stats",
 	cooldown: 35,
 	async execute(client, message, args, Discord) {

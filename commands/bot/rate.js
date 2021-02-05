@@ -9,7 +9,7 @@ module.exports = {
 			return message.reply("Rate something! `m-rate me`");
 		}
 
-		const user = args.join(" ");
+		const user = args.join(" ").toLowerCase();
 
 		const rtg = Math.floor(Math.random() * 10) + 0;
 
@@ -30,10 +30,10 @@ module.exports = {
 		}
 
 		if (
-			user.toLowerCase().startsWith("dooby") ||
-			user.toLowerCase().startsWith(`<@!188530356394131456`) ||
-			user.toLowerCase().startsWith("mugibot") ||
-			user.toLowerCase().startsWith(`<@!776681738654580746`)
+			user.startsWith("dooby") ||
+			user.startsWith(`<@!188530356394131456`) ||
+			user.startsWith("mugibot") ||
+			user.startsWith(`<@!776681738654580746`)
 		)
 			return message.channel.send(`${user} looks like a 10/10${hottie}`);
 
