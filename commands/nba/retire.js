@@ -61,17 +61,6 @@ module.exports = {
 				(x) => x.playerName === pName.get(player)[0][1]
 			);
 
-			let dre =
-				p.pts +
-				0.2 * p.reb +
-				1.7 * p.stl +
-				0.535 * p.blk +
-				0.5 * p.ast -
-				0.9 * p.fga -
-				0.35 * p.fta -
-				1.4 * p.tov -
-				0.136 * p.min;
-
 			let altWs =
 				p.pts +
 				0.7 * p.oreb +
