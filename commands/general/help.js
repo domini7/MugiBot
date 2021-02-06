@@ -70,7 +70,7 @@ module.exports = {
 			.setColor("RANDOM")
 			.addFields(
 				{
-					name: "**`m-pstats (player name) [OPTIONAL YEAR]`**",
+					name: "**`m-pstats (player) [OPTIONAL YEAR]`**",
 					value: "Check a NBA player's basic season stats.",
 					inline: false,
 				},
@@ -80,12 +80,12 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`m-pbio (player name)`**",
+					name: "**`m-pbio (player)`**",
 					value: "Check a NBA player's basic info.",
 					inline: false,
 				},
 				{
-					name: "**`m-plastgame (player name)`**",
+					name: "**`m-plastgame (player)`**",
 					value:
 						"Check a player's last game. (Can't check players who didn't play their team's last game!)",
 					inline: false,
@@ -103,6 +103,11 @@ module.exports = {
 				{
 					name: "**`m-leaders [OPTIONAL YEAR]`**",
 					value: "Displays league leaders.",
+					inline: false,
+				},
+				{
+					name: "**`m-retire (player) [OPTIONAL YEAR]`**",
+					value: "Guesses the chance of a player retiring.",
 					inline: false,
 				}
 			);

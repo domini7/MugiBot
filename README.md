@@ -27,6 +27,7 @@ m-plastgame (name)      | Check a player's last game.
 m-tstats (team) [year]  | Check a NBA team's current or *optionally* past season stats.
 m-standings [year]      | Check current NBA standings or optionally check past seasons.
 m-leaders [year]        | Displays league leaders.
+m-retire (name) [year]  | Guesses the chance of a player retiring.
 ```
 ### Music
 

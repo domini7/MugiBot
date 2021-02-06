@@ -1,8 +1,41 @@
 const rps = require("../../responses/responses.js");
-const cooldowns = new Set();
+const fs = require("fs");
+const trk = require("../../assets/json/bbgm-users");
 var colors = require("colors");
 
+const cooldowns = new Set();
+
 module.exports = (Discord, client, message) => {
+	const dm = message.channel instanceof Discord.DMChannel;
+
+	// Tracks messages sent by users in a specific server
+	if (!dm) {
+		const otherBots = ["Dyno", "Poni"];
+		if (
+			message.guild.id === "290013534023057409" &&
+			!otherBots.includes(message.author.username)
+		) {
+			let player = message.author.username;
+			let bbgm = trk["bbgmDiscord"];
+
+			if (!bbgm[player]) bbgm[player] = { msg: 0 };
+
+			if (rps.reactObject[message.content.toLowerCase()]) {
+				bbgm[player].msg -= 15;
+			} else {
+				bbgm[player].msg++;
+			}
+
+			fs.writeFile(
+				"../MugiBot/assets/json/bbgm-users.json",
+				JSON.stringify(trk),
+				(error) => {
+					if (error) console.log(error);
+				}
+			);
+		}
+	}
+
 	const blackList = [];
 
 	const responseBlackList = [
@@ -49,8 +82,6 @@ module.exports = (Discord, client, message) => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 
 	const cmd = args.shift().toLowerCase();
-
-	const dm = message.channel instanceof Discord.DMChannel;
 
 	const secs = new Date(message.createdTimestamp);
 
