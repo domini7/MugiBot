@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/JbQP9Zp.jpg" width="154" height="145">
+<img src="https://i.imgur.com/PtCc2iO.jpg" width="154" height="140">
 
 # MugiBot
 

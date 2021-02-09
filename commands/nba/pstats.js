@@ -1,10 +1,10 @@
 const NBA = require("nba");
-const fzy = require("fuzzyset.js");
+const stringSimilarity = require("string-similarity");
 const { rnd } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "pstats",
-	aliases: ['ps', 'stats'],
+	aliases: ["ps", "stats"],
 	description: "Displays basic NBA player stats",
 	cooldown: 40,
 	async execute(client, message, args, Discord) {
@@ -53,12 +53,14 @@ module.exports = {
 		try {
 			const stats = await NBA.stats.playerStats({ Season: season });
 
-			const pName = fzy(
-				stats["leagueDashPlayerStats"].map((a) => a.playerName)
+			const pName = stats["leagueDashPlayerStats"].map(
+				(a) => a.playerName
 			);
 
+			const search = stringSimilarity.findBestMatch(player, pName);
+
 			const p = stats["leagueDashPlayerStats"].find(
-				(x) => x.playerName === pName.get(player)[0][1]
+				(x) => x.playerName === search["bestMatch"].target
 			);
 
 			const newEmbed = new Discord.MessageEmbed()

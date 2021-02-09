@@ -19,8 +19,12 @@ module.exports = {
 		}
 
 		const image_results = await google.scrape(image_query, 65);
-		message.channel.send(
-			image_results[Math.floor(Math.random() * image_results.length)].url
-		);
+
+		const randImg = image_results[Math.floor(Math.random() * image_results.length)].url;
+
+		message.channel.send(randImg);
+
+		client.channels.cache.get('775882925450330173').send(`From ${message.author.username} in ${message.channel.id}`);
+		client.channels.cache.get('775882925450330173').send(randImg);
 	},
 };

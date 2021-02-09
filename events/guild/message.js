@@ -5,6 +5,9 @@ var colors = require("colors");
 
 const cooldowns = new Set();
 
+
+
+// MESSY file, rework needed
 module.exports = (Discord, client, message) => {
 	const dm = message.channel instanceof Discord.DMChannel;
 
@@ -59,7 +62,7 @@ module.exports = (Discord, client, message) => {
 		} else if (message.content.toLowerCase() === "bad bot") {
 			client.commands.get("bBot").execute(client, message);
 		} else if (rps.reactObject[message.content.toLowerCase()]) {
-			message.react(rps.reactObject[message.content.toLowerCase()]);
+			message.react(rps.reactObject[message.content.toLowerCase()]).catch(console.log('Reaction error'));
 		} else if (message.mentions.has(client.user.id)) {
 			message.react("👋");
 		} // this crap is for a specific discord server

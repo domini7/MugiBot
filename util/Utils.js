@@ -8,8 +8,8 @@ class Utils {
   }
 
   // rounds a number to nearest tenth
-  static rnd(a) {
-    return Number.parseFloat(a).toFixed(1);
+  static rnd(a, b = 1) {
+    return Number.parseFloat(a).toFixed(b);
   }
 
   // cuts off text if too long

@@ -1,4 +1,5 @@
 const math = require("mathjs");
+const { rnd } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "calc",
@@ -22,7 +23,7 @@ module.exports = {
 			if (exp.length + evaled.length > 2000)
 				return message.channel.send(`output is too long`);
 
-			message.channel.send(`${exp} = ${evaled.toLocaleString()}`);
+			message.channel.send(`${exp} = ${evaled}`);
 		} catch (error) {
 			message.reply("Error evaluating that!");
 		}

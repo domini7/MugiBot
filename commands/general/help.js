@@ -10,7 +10,7 @@ module.exports = {
 				"",
 				"https://github.com/domini7/MugiBot"
 			)
-			.setThumbnail("https://i.imgur.com/JbQP9Zp.jpg")
+			.setThumbnail("https://i.imgur.com/PtCc2iO.jpg")
 			.setTitle("Open-source Discord.js bot")
 			.setDescription(
 				"To get info about specific categories,\ndo `m-help <category>`.\nTo show all commands, do `m-help all.`"
