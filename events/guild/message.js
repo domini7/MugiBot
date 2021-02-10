@@ -1,11 +1,9 @@
 const rps = require("../../responses/responses.js");
 const fs = require("fs");
-const trk = require("../../assets/json/bbgm-users");
+const trk = require("../../assets/json/bbgm");
 var colors = require("colors");
 
 const cooldowns = new Set();
-
-
 
 // MESSY file, rework needed
 module.exports = (Discord, client, message) => {
@@ -21,16 +19,16 @@ module.exports = (Discord, client, message) => {
 			let player = message.author.username;
 			let bbgm = trk["bbgmDiscord"];
 
-			if (!bbgm[player]) bbgm[player] = { msg: 0 };
+			if (!bbgm[player]) bbgm[player] = 0 ;
 
 			if (rps.reactObject[message.content.toLowerCase()]) {
-				bbgm[player].msg -= 15;
+				bbgm[player] -= 15;
 			} else {
-				bbgm[player].msg++;
+				bbgm[player]++;
 			}
 
 			fs.writeFile(
-				"../MugiBot/assets/json/bbgm-users.json",
+				"../MugiBot/assets/json/bbgm.json",
 				JSON.stringify(trk),
 				(error) => {
 					if (error) console.log(error);
@@ -55,18 +53,27 @@ module.exports = (Discord, client, message) => {
 	)
 		return;
 
+	if (message.content.toLowerCase() === "good bot") {
+		client.commands.get("gBot").execute(client, message);
+		message.react("😇");
+	} else if (message.content.toLowerCase() === "bad bot") {
+		client.commands.get("bBot").execute(client, message);
+	} else if (rps.reactObject[message.content.toLowerCase()]) {
+		message
+			.react(rps.reactObject[message.content.toLowerCase()])
+			.catch(console.log("Reaction error"));
+	} else if (message.mentions.has(client.user.id)) {
+		message.react("👋");
+	} else if (
+		message.channel.name === "feature-request" &&
+		Math.random() < 0.1
+	) {
+		message.react("👎");
+	}
+	
 	if (!responseBlackList.includes(message.author.id)) {
-		if (message.content.toLowerCase() === "good bot") {
-			client.commands.get("gBot").execute(client, message);
-			message.react("😇");
-		} else if (message.content.toLowerCase() === "bad bot") {
-			client.commands.get("bBot").execute(client, message);
-		} else if (rps.reactObject[message.content.toLowerCase()]) {
-			message.react(rps.reactObject[message.content.toLowerCase()]).catch(console.log('Reaction error'));
-		} else if (message.mentions.has(client.user.id)) {
-			message.react("👋");
-		} // this crap is for a specific discord server
-		else if (
+		// this crap is for a specific discord server
+		if (
 			(message.channel.name === "football-gm-discussion" &&
 				message.content.toLowerCase().includes("nfl roster")) ||
 			(message.channel.name === "football-gm-discussion" &&
@@ -98,6 +105,7 @@ module.exports = (Discord, client, message) => {
 
 	if (command) {
 		try {
+			if (message.channel.name === "feature-request") return;
 			if (cooldowns.has(message.author.id)) {
 				message.author.send(
 					"Cooldowns enabled in that server, wait 50 seconds. (#bot-spam excluded)"
