@@ -14,17 +14,21 @@ module.exports = (Discord, client, message) => {
 		const otherBots = ["Dyno", "Poni"];
 		if (
 			message.guild.id === "290013534023057409" &&
+			message.channel.name != "bot-spam" &&
 			!otherBots.includes(message.author.username)
 		) {
 			let player = message.author.username;
 			let bbgm = trk["bbgmDiscord"];
 
-			if (!bbgm[player]) bbgm[player] = 0 ;
+			if (!bbgm[player]) bbgm[player] = 0;
+
+			// each character typed is 0.05 points
+			let charCount = message.content.length / 20;
 
 			if (rps.reactObject[message.content.toLowerCase()]) {
 				bbgm[player] -= 15;
 			} else {
-				bbgm[player]++;
+				bbgm[player] += Math.min(charCount, 5);
 			}
 
 			fs.writeFile(
@@ -65,7 +69,7 @@ module.exports = (Discord, client, message) => {
 	} else if (message.mentions.has(client.user.id)) {
 		message.react("👋");
 	} else if (
-		message.channel.name === "feature-request" &&
+		message.channel.name === "feature-requests" &&
 		Math.random() < 0.1
 	) {
 		message.react("👎");
@@ -114,7 +118,7 @@ module.exports = (Discord, client, message) => {
 				return;
 			}
 
-			command.execute(client, message, args, Discord);
+			command.execute(client, message, args, Discord, cmd);
 			console.log(commandLogger.green);
 
 			if (message.author.id === "188530356394131456") return;
