@@ -88,7 +88,7 @@ module.exports = {
 					},
 					{
 						name: "FG / 3P / FT",
-						value: `${p.fgm} / ${p.fG3M} / ${p.ftm}`,
+						value: `(${p.fgm} | ${p.fga}) / (${p.fG3M} | ${p.fG3A}) / (${p.ftm} | ${p.fta})`,
 					},
 					{
 						name: "FG% / 3P% / FT%",

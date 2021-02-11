@@ -73,7 +73,7 @@ module.exports = {
 					},
 					{
 						name: "FG / 3P / FT",
-						value: `(${p.fgm}|${p.fga}) / (${p.fG3M}|${p.fG3A}) / (${p.ftm}|${p.fta})`,
+						value: `(${p.fgm} | ${p.fga}) / (${p.fG3M} | ${p.fG3A}) / (${p.ftm} | ${p.fta})`,
 					},
 					{
 						name: "MIN | PF | +/-",

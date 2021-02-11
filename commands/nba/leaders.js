@@ -45,10 +45,12 @@ module.exports = {
 		const p = {};
 
 		for (const category of categories) {
-		    p[category] = [];
-		    for (let i = 1; i <= numLeaders; i++) {
-		       p[category].push(leaders.find(x => x[`${category}Rank`] === i));
-		    }
+			p[category] = [];
+			for (let i = 1; i <= numLeaders; i++) {
+				p[category].push(
+					leaders.find((x) => x[`${category}Rank`] === i)
+				);
+			}
 		}
 
 		const newEmbed = new Discord.MessageEmbed()

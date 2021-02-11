@@ -4,7 +4,7 @@ const { rnd } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "pstats-per36",
-	aliases: ['ps36', 'per36'],
+	aliases: ["ps36", "per36"],
 	description: "Displays pstats per 36",
 	cooldown: 40,
 	async execute(client, message, args, Discord) {
@@ -92,9 +92,13 @@ module.exports = {
 					},
 					{
 						name: "FG / 3P / FT",
-						value: `${rnd((p.fgm * 36) / p.min)} / ${rnd(
-							(p.fG3M * 36) / p.min
-						)} / ${rnd((p.ftm * 36) / p.min)}`,
+						value: `(${rnd((p.fgm * 36) / p.min)} |$ {rnd(
+							(p.fga * 36) / p.min
+						)}) / (${rnd((p.fG3M * 36) / p.min)} | ${rnd(
+							(p.fG3A * 36) / p.min
+						)}) / (${rnd((p.ftm * 36) / p.min)} | ${rnd(
+							(p.fta * 36) / p.min
+						)})`,
 					},
 					{
 						name: "FG% / 3P% / FT%",
