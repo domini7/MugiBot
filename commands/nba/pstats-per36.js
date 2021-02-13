@@ -63,6 +63,9 @@ module.exports = {
 				(x) => x.playerName === search["bestMatch"].target
 			);
 
+			const efg = (p.fgm + 0.5 * p.fG3M) / p.fga;
+			const ts = p.pts / (2 * (p.fga + 0.44 * p.fta));
+
 			const newEmbed = new Discord.MessageEmbed()
 				.setThumbnail(
 					"https://cdn.nba.com/headshots/nba/latest/1040x760/" +
@@ -92,19 +95,21 @@ module.exports = {
 					},
 					{
 						name: "FG / 3P / FT",
-						value: `(${rnd((p.fgm * 36) / p.min)} |$ {rnd(
+						value: `(${rnd((p.fgm * 36) / p.min)} | ${rnd(
 							(p.fga * 36) / p.min
-						)}) / (${rnd((p.fG3M * 36) / p.min)} | ${rnd(
-							(p.fG3A * 36) / p.min
-						)}) / (${rnd((p.ftm * 36) / p.min)} | ${rnd(
-							(p.fta * 36) / p.min
-						)})`,
+						)})/(${rnd((p.fG3M * 36) / p.min)} | ${rnd((p.fG3A * 36) / p.min)})/(${rnd(
+							(p.ftm * 36) / p.min
+						)} | ${rnd((p.fta * 36) / p.min)})`,
 					},
 					{
 						name: "FG% / 3P% / FT%",
 						value: `${rnd(p.fgPct * 100)}% / ${rnd(
 							p.fg3Pct * 100
 						)}% / ${rnd(p.ftPct * 100)}%`,
+					},
+					{
+						name: "eFG% | TS%",
+						value: `${rnd(efg * 100)}% | ${rnd(ts * 100)}%`,
 					}
 				)
 				.setFooter(`${season} PER36 stats`);

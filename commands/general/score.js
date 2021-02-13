@@ -16,10 +16,12 @@ module.exports = {
 			)
 				return;
 
+			// sorts an unsorted JSON descending from top score to least
 			const sortable = Object.fromEntries(
 				Object.entries(bbgm).sort(([, a], [, b]) => b - a)
 			);
 
+			// Save keys into a variable
 			const keys = Object.keys(sortable);
 
 			let user = message.author.username;
@@ -32,11 +34,12 @@ module.exports = {
 				.setColor("RANDOM")
 				.setTitle(search.bestMatch["target"])
 				.setDescription(
-					`Score: ${rnd(bbgm[search.bestMatch["target"]], 2)}`
+					`Score: ${rnd(
+						bbgm[search.bestMatch["target"]],
+						2
+					)}\nRank: ${search.bestMatchIndex + 1} / ${keys.length}`
 				)
-				.setFooter(
-					`Rank: ${search.bestMatchIndex + 1} / ${keys.length}`
-				);
+				.setFooter("0.05 PTs per char typed outside #bot-spam");
 
 			message.channel.send(embed);
 		}

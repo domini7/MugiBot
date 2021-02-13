@@ -26,7 +26,7 @@ module.exports = (Discord, client, message) => {
 			let charCount = message.content.length / 20;
 
 			if (rps.reactObject[message.content.toLowerCase()]) {
-				bbgm[player] -= 15;
+				bbgm[player] -= 25;
 			} else {
 				bbgm[player] += Math.min(charCount, 5);
 			}
@@ -69,8 +69,8 @@ module.exports = (Discord, client, message) => {
 	} else if (message.mentions.has(client.user.id)) {
 		message.react("👋");
 	} else if (
-		message.channel.name === "feature-requests" &&
-		Math.random() < 0.1
+		message.channel.name === "nba" &&
+		Math.random() < 0.01
 	) {
 		message.react("👎");
 	}

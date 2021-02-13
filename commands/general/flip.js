@@ -8,14 +8,14 @@ module.exports = {
 
 		message.channel.send(result);
 
-		if (args.length) {
-			guess = args[0];
+		if (!args.length) return;
+		
+		const guess = args[0];
 
-			if (result.toLowerCase() === guess.toLowerCase()) {
-				message.reply("You win!");
-			} else {
-				message.reply("You suck!");
-			}
+		if (result.toLowerCase() === guess.toLowerCase()) {
+			message.reply("You win!");
+		} else {
+			message.reply("You suck!");
 		}
 	},
 };

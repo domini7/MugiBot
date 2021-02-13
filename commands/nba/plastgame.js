@@ -1,8 +1,9 @@
 const NBA = require("nba");
+const { rnd } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "plastgame",
-	aliases: ['plg'],
+	aliases: ["plg"],
 	description: "Check a player's last game.",
 	cooldown: 35,
 	async execute(client, message, args, Discord) {
@@ -50,6 +51,9 @@ module.exports = {
 			const playerInfo = info["commonPlayerInfo"][0];
 			p.w > p.l ? (result = "Won") : (result = "Lost");
 
+			const efg = (p.fgm + 0.5 * p.fG3M) / p.fga;
+			const ts = p.pts / (2 * (p.fga + 0.44 * p.fta));
+
 			const newEmbed = new Discord.MessageEmbed()
 				.setThumbnail(
 					"https://cdn.nba.com/headshots/nba/latest/1040x760/" +
@@ -73,7 +77,17 @@ module.exports = {
 					},
 					{
 						name: "FG / 3P / FT",
-						value: `(${p.fgm} | ${p.fga}) / (${p.fG3M} | ${p.fG3A}) / (${p.ftm} | ${p.fta})`,
+						value: `(${p.fgm} | ${p.fga})/(${p.fG3M} | ${p.fG3A})/(${p.ftm} | ${p.fta})`,
+					},
+					{
+						name: "FG% / 3P% / FT%",
+						value: `${rnd(p.fgPct * 100)}% / ${rnd(
+							p.fg3Pct * 100
+						)}% / ${rnd(p.ftPct * 100)}%`,
+					},
+					{
+						name: "eFG% | TS%",
+						value: `${rnd(efg * 100)}% | ${rnd(ts * 100)}%`,
 					},
 					{
 						name: "MIN | PF | +/-",
