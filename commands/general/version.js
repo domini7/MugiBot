@@ -5,7 +5,7 @@ module.exports = {
 	execute(client, message, args, Discord) {
 		const newEmbed = new Discord.MessageEmbed()
 		.addFields(
-			{name: "Version", value: "0.47", inline: true},
+			{name: "Version", value: "0.48", inline: true},
 			{name: "Last updated", value: "Feb 9th, 2021", inline: true}
 		)
 

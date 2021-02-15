@@ -39,7 +39,9 @@ module.exports = {
 						2
 					)}\nRank: ${search.bestMatchIndex + 1} / ${keys.length}`
 				)
-				.setFooter("0.05 PTs per char typed outside #bot-spam");
+				.setFooter(
+					"0.05 PTs per char typed outside #bot-spam\nResets on Feb 28th"
+				);
 
 			message.channel.send(embed);
 		}
@@ -59,12 +61,14 @@ module.exports = {
 			const worstNames = Object.keys(worst);
 			const worstScores = Object.values(worst);
 
+			const botSpam = message.channel.name;
+
 			const embed = new Discord.MessageEmbed()
 				.setColor("RANDOM")
 				.setTitle("Users in BBGM")
 				.addFields(
 					{
-						name: "Best scores",
+						name: "Best Scores",
 						value: `${bestNames[0]}: ${rnd(bestScores[0], 2)}\n${
 							bestNames[1]
 						}: ${rnd(bestScores[1])}\n${bestNames[2]}: ${rnd(
@@ -87,6 +91,13 @@ module.exports = {
 						}: ${rnd(worstScores[4], 2)}\n`,
 						inline: true,
 					}
+				)
+				.setFooter(
+					`Resets on Feb 28th${
+						botSpam != "bot-spam"
+							? "\nCheck your score with `m-score` in #bot-spam"
+							: ""
+					}`
 				);
 
 			message.channel.send(embed);

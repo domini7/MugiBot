@@ -28,7 +28,7 @@ module.exports = (Discord, client, message) => {
 			if (rps.reactObject[message.content.toLowerCase()]) {
 				bbgm[player] -= 25;
 			} else {
-				bbgm[player] += Math.min(charCount, 5);
+				bbgm[player] += Math.min(charCount, 3);
 			}
 
 			fs.writeFile(
@@ -59,22 +59,22 @@ module.exports = (Discord, client, message) => {
 
 	if (message.content.toLowerCase() === "good bot") {
 		client.commands.get("gBot").execute(client, message);
-		message.react("😇");
+		// message.react("😇");
 	} else if (message.content.toLowerCase() === "bad bot") {
 		client.commands.get("bBot").execute(client, message);
-	} else if (rps.reactObject[message.content.toLowerCase()]) {
-		message
-			.react(rps.reactObject[message.content.toLowerCase()])
-			.catch(console.log("Reaction error"));
-	} else if (message.mentions.has(client.user.id)) {
-		message.react("👋");
+		// } else if (rps.reactObject[message.content.toLowerCase()]) {
+		// 	message
+		// 		.react(rps.reactObject[message.content.toLowerCase()])
+		// 		.catch(console.log(message.guild.name));
+		// } else if (message.mentions.has(client.user.id)) {
+		// 	message.react("👋").catch(console.log(message.guild.name));
 	} else if (
-		message.channel.name === "nba" &&
-		Math.random() < 0.01
+		message.channel.id === "739632130275016704" &&
+		Math.random() < 0.03
 	) {
-		message.react("👎");
+		message.react("👎").catch(console.log(message.guild.name));
 	}
-	
+
 	if (!responseBlackList.includes(message.author.id)) {
 		// this crap is for a specific discord server
 		if (
@@ -99,9 +99,9 @@ module.exports = (Discord, client, message) => {
 
 	const secs = new Date(message.createdTimestamp);
 
-	const commandLogger = `Time: ${secs.getUTCSeconds()} | User: ${
+	const commandLogger = `${secs.getUTCSeconds()} | ${
 		message.author.username
-	},${message.author.id} | Command: ${cmd} ${args}`;
+	},${message.author.id}, | ${message.channel.id} | ${cmd} ${args}`;
 
 	const command =
 		client.commands.get(cmd) ||
@@ -121,7 +121,11 @@ module.exports = (Discord, client, message) => {
 			command.execute(client, message, args, Discord, cmd);
 			console.log(commandLogger.green);
 
-			if (message.author.id === "188530356394131456") return;
+			if (
+				message.author.id === "188530356394131456" ||
+				message.guild === null
+			)
+				return;
 
 			if (
 				message.channel.name != "bot-spam" &&
