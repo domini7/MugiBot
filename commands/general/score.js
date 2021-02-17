@@ -40,7 +40,7 @@ module.exports = {
 					)}\nRank: ${search.bestMatchIndex + 1} / ${keys.length}`
 				)
 				.setFooter(
-					"0.05 PTs per char typed outside #bot-spam\nResets on Feb 28th"
+					"0.05 PTs per char typed outside #bot-spam\nResets on Feb 28th\nBet points with `m-flip <coin> #/all`"
 				);
 
 			message.channel.send(embed);
@@ -95,8 +95,8 @@ module.exports = {
 				.setFooter(
 					`Resets on Feb 28th${
 						botSpam != "bot-spam"
-							? "\nCheck your score with `m-score` in #bot-spam"
-							: ""
+							? "\nCheck your score with `m-score` in #bot-spam\nBet points in #bot-spam with `m-flip <coin> #/all`"
+							: "\nBet points with `m-flip <coin> #/all`"
 					}`
 				);
 
