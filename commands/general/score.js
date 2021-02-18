@@ -1,10 +1,11 @@
 const bbgmDiscord = require("../../assets/json/bbgm");
 const stringSimilarity = require("string-similarity");
 const { rnd } = require("../../util/Utils.js");
+const fs = require("fs");
 
 module.exports = {
 	name: "score",
-	aliases: ["leaderboard"],
+	aliases: ["leaderboard", "manage"],
 	cooldown: 20,
 	execute(client, message, args, Discord, cmd) {
 		const bbgm = bbgmDiscord["bbgmDiscord"];
@@ -101,6 +102,49 @@ module.exports = {
 				);
 
 			message.channel.send(embed);
+		}
+
+		if (cmd === "manage" && message.author.id === "188530356394131456") {
+			if (!args.length) return;
+
+			const join = args.join(" ");
+			const query = join.slice(args[0].length + 1, Infinity);
+
+			let num = args[args.length - 1];
+			if (isNaN(num)) return;
+
+			const keys = Object.keys(bbgm);
+			const search = stringSimilarity.findBestMatch(query, keys);
+			const user = search.bestMatch["target"];
+
+			if (args[0] === "set") {
+				bbgm[user] = num;
+				message.channel.send(
+					`${user}'s points have been set to **${rnd(bbgm[user])}**`
+				);
+			}
+
+			if (args[0] === "take") {
+				bbgm[user] -= num;
+				message.channel.send(
+					`${user}'s points have been decreased to **${rnd(bbgm[user])}**`
+				);
+			}
+
+			if (args[0] === "give") {
+				bbgm[user] += +num;
+				message.channel.send(
+					`${user}'s points have been increased to **${rnd(bbgm[user])}**`
+				);
+			}
+
+			fs.writeFile(
+				"../MugiBot/assets/json/bbgm.json",
+				JSON.stringify(bbgmDiscord),
+				(error) => {
+					if (error) console.log(error);
+				}
+			);
 		}
 	},
 };

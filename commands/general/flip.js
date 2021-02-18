@@ -22,6 +22,8 @@ module.exports = {
 		}
 		message.channel.send(coin);
 
+
+		// This is for a specific server
 		if (
 			!args[1] ||
 			message.guild.id != "290013534023057409" ||
@@ -40,6 +42,7 @@ module.exports = {
 			return message.reply("You don't have points to bet!");
 
 		if (bet === "all") {
+			// ! is the last index of a winning guess
 			if (coinResult != "!") {
 				bbgm[player] -= bbgm[player];
 				result = "lost";
@@ -56,6 +59,10 @@ module.exports = {
 						bbgm[player]
 					)}** points!`
 				);
+			}
+
+			if (bet <= 0) {
+				return message.reply("You can't bet 0 points!");
 			}
 
 			if (coinResult != "!") {
