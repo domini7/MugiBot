@@ -22,7 +22,6 @@ module.exports = {
 		}
 		message.channel.send(coin);
 
-
 		// This is for a specific server
 		if (
 			!args[1] ||
@@ -82,6 +81,10 @@ module.exports = {
 			message.reply(
 				"please enter a valid gamble `m-flip all` or `m-flip 20`"
 			);
+		}
+
+		if (bbgm[player] < 5) {
+			message.reply("Use `m-buyin` to reset back to 5 points");
 		}
 
 		fs.writeFile(

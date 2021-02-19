@@ -5,7 +5,7 @@ const fs = require("fs");
 
 module.exports = {
 	name: "score",
-	aliases: ["leaderboard", "manage"],
+	aliases: ["leaderboard", "manage", "buyin"],
 	cooldown: 20,
 	execute(client, message, args, Discord, cmd) {
 		const bbgm = bbgmDiscord["bbgmDiscord"];
@@ -102,6 +102,16 @@ module.exports = {
 				);
 
 			message.channel.send(embed);
+		}
+
+		if (cmd === "buyin" && message.channel.name === "bot-spam") {
+			const user = message.author.username;
+			if (bbgm[user] >= 5) {
+				return message.reply("You already have enough points.");
+			}
+
+			bbgm[user] = 5;
+			message.reply("Your points have been set back to 5");
 		}
 
 		if (cmd === "manage" && message.author.id === "188530356394131456") {
