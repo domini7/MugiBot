@@ -43,7 +43,7 @@ module.exports = {
 					)}\nRank: ${search.bestMatchIndex + 1} / ${keys.length}`
 				)
 				.setFooter(
-					"0.05 PTs per char typed outside #bot-spam\nResets on Feb 28th\nBet points with `m-flip <coin> #/all`"
+					"0.05 PTs per char typed outside #bot-spam\nResets on Feb 28th\nBet points with `m-flip <coin> #/all`\nTry to win points with `m-lottery`"
 				);
 
 			message.channel.send(embed);
@@ -98,8 +98,8 @@ module.exports = {
 				.setFooter(
 					`Resets on Feb 28th${
 						botSpam != "bot-spam"
-							? "\nCheck your score with `m-score` in #bot-spam\nBet points in #bot-spam with `m-flip <coin> #/all`"
-							: "\nBet points with `m-flip <coin> #/all`"
+							? "\nCheck your score with `m-score` in #bot-spam\nBet points in #bot-spam with `m-flip <coin> #/all`\nTry to win points with `m-lottery`"
+							: "\nBet points with `m-flip <coin> #/all`\nTry to win points with `m-lottery`"
 					}`
 				);
 
@@ -141,13 +141,13 @@ module.exports = {
 			if (Math.random() > 0.99) {
 				bbgm[user] += +bbgmDiscord["lottery"];
 				message.reply(
-					`you win **${bbgmDiscord["lottery"]}** points! New score: **${bbgm[user]}**`
+					`you win **${bbgmDiscord["lottery"]}** points! New score: **${rnd(bbgm[user])}**`
 				);
-				message.channel.send("Lottery pool has been reset to 100");
-				bbgmDiscord["lottery"] = 100;
+				message.channel.send("Lottery pool has been reset to 200");
+				bbgmDiscord["lottery"] = 200;
 			} else {
 				bbgm[user] -= 5;
-				bbgmDiscord["lottery"] += 5;
+				bbgmDiscord["lottery"] += 10;
 				message.reply(
 					"you didn't win! You lose **5** points. Try again in a minute."
 				);
@@ -184,7 +184,7 @@ module.exports = {
 			const user = search.bestMatch["target"];
 
 			if (args[0] === "set") {
-				bbgm[user] = num;
+				bbgm[user] = +num;
 				message.channel.send(
 					`${user}'s points have been set to **${rnd(bbgm[user])}**`
 				);

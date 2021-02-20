@@ -7,9 +7,12 @@ module.exports = {
 	name: "flip",
 	cooldown: 20,
 	execute(client, message, args, Discord) {
-		let coin = ["Heads", "Tails"];
-
-		coin = coin[Math.floor(Math.random() * coin.length)];
+		let coin;
+		if (Math.random() > 0.5) {
+			coin = "Heads";
+		} else {
+			coin = "Tails";
+		}
 
 		if (args.length) {
 			const guess = args[0];
@@ -35,7 +38,7 @@ module.exports = {
 		const player = message.author.username;
 		const coinResult = coin[coin.length - 1];
 
-		let result = "doubled";
+		let result = "tripled";
 
 		if (bbgm[player] <= 0)
 			return message.reply("You don't have points to bet!");
@@ -46,7 +49,7 @@ module.exports = {
 				bbgm[player] -= bbgm[player];
 				result = "lost";
 			} else {
-				bbgm[player] += bbgm[player];
+				bbgm[player] += bbgm[player] * 1.5;
 			}
 			message.reply(
 				`You've ${result} your points! New amount: ${rnd(bbgm[player])}`
