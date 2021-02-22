@@ -135,24 +135,34 @@ module.exports = {
 			}
 
 			if (bbgm[user] < 5) {
-				return message.reply("You need 5 points to play the lottery, use `m-buyin` to get 5 points");
+				return message.reply(
+					"You need 5 points to play the lottery, use `m-buyin` to get 5 points"
+				);
 			}
 
-			if (Math.random() > 0.99) {
+			if (Math.random() <= bbgmDiscord["chance"]) {
 				bbgm[user] += +bbgmDiscord["lottery"];
 				message.reply(
-					`you win **${bbgmDiscord["lottery"]}** points! New score: **${rnd(bbgm[user])}**`
+					`**WINNER**: **${
+						bbgmDiscord["lottery"]
+					}** points have been awarded! New score: **${rnd(bbgm[user])}**`
 				);
-				message.channel.send("Lottery pool has been reset to 200");
-				bbgmDiscord["lottery"] = 200;
+				message.channel.send(
+					"Lottery pool has been reset to 300 - 1% chance to win"
+				);
+				bbgmDiscord["lottery"] = 300;
+				bbgmDiscord["chance"] = 0.01;
 			} else {
 				bbgm[user] -= 5;
-				bbgmDiscord["lottery"] += 10;
+				bbgmDiscord["lottery"] += 25;
+				bbgmDiscord["chance"] += 0.001;
 				message.reply(
 					"you didn't win! You lose **5** points. Try again in a minute."
 				);
 				message.channel.send(
-					`Lottery pool is now: ${bbgmDiscord["lottery"]}`
+					`Lottery pool is now: **${bbgmDiscord["lottery"]}** - ${rnd(
+						bbgmDiscord["chance"] * 100
+					)}% chance to win`
 				);
 			}
 

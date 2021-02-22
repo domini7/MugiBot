@@ -49,7 +49,7 @@ module.exports = {
 				bbgm[player] -= bbgm[player];
 				result = "lost";
 			} else {
-				bbgm[player] += bbgm[player] * 1.5;
+				bbgm[player] += bbgm[player] * 2;
 			}
 			message.reply(
 				`You've ${result} your points! New amount: ${rnd(bbgm[player])}`
