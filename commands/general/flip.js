@@ -8,11 +8,7 @@ module.exports = {
 	cooldown: 20,
 	execute(client, message, args, Discord) {
 		let coin;
-		if (Math.random() > 0.5) {
-			coin = "Heads";
-		} else {
-			coin = "Tails";
-		}
+		Math.random() > 0.5 ? coin = "Heads" : coin = "Tails";
 
 		if (args.length) {
 			const guess = args[0];

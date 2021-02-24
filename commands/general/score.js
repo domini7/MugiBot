@@ -4,10 +4,11 @@ const { rnd } = require("../../util/Utils.js");
 const fs = require("fs");
 
 const lotteryCooldown = new Set();
+const raidCooldown = new Set();
 
 module.exports = {
 	name: "score",
-	aliases: ["leaderboard", "manage", "buyin", "lottery"],
+	aliases: ["leaderboard", "manage", "buyin", "lottery", "raid", "give"],
 	cooldown: 20,
 	execute(client, message, args, Discord, cmd) {
 		const bbgm = bbgmDiscord["bbgmDiscord"];
@@ -145,7 +146,9 @@ module.exports = {
 				message.reply(
 					`**WINNER**: **${
 						bbgmDiscord["lottery"]
-					}** points have been awarded! New score: **${rnd(bbgm[user])}**`
+					}** points have been awarded! New score: **${rnd(
+						bbgm[user]
+					)}**`
 				);
 				message.channel.send(
 					"Lottery pool has been reset to 300 - 1% chance to win"
@@ -180,13 +183,117 @@ module.exports = {
 			);
 		}
 
+		if (cmd === "raid" && message.channel.name === "bot-spam") {
+			if (raidCooldown.has(message.author.id)) {
+				message.reply(
+					"wait 30 minutes before trying to raid someone again"
+				);
+				return;
+			}
+			if (!args.length) return message.reply("you need to raid someone.");
+			const join = args.join(" ");
+			const keys = Object.keys(bbgm);
+			const search = stringSimilarity.findBestMatch(join, keys);
+			const user = search.bestMatch["target"];
+			const raider = message.author.username;
+
+			if (raider === user)
+				return message.reply("you can't raid yourself");
+			if (bbgm[raider] < 50)
+				return message.reply("you need 50 points to raid");
+			if (bbgm[user] < 1)
+				return message.reply("that user doesn't have enough points");
+
+			// stolen is the raided user, lost is raider
+			const stolenPoints = bbgm[user] * 0.1;
+			const lostPoints = bbgm[raider] * 0.25;
+
+			if (Math.random() > 0.749) {
+				bbgm[raider] += +stolenPoints;
+				bbgm[user] -= stolenPoints;
+				message.reply(
+					`success! You stole 10% (**${rnd(
+						stolenPoints
+					)}**) from ${user}. New total: **${rnd(bbgm[raider])}**`
+				);
+			} else {
+				bbgm[raider] -= lostPoints;
+				bbgm[user] += +lostPoints;
+				message.reply(
+					`failed! You lost 25% (**${rnd(
+						lostPoints
+					)}**) of your points to ${user}. New total: **${rnd(
+						bbgm[raider]
+					)}**`
+				);
+			}
+
+			raidCooldown.add(message.author.id);
+			setTimeout(() => {
+				raidCooldown.delete(message.author.id);
+			}, 1800000);
+
+			fs.writeFile(
+				"../MugiBot/assets/json/bbgm.json",
+				JSON.stringify(bbgmDiscord),
+				(error) => {
+					if (error) console.log(error);
+				}
+			);
+		}
+
+		/* if (cmd === "give") {
+			if (!args.length)
+				return message.reply(
+					"You need to give points. `m-give doobie mugi 500`"
+				);
+
+			const join = args.join(" ");
+			const keys = Object.keys(bbgm);
+			const search = stringSimilarity.findBestMatch(join, keys);
+			const user = search.bestMatch["target"];
+			const sender = message.author.username;
+			const num = args[args.length - 1];
+
+			if (sender === user)
+				return message.reply("you can't give yourself");
+			if (isNaN(num)) return message.reply("send a valid number.");
+			if (num < 20)
+				return message.reply("you can't send less than 20 points");
+			if (num > bbgm[sender])
+				return message.reply("you can't give more points than you own");
+
+			if (bbgm[user] >= 0) {
+				bbgm[user] += +num;
+			} else {
+				bbgm[user] -= num;
+			}
+			bbgm[sender] -= num;
+
+			message.channel.send(
+				`You've given **${rnd(
+					num
+				)}** points to ${user}, they now have **${rnd(
+					bbgm[user]
+				)}** points.`
+			);
+
+			fs.writeFile(
+				"../MugiBot/assets/json/bbgm.json",
+				JSON.stringify(bbgmDiscord),
+				(error) => {
+					if (error) console.log(error);
+				}
+			);
+		} */
+
 		if (cmd === "manage" && message.author.id === "188530356394131456") {
 			if (!args.length) return;
 
 			const join = args.join(" ");
 			const query = join.slice(args[0].length + 1, Infinity);
 
-			let num = args[args.length - 1];
+			const num = args[args.length - 1];
 			if (isNaN(num)) return;
 
 			const keys = Object.keys(bbgm);
