@@ -62,6 +62,12 @@ module.exports = {
 					value:
 						"Displays version and date MugiBot was last updated.",
 					inline: false,
+				},
+				{
+					name: "**`m-suggest`**",
+					value:
+						"Send a suggestion to me.",
+					inline: false,
 				}
 			);
 
