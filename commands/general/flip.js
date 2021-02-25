@@ -37,7 +37,7 @@ module.exports = {
 		let result = "tripled";
 
 		if (bbgm[player] <= 0)
-			return message.reply("You don't have points to bet!");
+			return message.reply("you don't have points to bet!");
 
 		if (bet === "all") {
 			// ! is the last index of a winning guess
@@ -48,19 +48,19 @@ module.exports = {
 				bbgm[player] += bbgm[player] * 2;
 			}
 			message.reply(
-				`You've ${result} your points! New amount: ${rnd(bbgm[player])}`
+				`you've ${result} your points! New amount: ${rnd(bbgm[player])}`
 			);
 		} else if (!isNaN(bet)) {
 			if (bet > bbgm[player]) {
 				return message.reply(
-					`You can't bet more than your current **${rnd(
+					`you can't bet more than your current **${rnd(
 						bbgm[player]
 					)}** points!`
 				);
 			}
 
 			if (bet <= 0) {
-				return message.reply("You can't bet 0 points!");
+				return message.reply("you can't bet 0 points!");
 			}
 
 			if (coinResult != "!") {
@@ -83,7 +83,7 @@ module.exports = {
 		}
 
 		if (bbgm[player] < 5) {
-			message.reply("Use `m-buyin` to reset back to 5 points");
+			message.reply("use `m-buyin` to reset back to 5 points");
 		}
 
 		fs.writeFile(

@@ -4,6 +4,7 @@ const ytSearch = require("yt-search");
 // (message.guild.id, queueConstructor object {voice channel, text channel, connection, song[]})
 const queue = new Map();
 
+// I regret not commenting the code while making this, but it is understandable.
 module.exports = {
 	name: "play",
 	aliases: ["skip", "stop"],
@@ -41,7 +42,7 @@ module.exports = {
 						: null;
 				};
 
-				const video = await videoFinde(args.join(" "));
+				const video = await videoFinder(args.join(" "));
 				if (video) {
 					song = { title: video.title, url: video.url };
 				} else {
