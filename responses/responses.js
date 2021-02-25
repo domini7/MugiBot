@@ -11,6 +11,10 @@ const reactObject = {
 	"??": "❓",
 	"???": "❓",
 	"bad bot": "🖕",
+	lol: "🤣",
+	probably: "😑",
+	sure: "😑",
+	lmao: "🤣",
 };
 
 exports.reactObject = reactObject;
