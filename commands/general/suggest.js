@@ -8,9 +8,13 @@ module.exports = {
 
 		const embed = new Discord.MessageEmbed()
 			.setColor("800080")
-			.setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+			.setAuthor(
+				message.author.tag,
+				message.author.displayAvatarURL({ dynamic: true })
+			)
 			.setDescription(suggestion);
-
-		client.channels.cache.get('814549161088909372').send(embed);
+			
+		client.channels.cache.get("814549161088909372").send(embed);
+		message.channel.send("Suggestion sent");
 	},
 };

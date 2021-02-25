@@ -20,7 +20,7 @@ module.exports = {
 		if (!permissions.has("CONNECT") || !permissions.has("SPEAK"))
 			return message.channel.send("You don't have permissions");
 
-		const serverQueue = queue.get(msesage.guild.id);
+		const serverQueue = queue.get(message.guild.id);
 
 		if (cmd === "play") {
 			if (!args.length) return message.reply("you need to search a song");
