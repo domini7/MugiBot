@@ -118,13 +118,20 @@ module.exports = {
 			.addFields(
 				{
 					name: "**`m-play (youtube URL or title)`**",
-					value: "Play music. (Must be in voice channel)",
+					value: "Play music. Add more songs to add to a queue.",
 					inline: false,
 				},
 				{
 					name: "**`m-stop`**",
 					value:
-						"Bot stops currently playing music and leaves channel.",
+						"Bot stops all music and deletes the queue.",
+					inline: false,
+				}
+				,
+				{
+					name: "**`m-skip`**",
+					value:
+						"Bot stops currently playing song and plays the next.",
 					inline: false,
 				}
 			);

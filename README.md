@@ -32,8 +32,9 @@ m-retire (name) [year]  | Guesses the chance of a player retiring.
 ### Music
 
 ```
-m-play                  | Play music from title or youtube URL (Must be in a voice channel) (No queue system).
+m-play                  | Play music from title or youtube URL, play more songs to add to queue.
 m-stop                  | Stop current music.
+m-skip                  | Skips current song and plays next in queue.
 ```
 ### Bot
 
