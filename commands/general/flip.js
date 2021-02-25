@@ -78,7 +78,7 @@ module.exports = {
 			);
 		} else {
 			message.reply(
-				"please enter a valid gamble `m-flip all` or `m-flip 20`"
+				"please enter a valid gamble `m-flip <coin> all` or `m-flip <coin> 20`"
 			);
 		}
 
