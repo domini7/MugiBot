@@ -1,7 +1,6 @@
 const rps = require("../../responses/responses.js");
 const fs = require("fs");
 const trk = require("../../assets/json/bbgm");
-var colors = require("colors");
 
 const cooldowns = new Set();
 
