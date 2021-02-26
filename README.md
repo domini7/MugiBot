@@ -16,6 +16,7 @@ m-help                  | DM's you the list of commands.
 m-flip                  | Flip a coin. Optionally guess the result.
 m-userinfo              | Displays basic user info, must be used in a server.
 m-version               | Checks current version and date last updated.
+m-suggest               | Send a suggestion to me.
 ```
 ### NBA
 

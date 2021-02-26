@@ -47,6 +47,7 @@ module.exports = (Discord, client, message) => {
 		"773612970767941654",
 		"771834997618376719",
 		"725151960449417246",
+		"731192685293207552",
 	];
 
 	if (
@@ -57,22 +58,24 @@ module.exports = (Discord, client, message) => {
 	)
 		return;
 
-	if (message.content.toLowerCase() === "good bot") {
-		client.commands.get("gBot").execute(client, message);
-		// message.react("😇");
-	} else if (message.content.toLowerCase() === "bad bot") {
-		client.commands.get("bBot").execute(client, message);
-		// } else if (rps.reactObject[message.content.toLowerCase()]) {
-		// 	message
-		// 		.react(rps.reactObject[message.content.toLowerCase()])
-		// 		.catch(console.log(message.guild.name));
-		// } else if (message.mentions.has(client.user.id)) {
-		// 	message.react("👋").catch(console.log(message.guild.name));
-	} else if (
-		message.channel.id === "739632130275016704" &&
-		Math.random() < 0.03
-	) {
-		message.react("👎").catch(console.log(message.guild.name));
+	if (!responseBlackList.includes(message.author.id)) {
+		if (message.content.toLowerCase() === "good bot") {
+			client.commands.get("gBot").execute(client, message);
+			// message.react("😇");
+		} else if (message.content.toLowerCase() === "bad bot") {
+			client.commands.get("bBot").execute(client, message);
+			// } else if (rps.reactObject[message.content.toLowerCase()]) {
+			// 	message
+			// 		.react(rps.reactObject[message.content.toLowerCase()])
+			// 		.catch(console.log(message.guild.name));
+			// } else if (message.mentions.has(client.user.id)) {
+			// 	message.react("👋").catch(console.log(message.guild.name));
+		} else if (
+			message.channel.id === "739632130275016704" &&
+			Math.random() < 0.03
+		) {
+			message.react("👎").catch(console.log(message.guild.name));
+		}
 	}
 
 	if (!responseBlackList.includes(message.author.id)) {
@@ -109,7 +112,8 @@ module.exports = (Discord, client, message) => {
 
 	if (command) {
 		try {
-			if (message.channel.name === "feature-request") return;
+			// ignore commands in a specific channel
+			if (message.channel.name === "feature-requests") return;
 			if (cooldowns.has(message.author.id)) {
 				message.author.send(
 					"Cooldowns enabled in that server, wait 50 seconds. (#bot-spam excluded)"

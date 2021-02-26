@@ -8,7 +8,7 @@ const raidCooldown = new Set();
 
 module.exports = {
 	name: "score",
-	aliases: ["leaderboard", "manage", "buyin", "lottery", "raid", "give"],
+	aliases: ["leaderboard", "manage", "buyin", "lottery", "raid"],
 	cooldown: 20,
 	execute(client, message, args, Discord, cmd) {
 		const bbgm = bbgmDiscord["bbgmDiscord"];

@@ -46,7 +46,7 @@ module.exports = {
 				if (video) {
 					song = { title: video.title, url: video.url };
 				} else {
-					message.reply("error finding video");
+					return message.reply("error finding video");
 				}
 			}
 
@@ -78,6 +78,7 @@ module.exports = {
 			}
 		} else if (cmd === "skip") skipSong(message, serverQueue);
 		else if (cmd === "stop") stopSong(message, serverQueue);
+		
 	},
 };
 
