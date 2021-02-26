@@ -2,7 +2,7 @@ const bBot = require("../../assets/json/bBot");
 
 module.exports = {
 	name: "bBot",
-	execute(client, message, args) {
+	execute(client, message) {
 		message.channel.send(
 			bBot.half1[Math.floor(Math.random() * bBot.half1.length)] + " " +
 			message.author.username +

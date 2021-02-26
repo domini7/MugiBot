@@ -3,7 +3,7 @@ const { birth } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "pbio",
-	aliases: ['pb'],
+	aliases: ["pb"],
 	description: "Displays basic NBA player info",
 	cooldown: 35,
 	async execute(client, message, args, Discord) {
@@ -26,7 +26,7 @@ module.exports = {
 		*/
 
 		if (!pid) return message.channel.send("No Player Found");
-		
+
 		const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
 		const p = info["commonPlayerInfo"][0];
 		const age = birth(p.birthdate);
@@ -49,7 +49,11 @@ module.exports = {
 				{ name: "Jersey", value: `#${p.jersey}`, inline: true },
 				{ name: "Exp.", value: `${p.seasonExp + 1}`, inline: true },
 				{ name: "Country", value: `${p.country}`, inline: true },
-				{ name: "Draft-Pick", value: `${p.draftYear}-${p.draftNumber}`, inline: true },
+				{
+					name: "Draft-Pick",
+					value: `${p.draftYear}-${p.draftNumber}`,
+					inline: true,
+				},
 				{ name: "School", value: `${p.school}`, inline: true }
 			);
 		message.channel.send(newEmbed);

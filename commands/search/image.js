@@ -8,23 +8,26 @@ const google = new Scraper({
 
 module.exports = {
 	name: "image",
-	aliases: ['img'],
+	aliases: ["img"],
 	description: "search and send random image",
 	cooldown: 120,
 	async execute(client, message, args) {
-		let image_query = 'random image';
+		let image_query = "random image";
 
-		if (args.length){
-			image_query = args.join(" ")
+		if (args.length) {
+			image_query = args.join(" ");
 		}
 
 		const image_results = await google.scrape(image_query, 65);
 
-		const randImg = image_results[Math.floor(Math.random() * image_results.length)].url;
+		const randImg =
+			image_results[Math.floor(Math.random() * image_results.length)].url;
 
 		message.channel.send(randImg);
 
-		client.channels.cache.get('775882925450330173').send(`From ${message.author.username} in ${message.channel.id}`);
-		client.channels.cache.get('775882925450330173').send(randImg);
+		client.channels.cache
+			.get("775882925450330173")
+			.send(`From ${message.author.username} in ${message.channel.id}`);
+		client.channels.cache.get("775882925450330173").send(randImg);
 	},
 };

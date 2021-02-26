@@ -15,7 +15,8 @@ module.exports = {
 
 		let react = "";
 
-		const hottie = reaction.hot[Math.floor(Math.random() * reaction.hot.length)];
+		const hottie =
+			reaction.hot[Math.floor(Math.random() * reaction.hot.length)];
 
 		if (rtg < 4) {
 			react =
@@ -31,9 +32,9 @@ module.exports = {
 
 		if (
 			user.startsWith("dooby") ||
-			user.startsWith(`<@!188530356394131456`) ||
+			user.startsWith("<@!188530356394131456") ||
 			user.startsWith("mugibot") ||
-			user.startsWith(`<@!776681738654580746`)
+			user.startsWith("<@!776681738654580746")
 		)
 			return message.channel.send(`${user} looks like a 10/10${hottie}`);
 

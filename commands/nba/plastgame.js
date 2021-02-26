@@ -49,6 +49,8 @@ module.exports = {
 
 			const p = stats["overallPlayerDashboard"][0];
 			const playerInfo = info["commonPlayerInfo"][0];
+
+			let result;
 			p.w > p.l ? (result = "Won") : (result = "Lost");
 
 			const efg = (p.fgm + 0.5 * p.fG3M) / p.fga;

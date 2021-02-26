@@ -7,8 +7,7 @@ module.exports = {
 		if (message.channel instanceof Discord.DMChannel)
 			return message.channel.send("You cannot use this command in DMs");
 
-		let member = message.mentions.members.first() || message.member,
-			user = member.user;
+		let member = message.mentions.members.first();
 
 		const newEmbed = new Discord.MessageEmbed()
 			.setColor("#000000")
@@ -17,20 +16,28 @@ module.exports = {
 			.addFields(
 				{
 					name: "Account creation date",
-					value: '`' + `${dayjs(message.author.createdTimestamp).format(
-						"MMM DD, YYYY"
-					)}` + '`',
+					value:
+						"`" +
+						`${dayjs(message.author.createdTimestamp).format(
+							"MMM DD, YYYY"
+						)}` +
+						"`",
 				},
 				{
 					name: `Joined ${message.guild.name} on`,
-					value: '`' + `${dayjs(member.joinedTimestamp).format(
-						"MMM DD, YYYY"
-					)}` + '`',
+					value:
+						"`" +
+						`${dayjs(member.joinedTimestamp).format(
+							"MMM DD, YYYY"
+						)}` +
+						"`",
 				},
 				{
 					name: "Roles",
-					value: `${member.roles.cache.map(r => '`'+r.name+'`').join(' - ')}`,
-				},
+					value: `${member.roles.cache
+						.map((r) => "`" + r.name + "`")
+						.join(" - ")}`,
+				}
 			)
 			.setFooter(`ID:${member.id}`);
 		message.channel.send(newEmbed);

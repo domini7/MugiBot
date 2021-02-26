@@ -7,7 +7,7 @@ module.exports = {
 	aliases: ["ret"],
 	description: "Guesses the chance of a player retiring",
 	cooldown: 40,
-	async execute(client, message, args, Discord) {
+	async execute(client, message, args) {
 		if (!args.length)
 			return message.reply(
 				"You need to search a player name. Example: `m-retire JJ Redick`"
@@ -82,7 +82,10 @@ module.exports = {
 				(1 / 146.35) * Math.max(p.age - 18, 0) ** 2 -
 				0.961 * altWs;
 
-			const retireChance = Math.min(Math.max((retire + 0.1) * 1.5, 0.01), 0.99);
+			const retireChance = Math.min(
+				Math.max((retire + 0.1) * 1.5, 0.01),
+				0.99
+			);
 
 			message.channel.send(
 				`${p.playerName} in ${season} has a ${rnd(

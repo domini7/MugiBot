@@ -2,7 +2,7 @@ module.exports = {
 	name: "leet",
 	description: "Converts what you say into leet speech",
 	cooldown: 20,
-	execute(client, message, args, Discord) {
+	execute(client, message, args) {
 		if (!args.length)
 			return message.reply(
 				"Y0u n33d 70 54y 50m37hing idi07. `m-leet text`"

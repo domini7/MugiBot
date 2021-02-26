@@ -13,9 +13,9 @@ module.exports = {
 			season = "06/06/" + args[0];
 
 			if (!num)
-			return message.reply(
-				"You need to specify a season. `m-standings 2013`"
-			);
+				return message.reply(
+					"You need to specify a season. `m-standings 2013`"
+				);
 		}
 
 		if (num < 2005 || num > 9999)

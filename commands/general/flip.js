@@ -6,7 +6,7 @@ const fs = require("fs");
 module.exports = {
 	name: "flip",
 	cooldown: 20,
-	execute(client, message, args, Discord) {
+	execute(client, message, args) {
 		let coin;
 		Math.random() > 0.5 ? coin = "Heads" : coin = "Tails";
 

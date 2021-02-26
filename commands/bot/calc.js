@@ -21,9 +21,9 @@ module.exports = {
 			if (isNaN(evaled)) evaled = "NaN (not a number).";
 
 			if (exp.length + evaled.length > 2000)
-				return message.channel.send(`output is too long`);
+				return message.channel.send("output is too long");
 
-			message.channel.send(`${evaled.toLocaleString()}`);
+			message.channel.send(`${rnd(evaled, 4)}`);
 		} catch (error) {
 			message.reply("Error evaluating that!");
 		}

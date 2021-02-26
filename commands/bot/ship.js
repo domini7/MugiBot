@@ -2,7 +2,7 @@ module.exports = {
 	name: "ship",
 	description: "Combines two users for a ship",
 	cooldown: 20,
-	execute(client, message, args, Discord) {
+	execute(client, message, args) {
 		if (!args.length)
 			return message.reply(
 				"Mention two users!"

@@ -5,11 +5,7 @@ module.exports = {
 	execute(client, message, args, Discord) {
 		const help = new Discord.MessageEmbed()
 			.setColor("#808080")
-			.setAuthor(
-				"MugiBot",
-				"",
-				"https://github.com/domini7/MugiBot"
-			)
+			.setAuthor("MugiBot", "", "https://github.com/domini7/MugiBot")
 			.setThumbnail("https://i.imgur.com/PtCc2iO.jpg")
 			.setTitle("Open-source Discord.js bot")
 			.setDescription(
@@ -65,8 +61,7 @@ module.exports = {
 				},
 				{
 					name: "**`m-suggest`**",
-					value:
-						"Send a suggestion to me.",
+					value: "Send a suggestion to me.",
 					inline: false,
 				}
 			);
@@ -129,11 +124,9 @@ module.exports = {
 				},
 				{
 					name: "**`m-stop`**",
-					value:
-						"Bot stops all music and deletes the queue.",
+					value: "Bot stops all music and deletes the queue.",
 					inline: false,
-				}
-				,
+				},
 				{
 					name: "**`m-skip`**",
 					value:
@@ -226,30 +219,30 @@ module.exports = {
 			const cat = args[0].toLowerCase();
 
 			switch (cat) {
-				case "general":
-					dm.send(general);
-					break;
-				case "nba":
-					dm.send(nba);
-					break;
-				case "music":
-					dm.send(music);
-					break;
-				case "bot":
-					dm.send(bot);
-					break;
-				case "search":
-					dm.send(search);
-					break;
-				case "all":
-					dm.send(general);
-					dm.send(nba);
-					dm.send(music);
-					dm.send(bot);
-					dm.send(search);
-					break;
-				default:
-					dm.send("Couldn't find that category! (Check spelling?)");
+			case "general":
+				dm.send(general);
+				break;
+			case "nba":
+				dm.send(nba);
+				break;
+			case "music":
+				dm.send(music);
+				break;
+			case "bot":
+				dm.send(bot);
+				break;
+			case "search":
+				dm.send(search);
+				break;
+			case "all":
+				dm.send(general);
+				dm.send(nba);
+				dm.send(music);
+				dm.send(bot);
+				dm.send(search);
+				break;
+			default:
+				dm.send("Couldn't find that category! (Check spelling?)");
 			}
 		}
 	},
