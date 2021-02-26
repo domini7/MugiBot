@@ -1,10 +1,11 @@
 {
   "name": "MugiBot",
-  "version": "0.52",
+  "version": "0.5.3",
   "description": "a discord bot",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint \"**/*.js\" || exit 0",
+    "lint:fix": "npx eslint \"**/*.js\" --fix || exit 0"
   },
   "repository": {
     "type": "git",
