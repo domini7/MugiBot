@@ -1,6 +1,7 @@
 const rps = require("../../responses/responses.js");
 const fs = require("fs");
 const trk = require("../../assets/json/bbgm");
+const colors = require("colors/safe");
 
 const cooldowns = new Set();
 
@@ -117,12 +118,12 @@ module.exports = (Discord, client, message) => {
 				message.author.send(
 					"Cooldowns enabled in that server, wait 50 seconds. (#bot-spam excluded)"
 				);
-				console.log(commandLogger.green);
+				console.log(colors.green(commandLogger));
 				return;
 			}
 
 			command.execute(client, message, args, Discord, cmd);
-			console.log(commandLogger.green);
+			console.log(colors.green(commandLogger));
 
 			if (
 				message.author.id === "188530356394131456" ||
@@ -140,7 +141,7 @@ module.exports = (Discord, client, message) => {
 				}, 50000);
 			}
 		} catch (error) {
-			console.log("Error: " + commandLogger.green);
+			console.log("Error: " + colors.green(commandLogger));
 			console.error(error);
 			message.reply("There was an error trying to execute that command!");
 		}
