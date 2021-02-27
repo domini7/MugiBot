@@ -13,7 +13,7 @@ module.exports = {
 		const voiceChannel = message.member.voice.channel;
 		if (!voiceChannel)
 			return message.channel.send(
-				" You need to be in a channel to use this command"
+				" You need to be in a voice channel to use this command"
 			);
 
 		const permissions = voiceChannel.permissionsFor(message.client.user);

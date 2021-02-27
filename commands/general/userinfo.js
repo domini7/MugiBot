@@ -7,7 +7,7 @@ module.exports = {
 		if (message.channel instanceof Discord.DMChannel)
 			return message.channel.send("You cannot use this command in DMs");
 
-		let member = message.mentions.members.first();
+		let member = message.mentions.members.first() || message.member;
 
 		const newEmbed = new Discord.MessageEmbed()
 			.setColor("#000000")
