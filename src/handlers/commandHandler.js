@@ -2,7 +2,7 @@ const fs = require("fs");
 
 module.exports = (client) => {
 	const generalCommandFiles = fs
-		.readdirSync("./commands/general/")
+		.readdirSync("./src/commands/general/")
 		.filter((file) => file.endsWith(".js"));
 
 	for (const file of generalCommandFiles) {
@@ -15,7 +15,7 @@ module.exports = (client) => {
 	}
 
 	const nbaCommandFiles = fs
-		.readdirSync("./commands/nba/")
+		.readdirSync("./src/commands/nba/")
 		.filter((file) => file.endsWith(".js"));
 
 	for (const file of nbaCommandFiles) {
@@ -28,7 +28,7 @@ module.exports = (client) => {
 	}
 
 	const musicCommandFiles = fs
-		.readdirSync("./commands/music/")
+		.readdirSync("./src/commands/music/")
 		.filter((file) => file.endsWith(".js"));
 
 	for (const file of musicCommandFiles) {
@@ -41,7 +41,7 @@ module.exports = (client) => {
 	}
 
 	const botCommandFiles = fs
-		.readdirSync("./commands/bot/")
+		.readdirSync("./src/commands/bot/")
 		.filter((file) => file.endsWith(".js"));
 
 	for (const file of botCommandFiles) {
@@ -54,7 +54,7 @@ module.exports = (client) => {
 	}
 
 	const searchCommandFiles = fs
-		.readdirSync("./commands/search/")
+		.readdirSync("./src/commands/search/")
 		.filter((file) => file.endsWith(".js"));
 
 	for (const file of searchCommandFiles) {

@@ -6,7 +6,7 @@ client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 
 ["commandHandler", "eventHandler"].forEach(handler =>{
-	require(`./handlers/${handler}`)(client, Discord);
+	require(`../src/handlers/${handler}`)(client, Discord);
 });
 
 client.login(process.env.TOKEN);

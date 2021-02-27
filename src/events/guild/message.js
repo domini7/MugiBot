@@ -1,5 +1,5 @@
 const fs = require("fs");
-const trk = require("../../assets/json/bbgm");
+const trk = require("../../../assets/json/bbgm");
 const colors = require("colors/safe");
 
 const cooldowns = new Set();
