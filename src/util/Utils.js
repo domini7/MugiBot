@@ -23,6 +23,14 @@ class Utils {
 			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 		});
 	}
+
+	// commas when you need it
+	static formatNumber(number, minimumFractionDigits = 0) {
+		return Number.parseFloat(number).toLocaleString(undefined, {
+			minimumFractionDigits,
+			maximumFractionDigits: 2,
+		});
+	}
 }
 
 module.exports = Utils;
