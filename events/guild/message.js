@@ -1,4 +1,3 @@
-const rps = require("../../responses/responses.js");
 const fs = require("fs");
 const trk = require("../../assets/json/bbgm");
 const colors = require("colors/safe");
@@ -25,11 +24,7 @@ module.exports = (Discord, client, message) => {
 			// each character typed is 0.05 points
 			let charCount = message.content.length / 20;
 
-			if (rps.reactObject[message.content.toLowerCase()]) {
-				bbgm[player] -= 25;
-			} else {
-				bbgm[player] += Math.min(charCount, 3);
-			}
+			bbgm[player] += Math.min(charCount, 3);
 
 			fs.writeFile(
 				"../MugiBot/assets/json/bbgm.json",
