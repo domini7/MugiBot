@@ -208,6 +208,11 @@ module.exports = {
 					name: "**`;wiki (query)`**",
 					value: "Search wikipedia.",
 					inline: false,
+				},
+				{
+					name: "**`;stackoverflow (query)`**",
+					value: "Search for a question on StackOverflow.",
+					inline: false,
 				}
 			);
 
