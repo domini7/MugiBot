@@ -1,5 +1,5 @@
 // Needed for betting points in a specific server
-const bbgmDiscord = require("../../assets/json/bbgm");
+const bbgmDiscord = require("../../../assets/json/bbgm");
 const { rnd } = require("../../util/Utils.js");
 const fs = require("fs");
 

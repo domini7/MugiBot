@@ -1,4 +1,4 @@
-const bBot = require("../../assets/json/bBot");
+const bBot = require("../../../assets/json/bBot");
 
 module.exports = {
 	name: "bBot",

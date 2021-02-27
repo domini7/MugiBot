@@ -1,4 +1,4 @@
-const bbgmDiscord = require("../../assets/json/bbgm");
+const bbgmDiscord = require("../../../assets/json/bbgm");
 const stringSimilarity = require("string-similarity");
 const { rnd } = require("../../util/Utils.js");
 const fs = require("fs");

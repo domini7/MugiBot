@@ -1,5 +1,5 @@
 const wiki = require("wikipedia");
-const topic = require("../../assets/json/wiki");
+const topic = require("../../../assets/json/wiki");
 const { toTitleCase, shorten } = require("../../util/Utils.js");
 
 module.exports = {
