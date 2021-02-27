@@ -6,7 +6,7 @@ module.exports = {
 	cooldown: 20,
 	async execute(client, message, args) {
 		if (!args.length) {
-			return message.reply("Rate something! `m-rate me`");
+			return message.reply("Rate something! `;rate me`");
 		}
 
 		const user = args.join(" ").toLowerCase();

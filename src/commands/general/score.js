@@ -44,7 +44,7 @@ module.exports = {
 					)}\nRank: ${search.bestMatchIndex + 1} / ${keys.length}`
 				)
 				.setFooter(
-					"0.05 PTs per char typed outside #bot-spam\nResets on Feb 28th\nBet points with `m-flip <coin> #/all`\nTry to win points with `m-lottery`"
+					"0.05 PTs per char typed outside #bot-spam\nResets on Feb 28th\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
 				);
 
 			message.channel.send(embed);
@@ -99,8 +99,8 @@ module.exports = {
 				.setFooter(
 					`Resets on Feb 28th${
 						botSpam != "bot-spam"
-							? "\nCheck your score with `m-score` in #bot-spam\nBet points in #bot-spam with `m-flip <coin> #/all`\nTry to win points with `m-lottery`"
-							: "\nBet points with `m-flip <coin> #/all`\nTry to win points with `m-lottery`"
+							? "\nCheck your score with `;score` in #bot-spam\nBet points in #bot-spam with `;flip <coin> #/all`\nTry to win points with `;lottery`"
+							: "\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
 					}`
 				);
 
@@ -137,7 +137,7 @@ module.exports = {
 
 			if (bbgm[user] < 5) {
 				return message.reply(
-					"You need 5 points to play the lottery, use `m-buyin` to get 5 points"
+					"You need 5 points to play the lottery, use `;buyin` to get 5 points"
 				);
 			}
 
@@ -245,7 +245,7 @@ module.exports = {
 		/* if (cmd === "give") {
 			if (!args.length)
 				return message.reply(
-					"You need to give points. `m-give doobie mugi 500`"
+					"You need to give points. `;give doobie mugi 500`"
 				);
 
 			const join = args.join(" ");

@@ -7,7 +7,7 @@ module.exports = {
 	execute(client, message, args, Discord) {
 		if (!args.length)
 			return message.reply(
-				"Please add a keyword. Example: `m-define douchebag`"
+				"Please add a keyword. Example: `;define douchebag`"
 			);
 
 		const req = unirest(

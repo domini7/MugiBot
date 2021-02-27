@@ -11,7 +11,7 @@ module.exports = {
 
 			if (!exp)
 				return message.reply(
-					"You need to calculate something! `m-calc 2 + 2`"
+					"You need to calculate something! `;calc 2 + 2`"
 				);
 
 			if (exp.includes("°")) exp = exp.replace(/°/g, "deg");

@@ -87,7 +87,7 @@ module.exports = (Discord, client, message) => {
 		}
 	}
 
-	const prefix = "m-";
+	const prefix = ";";
 
 	if (!message.content.toLowerCase().startsWith(prefix)) return;
 

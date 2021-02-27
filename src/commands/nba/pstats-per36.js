@@ -10,7 +10,7 @@ module.exports = {
 	async execute(client, message, args, Discord) {
 		if (!args.length)
 			return message.reply(
-				"You need to search a player name. Example: `m-pstats-per36 lillard`"
+				"You need to search a player name. Example: `;pstats-per36 lillard`"
 			);
 
 		// Takes in arg and seaches for that player

@@ -14,7 +14,7 @@ module.exports = {
 
 			if (!num)
 				return message.reply(
-					"You need to specify a season. `m-standings 2013`"
+					"You need to specify a season. `;standings 2013`"
 				);
 		}
 

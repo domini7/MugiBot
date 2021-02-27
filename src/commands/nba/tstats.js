@@ -8,7 +8,7 @@ module.exports = {
 	async execute(client, message, args, Discord) {
 		if (!args.length)
 			return message.reply(
-				"You need to search a team city/name. Example: `m-tstats warriors"
+				"You need to search a team city/name. Example: `;tstats warriors"
 			);
 
 		let team = args.join(" ");

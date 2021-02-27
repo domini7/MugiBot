@@ -10,7 +10,7 @@ module.exports = {
 	async execute(client, message, args) {
 		if (!args.length)
 			return message.reply(
-				"You need to search a player name. Example: `m-retire JJ Redick`"
+				"You need to search a player name. Example: `;retire JJ Redick`"
 			);
 
 		// Takes in arg and seaches for that player

@@ -5,7 +5,7 @@ module.exports = {
 	execute(client, message, args) {
 		if (!args.length)
 			return message.reply(
-				"Y0u n33d 70 54y 50m37hing idi07. `m-leet text`"
+				"Y0u n33d 70 54y 50m37hing idi07. `;leet text`"
 			);
 
 		let text = args.join(" ");

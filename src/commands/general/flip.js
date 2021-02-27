@@ -78,12 +78,12 @@ module.exports = {
 			);
 		} else {
 			message.reply(
-				"please enter a valid gamble `m-flip <coin> all` or `m-flip <coin> 20`"
+				"please enter a valid gamble `;flip <coin> all` or `;flip <coin> 20`"
 			);
 		}
 
 		if (bbgm[player] < 5) {
-			message.reply("use `m-buyin` to reset back to 5 points");
+			message.reply("use `;buyin` to reset back to 5 points");
 		}
 
 		fs.writeFile(

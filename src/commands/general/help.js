@@ -9,7 +9,7 @@ module.exports = {
 			.setThumbnail("https://i.imgur.com/PtCc2iO.jpg")
 			.setTitle("Open-source Discord.js bot")
 			.setDescription(
-				"To get info about specific categories,\ndo `m-help <category>`.\nTo show all commands, do `m-help all.`"
+				"To get info about specific categories,\ndo `;help <category>`.\nTo show all commands, do `;help all.`"
 			)
 			.addFields(
 				{
@@ -44,23 +44,23 @@ module.exports = {
 			.setColor("RANDOM")
 			.addFields(
 				{
-					name: "**`m-flip (OPTIONAL: Guess)`**",
+					name: "**`;flip (OPTIONAL: Guess)`**",
 					value: "Flip a coin.",
 					inline: false,
 				},
 				{
-					name: "**`m-userinfo`**",
+					name: "**`;userinfo`**",
 					value: "Displays basic info, must be used in a server.",
 					inline: false,
 				},
 				{
-					name: "**`m-version`**",
+					name: "**`;version`**",
 					value:
 						"Displays version and date MugiBot was last updated.",
 					inline: false,
 				},
 				{
-					name: "**`m-suggest`**",
+					name: "**`;suggest`**",
 					value: "Send a suggestion to me.",
 					inline: false,
 				}
@@ -71,43 +71,43 @@ module.exports = {
 			.setColor("RANDOM")
 			.addFields(
 				{
-					name: "**`m-pstats (player) [OPTIONAL YEAR]`**",
+					name: "**`;pstats (player) [OPTIONAL YEAR]`**",
 					value: "Check a NBA player's basic season stats.",
 					inline: false,
 				},
 				{
-					name: "**`m-pstats-per36`**",
+					name: "**`;pstats-per36`**",
 					value: "Same as pstats but with per 36 min numbers.",
 					inline: false,
 				},
 				{
-					name: "**`m-pbio (player)`**",
+					name: "**`;pbio (player)`**",
 					value: "Check a NBA player's basic info.",
 					inline: false,
 				},
 				{
-					name: "**`m-plastgame (player)`**",
+					name: "**`;plastgame (player)`**",
 					value:
 						"Check a player's last game. (Can't check players who didn't play their team's last game!)",
 					inline: false,
 				},
 				{
-					name: "**`m-tstats (team) [OPTIONAL YEAR]`**",
+					name: "**`;tstats (team) [OPTIONAL YEAR]`**",
 					value: "Displays basic NBA team stats.",
 					inline: false,
 				},
 				{
-					name: "**`m-standings [OPTIONAL YEAR]`**",
+					name: "**`;standings [OPTIONAL YEAR]`**",
 					value: "Displays current NBA standings.",
 					inline: false,
 				},
 				{
-					name: "**`m-leaders [OPTIONAL YEAR]`**",
+					name: "**`;leaders [OPTIONAL YEAR]`**",
 					value: "Displays league leaders.",
 					inline: false,
 				},
 				{
-					name: "**`m-retire (player) [OPTIONAL YEAR]`**",
+					name: "**`;retire (player) [OPTIONAL YEAR]`**",
 					value: "Guesses the chance of a player retiring.",
 					inline: false,
 				}
@@ -118,17 +118,17 @@ module.exports = {
 			.setColor("RANDOM")
 			.addFields(
 				{
-					name: "**`m-play (youtube URL or title)`**",
+					name: "**`;play (youtube URL or title)`**",
 					value: "Play music. Add more songs to add to a queue.",
 					inline: false,
 				},
 				{
-					name: "**`m-stop`**",
+					name: "**`;stop`**",
 					value: "Bot stops all music and deletes the queue.",
 					inline: false,
 				},
 				{
-					name: "**`m-skip`**",
+					name: "**`;skip`**",
 					value:
 						"Bot stops currently playing song and plays the next.",
 					inline: false,
@@ -140,40 +140,40 @@ module.exports = {
 			.setColor("RANDOM")
 			.addFields(
 				{
-					name: "**`m-echo`**",
-					value: "Bot repeats what you say after `m-echo`.",
+					name: "**`;echo`**",
+					value: "Bot repeats what you say after `;echo`.",
 					inline: false,
 				},
 				{
-					name: "**`m-leet`**",
+					name: "**`;leet`**",
 					value:
 						"Bot repeats what you say but turns it into leet text.",
 					inline: false,
 				},
 				{
-					name: "**`m-gpt2 [sentence]`**",
+					name: "**`;gpt2 [sentence]`**",
 					value:
 						"Bot tries to finish your sentence. Processes under a minute.",
 					inline: false,
 				},
 				{
-					name: "**`m-gpt2xl [sentence]`**",
+					name: "**`;gpt2xl [sentence]`**",
 					value:
-						"Same function as m-gpt2 with bigger model. Can take up to 5-10 min.",
+						"Same function as ;gpt2 with bigger model. Can take up to 5-10 min.",
 					inline: false,
 				},
 				{
-					name: "**`m-rate [name]`**",
+					name: "**`;rate [name]`**",
 					value: "Bot will rate you/someone from 0-10.",
 					inline: false,
 				},
 				{
-					name: "**`m-ship [@user, @user]`**",
+					name: "**`;ship [@user, @user]`**",
 					value: "Combines two users for a ship.",
 					inline: false,
 				},
 				{
-					name: "**`m-calc [math]`**",
+					name: "**`;calc [math]`**",
 					value: "Bot will solve math expressions.",
 					inline: false,
 				}
@@ -183,29 +183,29 @@ module.exports = {
 			.setColor("RANDOM")
 			.addFields(
 				{
-					name: "**`m-image (keyword)`**",
+					name: "**`;image (keyword)`**",
 					value: "Get a random image based off keyword.",
 					inline: false,
 				},
 				{
-					name: "**`m-inspirobot`**",
+					name: "**`;inspirobot`**",
 					value: "Bot sends an inspirational image from inspirobot.",
 					inline: false,
 				},
 				{
-					name: "**`m-define (word)`**",
+					name: "**`;define (word)`**",
 					value:
 						"Define a word using UrbanDictionary, potentially offensive.",
 					inline: false,
 				},
 				{
-					name: "**`m-covid (OPTIONAL: country name)`**",
+					name: "**`;covid (OPTIONAL: country name)`**",
 					value:
 						"Get coronavirus stats for the world or specific countries.",
 					inline: false,
 				},
 				{
-					name: "**`m-wiki (query)`**",
+					name: "**`;wiki (query)`**",
 					value: "Search wikipedia.",
 					inline: false,
 				}
