@@ -1,6 +1,6 @@
 {
   "name": "MugiBot",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "a discord bot",
   "main": "main.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "ffmpeg-static": "^4.2.7",
+    "html-entities": "^2.1.0",
     "images-scraper": "^6.0.0",
     "ini": "^2.0.0",
     "mathjs": "^9.1.0",
@@ -33,9 +34,7 @@
     "nba": "^4.15.0",
     "node-fetch": "^2.6.1",
     "node-superfetch": "^0.1.11",
-    "spotify-url-info": "^2.2.0",
     "string-similarity": "^4.0.4",
-    "thesaurus": "0.0.1",
     "unirest": "^0.6.0",
     "wikipedia": "^1.0.1",
     "yt-search": "^2.5.1",
