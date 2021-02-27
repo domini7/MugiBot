@@ -1,9 +1,10 @@
 {
   "name": "MugiBot",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "a discord bot",
   "main": "main.js",
   "scripts": {
+    "start": "node src/main.js",
     "lint": "npx eslint \"**/*.js\" || exit 0",
     "lint:fix": "npx eslint \"**/*.js\" --fix || exit 0"
   },
