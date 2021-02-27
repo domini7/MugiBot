@@ -25,10 +25,10 @@ module.exports = {
 				});
 
 			if (!body.items.length)
-				return message.say("Could not find any results.");
+				return message.reply("Could not find any results.");
 
 			const data = body.items[0];
-			const tags = data.tags.join(" ");
+			const tags = data.tags.join(", ");
 
 			const embed = new Discord.MessageEmbed()
 				.setColor("#f48023")
