@@ -8,7 +8,13 @@ module.exports = {
 	cooldown: 20,
 	execute(client, message, args) {
 		let coin;
-		Math.random() > 0.5 ? coin = "Heads" : coin = "Tails";
+		Math.random() <= bbgmDiscord["coinFlipChance"] ? (coin = "Heads") : (coin = "Tails");
+		if (coin === "Tails") {
+			bbgmDiscord["coinFlipChance"] += 0.01;
+		} else {
+			bbgmDiscord["coinFlipChance"] -= 0.01;
+		}
+		console.log(bbgmDiscord["coinFlipChance"]);
 
 		if (args.length) {
 			const guess = args[0];
@@ -34,23 +40,10 @@ module.exports = {
 		const player = message.author.username;
 		const coinResult = coin[coin.length - 1];
 
-		let result = "tripled";
-
 		if (bbgm[player] <= 0)
 			return message.reply("you don't have points to bet!");
 
-		if (bet === "all") {
-			// ! is the last index of a winning guess
-			if (coinResult != "!") {
-				bbgm[player] -= bbgm[player];
-				result = "lost";
-			} else {
-				bbgm[player] += bbgm[player] * 2;
-			}
-			message.reply(
-				`you've ${result} your points! New amount: ${rnd(bbgm[player])}`
-			);
-		} else if (!isNaN(bet)) {
+		if (!isNaN(bet)) {
 			if (bet > bbgm[player]) {
 				return message.reply(
 					`you can't bet more than your current **${rnd(
@@ -59,10 +52,17 @@ module.exports = {
 				);
 			}
 
+			if (bet > 20) {
+				return message.reply("you can't bet more than 20 points!");
+			}
+
 			if (bet <= 0) {
 				return message.reply("you can't bet 0 points!");
 			}
 
+			let result;
+
+			// ! is the last index of a winning bet
 			if (coinResult != "!") {
 				bbgm[player] -= bet;
 				result = "lose";
@@ -77,13 +77,11 @@ module.exports = {
 				)}`
 			);
 		} else {
-			message.reply(
-				"please enter a valid gamble `;flip <coin> all` or `;flip <coin> 20`"
-			);
+			message.reply("please enter a valid gamble `;flip <coin> 20`");
 		}
 
-		if (bbgm[player] < 5) {
-			message.reply("use `;buyin` to reset back to 5 points");
+		if (bbgm[player] < 1) {
+			message.reply("use `;buyin` to reset back to 1 point");
 		}
 
 		fs.writeFile(
