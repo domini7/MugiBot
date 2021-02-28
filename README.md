@@ -7,6 +7,13 @@ This is a multi-purpose personal Discord bot built using JavaScript. DM's are op
 
 Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?client_id=776681738654580746&scope=bot&permissions=3267648)
 
+## Content
+* [Commands](https://github.com/domini7/MugiBot#commands)
+* [Installation](https://github.com/domini7/MugiBot#installation)
+ * [Get API Keys](https://github.com/domini7/MugiBot#where-to-get-api-keys)
+ * [Required Permissions](https://github.com/domini7/MugiBot#permissions-the-bot-needs)
+ * [Starting the bot](https://github.com/domini7/MugiBot#starting-the-bot)
+
 ## Commands
 
 ### General
@@ -60,4 +67,34 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 ```
 
 ## Installation
-Coming soon
+1. Install the latest version of [Node.js](https://nodejs.org/en/) (v14.0.0 required) and [git](https://git-scm.com/downloads)
+2. Clone this repo with `git clone https://github.com/domini7/MugiBot.git`
+3. Open the folder in git and run `npm install`
+4. Create a new file called `.env` and fill it out using the `.env.example`
+5. Create a new application at the [Discord Dev Portal](https://discord.com/developers/applications/)
+6. [Follow these instructions to download FFMPEG on windows](https://www.wikihow.com/Install-FFmpeg-on-Windows)
+
+Linux Users can download FFMPEG with `apt install ffmpeg`
+
+### Where to get API keys
+1. `TOKEN` - Obtain from the Discord Dev Portal under "Bot" in your application
+2. `API_KEY` - Create an account at [RapidAPI](https://rapidapi.com/marketplace)
+3. `BOOSTE` - Obtain a key from [Booste](https://www.booste.io/pretrained-models/nodejs)
+4. `STACKOVERFLOW` - Register your application at [StackApps](https://stackapps.com/apps/oauth/register)
+
+
+### Permissions the bot needs
+* Read Messages
+* Send Messages
+* Send TTS Messages (Optional)
+* Embed Links
+* Attach Files
+* Read Message History
+* Add Reactions
+* Connect
+* Speak
+
+### Starting the bot
+Start the bot with `npm run start`
+
+If you're adding new code, enforce coding standards with `npm run lint`
