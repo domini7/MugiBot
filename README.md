@@ -10,9 +10,9 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 ## Content
 * [Commands](https://github.com/domini7/MugiBot#commands)
 * [Installation](https://github.com/domini7/MugiBot#installation)
- * [Get API Keys](https://github.com/domini7/MugiBot#where-to-get-api-keys)
- * [Required Permissions](https://github.com/domini7/MugiBot#permissions-the-bot-needs)
- * [Starting the bot](https://github.com/domini7/MugiBot#starting-the-bot)
+	* [Get API Keys](https://github.com/domini7/MugiBot#where-to-get-api-keys)
+	* [Required Permissions](https://github.com/domini7/MugiBot#permissions-the-bot-needs)
+	* [Starting the bot](https://github.com/domini7/MugiBot#starting-the-bot)
 
 ## Commands
 
