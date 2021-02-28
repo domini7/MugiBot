@@ -226,7 +226,7 @@ module.exports = {
 				return message.reply("you can't give yourself");
 			if (isNaN(num)) return message.reply("send a valid number.");
 			if (num > 25)
-				return message.reply("you can't send more than 20 points");
+				return message.reply("you can't send more than 25 points");
 			if (num > bbgm[sender])
 				return message.reply("you can't give more points than you own");
 

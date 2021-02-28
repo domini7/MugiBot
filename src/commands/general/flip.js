@@ -9,6 +9,8 @@ module.exports = {
 	execute(client, message, args) {
 		let coin;
 		Math.random() <= bbgmDiscord["coinFlipChance"] ? (coin = "Heads") : (coin = "Tails");
+
+		// pseudorandom
 		if (coin === "Tails") {
 			bbgmDiscord["coinFlipChance"] += 0.01;
 		} else {
