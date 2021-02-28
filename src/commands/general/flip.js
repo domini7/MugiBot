@@ -16,7 +16,6 @@ module.exports = {
 		} else {
 			bbgmDiscord["coinFlipChance"] -= 0.01;
 		}
-		console.log(bbgmDiscord["coinFlipChance"]);
 
 		if (args.length) {
 			const guess = args[0];

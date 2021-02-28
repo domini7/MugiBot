@@ -129,7 +129,7 @@ module.exports = {
 				return message.reply("You need 5 points to play the lottery");
 			}
 
-			if (Math.random() <= 0.99) {
+			if (Math.random() >= 0.99) {
 				bbgm[user] += 150;
 				message.reply(
 					`**WINNER**: 150 points have been awarded! New score: **${formatNumber(
@@ -146,7 +146,7 @@ module.exports = {
 			lotteryCooldown.add(message.author.id);
 			setTimeout(() => {
 				lotteryCooldown.delete(message.author.id);
-			}, 600000);
+			}, 10 * 60000);
 		}
 
 		if (cmd === "raid" && message.channel.name === "bot-spam") {
@@ -199,7 +199,7 @@ module.exports = {
 			raidCooldown.add(message.author.id);
 			setTimeout(() => {
 				raidCooldown.delete(message.author.id);
-			}, 1800000);
+			}, 30 * 60000);
 		}
 
 		if (cmd === "give") {
@@ -244,7 +244,7 @@ module.exports = {
 			giveCooldown.add(message.author.id);
 			setTimeout(() => {
 				giveCooldown.delete(message.author.id);
-			}, 600000);
+			}, 10 * 60000);
 		}
 
 		if (cmd === "manage" && message.author.id === "188530356394131456") {

@@ -7,12 +7,19 @@ This is a multi-purpose personal Discord bot built using JavaScript. DM's are op
 
 Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?client_id=776681738654580746&scope=bot&permissions=3267648)
 
-## Content
+## Contents
+* [Info](https://github.com/domini7/MugiBot#info)
 * [Commands](https://github.com/domini7/MugiBot#commands)
 * [Installation](https://github.com/domini7/MugiBot#installation)
 	* [Get API Keys](https://github.com/domini7/MugiBot#where-to-get-api-keys)
 	* [Required Permissions](https://github.com/domini7/MugiBot#permissions-the-bot-needs)
 	* [Starting the bot](https://github.com/domini7/MugiBot#starting-the-bot)
+	* [Contributing](https://github.com/domini7/MugiBot#contributing)
+
+## Info
+* MugiBot has been in development since November 2020
+* This repo is under the MIT License, which means you can do whatever you want with it.
+* Mugi was the name of my family's old cat (1991-2008)
 
 ## Commands
 
@@ -98,3 +105,6 @@ Linux Users can download FFMPEG with `apt install ffmpeg`
 Start the bot with `npm run start`
 
 If you're adding new code, enforce coding standards with `npm run lint`
+
+### Contributing
+Feel free to fork and submit a pull request.
