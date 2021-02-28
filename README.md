@@ -107,4 +107,4 @@ Start the bot with `npm run start`
 If you're adding new code, enforce coding standards with `npm run lint`
 
 ### Contributing
-Feel free to fork and submit a pull request.
+Feel free to fork and submit a pull request if you want to improve the bot ;d
