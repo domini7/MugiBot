@@ -1,6 +1,6 @@
 const bbgmDiscord = require("../../../assets/json/bbgm");
 const stringSimilarity = require("string-similarity");
-const { rnd } = require("../../util/Utils.js");
+const { formatNumber } = require("../../util/Utils.js");
 const fs = require("fs");
 
 const lotteryCooldown = new Set();
@@ -38,7 +38,7 @@ module.exports = {
 				.setColor("RANDOM")
 				.setTitle(search.bestMatch["target"])
 				.setDescription(
-					`Score: ${rnd(
+					`Score: ${formatNumber(
 						bbgm[search.bestMatch["target"]],
 						2
 					)}\nRank: ${search.bestMatchIndex + 1} / ${keys.length}`
@@ -62,40 +62,30 @@ module.exports = {
 			const bestNames = Object.keys(best);
 			const bestScores = Object.values(best);
 
-			const worstNames = Object.keys(worst);
-			const worstScores = Object.values(worst);
-
 			const botSpam = message.channel.name;
 
 			const embed = new Discord.MessageEmbed()
 				.setColor("RANDOM")
-				.setTitle("Users in BBGM")
-				.addFields(
-					{
-						name: "Best Scores",
-						value: `${bestNames[0]}: ${rnd(bestScores[0], 2)}\n${
-							bestNames[1]
-						}: ${rnd(bestScores[1])}\n${bestNames[2]}: ${rnd(
-							bestScores[2],
-							2
-						)}\n${bestNames[3]}: ${rnd(bestScores[3], 2)}\n${
-							bestNames[4]
-						}: ${rnd(bestScores[4], 2)}\n`,
-						inline: true,
-					},
-					{
-						name: "Worst Scores",
-						value: `${worstNames[0]}: ${rnd(worstScores[0], 2)}\n${
-							worstNames[1]
-						}: ${rnd(worstScores[1], 2)}\n${worstNames[2]}: ${rnd(
-							worstScores[2],
-							2
-						)}\n${worstNames[3]}: ${rnd(worstScores[3], 2)}\n${
-							worstNames[4]
-						}: ${rnd(worstScores[4], 2)}\n`,
-						inline: true,
-					}
-				)
+				.addFields({
+					name: "Top Users",
+					value: `1. ${bestNames[0]}: ${formatNumber(bestScores[0], 2)}\n2. ${
+						bestNames[1]
+					}: ${formatNumber(bestScores[1])}\n3. ${bestNames[2]}: ${formatNumber(
+						bestScores[2],
+						2
+					)}\n4. ${bestNames[3]}: ${formatNumber(bestScores[3], 2)}\n5. ${
+						bestNames[4]
+					}: ${formatNumber(bestScores[4], 2)}\n6. ${bestNames[5]}: ${formatNumber(
+						bestScores[5],
+						2
+					)}\n7. ${bestNames[6]}: ${formatNumber(bestScores[6], 2)}\n8. ${
+						bestNames[7]
+					}: ${formatNumber(bestScores[7], 2)}\n9. ${bestNames[8]}: ${formatNumber(
+						bestScores[8],
+						2
+					)}\n10. ${bestNames[9]}: ${formatNumber(bestScores[9], 2)}`,
+					inline: true,
+				})
 				.setFooter(
 					`Resets on Feb 28th${
 						botSpam != "bot-spam"
@@ -146,7 +136,7 @@ module.exports = {
 				message.reply(
 					`**WINNER**: **${
 						bbgmDiscord["lottery"]
-					}** points have been awarded! New score: **${rnd(
+					}** points have been awarded! New score: **${formatNumber(
 						bbgm[user]
 					)}**`
 				);
@@ -163,7 +153,7 @@ module.exports = {
 					"you didn't win! You lose **5** points. Try again in a minute."
 				);
 				message.channel.send(
-					`Lottery pool is now: **${bbgmDiscord["lottery"]}** - ${rnd(
+					`Lottery pool is now: **${bbgmDiscord["lottery"]}** - ${formatNumber(
 						bbgmDiscord["chance"] * 100
 					)}% chance to win`
 				);
@@ -212,17 +202,17 @@ module.exports = {
 				bbgm[raider] += +stolenPoints;
 				bbgm[user] -= stolenPoints;
 				message.reply(
-					`success! You stole 10% (**${rnd(
+					`success! You stole 10% (**${formatNumber(
 						stolenPoints
-					)}**) from ${user}. New total: **${rnd(bbgm[raider])}**`
+					)}**) from ${user}. New total: **${formatNumber(bbgm[raider])}**`
 				);
 			} else {
 				bbgm[raider] -= lostPoints;
 				bbgm[user] += +lostPoints;
 				message.reply(
-					`failed! You lost 25% (**${rnd(
+					`failed! You lost 25% (**${formatNumber(
 						lostPoints
-					)}**) of your points to ${user}. New total: **${rnd(
+					)}**) of your points to ${user}. New total: **${formatNumber(
 						bbgm[raider]
 					)}**`
 				);
@@ -271,9 +261,9 @@ module.exports = {
 			bbgm[sender] -= num;
 
 			message.channel.send(
-				`You've given **${rnd(
+				`You've given **${formatNumber(
 					num
-				)}** points to ${user}, they now have **${rnd(
+				)}** points to ${user}, they now have **${formatNumber(
 					bbgm[user]
 				)}** points.`
 			);
@@ -303,14 +293,14 @@ module.exports = {
 			if (args[0] === "set") {
 				bbgm[user] = +num;
 				message.channel.send(
-					`${user}'s points have been set to **${rnd(bbgm[user])}**`
+					`${user}'s points have been set to **${formatNumber(bbgm[user])}**`
 				);
 			}
 
 			if (args[0] === "take") {
 				bbgm[user] -= num;
 				message.channel.send(
-					`${user}'s points have been decreased to **${rnd(
+					`${user}'s points have been decreased to **${formatNumber(
 						bbgm[user]
 					)}**`
 				);
@@ -319,7 +309,7 @@ module.exports = {
 			if (args[0] === "give") {
 				bbgm[user] += +num;
 				message.channel.send(
-					`${user}'s points have been increased to **${rnd(
+					`${user}'s points have been increased to **${formatNumber(
 						bbgm[user]
 					)}**`
 				);
