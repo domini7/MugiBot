@@ -42,7 +42,7 @@ module.exports = {
 			return;
 
 		if (flipCooldown.has(message.author.id)) {
-			message.reply("wait 20 seconds before betting on a coinflip again.");
+			message.reply("wait before betting on a coinflip again.");
 			return;
 		}
 
@@ -86,7 +86,7 @@ module.exports = {
 			message.reply(
 				`you ${result} **${bet}** points! New amount: ${rnd(
 					bbgm[player]
-				)}`
+				)}, try again in ${bet} seconds`
 			);
 		} else {
 			message.reply("please enter a valid gamble `;flip <coin> 20`");
@@ -99,7 +99,7 @@ module.exports = {
 		flipCooldown.add(message.author.id);
 		setTimeout(() => {
 			flipCooldown.delete(message.author.id);
-		}, 20 * 6000);
+		}, bet * 1000);
 
 		fs.writeFile(
 			"../MugiBot/assets/json/bbgm.json",
