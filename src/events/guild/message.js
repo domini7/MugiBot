@@ -1,5 +1,6 @@
 const fs = require("fs");
 const trk = require("../../../assets/json/bbgm");
+const ignoredChannels = require("../../../assets/json/ignored-channels");
 const colors = require("colors/safe");
 
 const cooldowns = new Set();
@@ -10,11 +11,9 @@ module.exports = (Discord, client, message) => {
 
 	// Tracks messages sent by users in a specific server
 	if (!dm) {
-		const otherBots = ["Dyno", "Poni"];
 		if (
 			message.guild.id === "290013534023057409" &&
-			message.channel.name != "bot-spam" &&
-			!otherBots.includes(message.author.username)
+			message.channel.name != "bot-spam"
 		) {
 			let player = message.author.username;
 			let bbgm = trk["bbgmDiscord"];
@@ -87,9 +86,12 @@ module.exports = (Discord, client, message) => {
 
 	if (command) {
 		try {
-			// ignore commands in a specific channel
-			if (message.channel.name === "feature-requests") return;
-			if (cooldowns.has(message.author.id)) {
+			// ignore commands in specific channels
+			if (ignoredChannels.includes(message.channel.id)) return;
+			if (
+				cooldowns.has(message.author.id) &&
+				message.channel.name != "bot-spam"
+			) {
 				message.author.send(
 					"Cooldowns enabled in that server, wait 50 seconds. (#bot-spam excluded)"
 				);
