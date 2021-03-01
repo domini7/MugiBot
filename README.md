@@ -10,6 +10,11 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 ## Contents
 * [Info](https://github.com/domini7/MugiBot#info)
 * [Commands](https://github.com/domini7/MugiBot#commands)
+	* [General](https://github.com/domini7/MugiBot#commands)
+	* [NBA](https://github.com/domini7/MugiBot#nba)
+	* [Music](https://github.com/domini7/MugiBot#music)
+	* [Bot](https://github.com/domini7/MugiBot#bot)
+	* [Search](https://github.com/domini7/MugiBot#search)
 * [Installation](https://github.com/domini7/MugiBot#installation)
 	* [Get API Keys](https://github.com/domini7/MugiBot#where-to-get-api-keys)
 	* [Required Permissions](https://github.com/domini7/MugiBot#permissions-the-bot-needs)
