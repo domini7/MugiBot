@@ -3,6 +3,8 @@ const bbgmDiscord = require("../../../assets/json/bbgm");
 const { rnd } = require("../../util/Utils.js");
 const fs = require("fs");
 
+const flipCooldown = new Set();
+
 module.exports = {
 	name: "flip",
 	cooldown: 20,
@@ -38,6 +40,11 @@ module.exports = {
 			message.channel.name != "bot-spam"
 		)
 			return;
+
+		if (flipCooldown.has(message.author.id)) {
+			message.reply("Wait 20 seconds before flipping again.");
+			return;
+		}
 
 		const bbgm = bbgmDiscord["bbgmDiscord"];
 		let bet = args[1];
@@ -88,6 +95,11 @@ module.exports = {
 		if (bbgm[player] < 1) {
 			message.reply("use `;buyin` to reset back to 1 point");
 		}
+
+		flipCooldown.add(message.author.id);
+		setTimeout(() => {
+			lotteryCooldown.delete(message.author.id);
+		}, 20 * 6000);
 
 		fs.writeFile(
 			"../MugiBot/assets/json/bbgm.json",
