@@ -133,8 +133,8 @@ module.exports = {
 				return;
 			}
 
-			if (bbgm[user] < 5) {
-				return message.reply("You need 5 points to play the lottery");
+			if (bbgm[user] < 4) {
+				return message.reply("You need 4 points to play the lottery");
 			}
 
 			if (Math.random() >= 0.99) {
@@ -145,16 +145,16 @@ module.exports = {
 					)}**`
 				);
 			} else {
-				bbgm[user] -= 5;
+				bbgm[user] -= 4;
 				message.reply(
-					"you didn't win! You lose **5** points. Try again in ten minutes for a chance to win 150 points."
+					"you didn't win! You lose **4** points. Try again in five minutes for a chance to win 150 points."
 				);
 			}
 
 			lotteryCooldown.add(message.author.id);
 			setTimeout(() => {
 				lotteryCooldown.delete(message.author.id);
-			}, 10 * 60000);
+			}, 5 * 60000);
 		}
 
 		if (cmd === "raid" && message.channel.name === "bot-spam") {
