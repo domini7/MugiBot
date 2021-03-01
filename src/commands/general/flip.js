@@ -42,7 +42,7 @@ module.exports = {
 			return;
 
 		if (flipCooldown.has(message.author.id)) {
-			message.reply("Wait 20 seconds before flipping again.");
+			message.reply("wait 20 seconds before betting on a coinflip again.");
 			return;
 		}
 
@@ -98,7 +98,7 @@ module.exports = {
 
 		flipCooldown.add(message.author.id);
 		setTimeout(() => {
-			lotteryCooldown.delete(message.author.id);
+			flipCooldown.delete(message.author.id);
 		}, 20 * 6000);
 
 		fs.writeFile(
