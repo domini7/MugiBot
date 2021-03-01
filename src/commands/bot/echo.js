@@ -5,6 +5,8 @@ module.exports = {
 		if (!args.length)
 			return message.reply("say something! `;echo Hello!`");
 
+		if (message.guild.id === "290013534023057409") return;
+
 		let echo = args.join(" ");
 		echo = echo.replace(/@/g, "");
 

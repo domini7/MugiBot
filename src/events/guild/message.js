@@ -54,26 +54,6 @@ module.exports = (Discord, client, message) => {
 		return;
 
 	if (!responseBlackList.includes(message.author.id)) {
-		if (message.content.toLowerCase() === "good bot") {
-			client.commands.get("gBot").execute(client, message);
-			// message.react("😇");
-		} else if (message.content.toLowerCase() === "bad bot") {
-			client.commands.get("bBot").execute(client, message);
-			// } else if (rps.reactObject[message.content.toLowerCase()]) {
-			// 	message
-			// 		.react(rps.reactObject[message.content.toLowerCase()])
-			// 		.catch(console.log(message.guild.name));
-			// } else if (message.mentions.has(client.user.id)) {
-			// 	message.react("👋").catch(console.log(message.guild.name));
-		} else if (
-			message.channel.id === "739632130275016704" &&
-			Math.random() < 0.03
-		) {
-			message.react("👎").catch(console.log(message.guild.name));
-		}
-	}
-
-	if (!responseBlackList.includes(message.author.id)) {
 		// this crap is for a specific discord server
 		if (
 			(message.channel.name === "football-gm-discussion" &&

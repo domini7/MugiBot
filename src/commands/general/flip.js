@@ -8,7 +8,9 @@ module.exports = {
 	cooldown: 20,
 	execute(client, message, args) {
 		let coin;
-		Math.random() <= bbgmDiscord["coinFlipChance"] ? (coin = "Heads") : (coin = "Tails");
+		Math.random() <= bbgmDiscord["coinFlipChance"]
+			? (coin = "Heads")
+			: (coin = "Tails");
 
 		// pseudorandom
 		if (coin === "Tails") {
@@ -16,6 +18,7 @@ module.exports = {
 		} else {
 			bbgmDiscord["coinFlipChance"] -= 0.01;
 		}
+		console.log(rnd(bbgmDiscord["coinFlipChance"], 2));
 
 		if (args.length) {
 			const guess = args[0];
@@ -48,7 +51,8 @@ module.exports = {
 			if (bet > bbgm[player]) {
 				return message.reply(
 					`you can't bet more than your current **${rnd(
-						bbgm[player]
+						bbgm[player],
+						2
 					)}** points!`
 				);
 			}

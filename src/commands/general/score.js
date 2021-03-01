@@ -1,6 +1,6 @@
 const bbgmDiscord = require("../../../assets/json/bbgm");
 const stringSimilarity = require("string-similarity");
-const { formatNumber } = require("../../util/Utils.js");
+const { formatNumber, rnd } = require("../../util/Utils.js");
 const fs = require("fs");
 
 const lotteryCooldown = new Set();
@@ -9,7 +9,15 @@ const giveCooldown = new Set();
 
 module.exports = {
 	name: "score",
-	aliases: ["leaderboard", "manage", "buyin", "lottery", "raid", "give"],
+	aliases: [
+		"leaderboard",
+		"manage",
+		"buyin",
+		"lottery",
+		"raid",
+		"give",
+		"flip-chance",
+	],
 	cooldown: 20,
 	execute(client, message, args, Discord, cmd) {
 		const bbgm = bbgmDiscord["bbgmDiscord"];
@@ -224,7 +232,7 @@ module.exports = {
 
 			if (sender === user)
 				return message.reply("you can't give yourself");
-			if (isNaN(num)) return message.reply("send a valid number.");
+			if (isNaN(num) || num < 0) return message.reply("send a valid number.");
 			if (num > 25)
 				return message.reply("you can't send more than 25 points");
 			if (num > bbgm[sender])
@@ -288,7 +296,15 @@ module.exports = {
 			}
 		}
 
-		if (cmd != "score" || cmd != "leaderboard") {
+		if (cmd === "flip-chance")
+			message.channel.send(
+				`${rnd(
+					bbgmDiscord["coinFlipChance"] * 100,
+					0
+				)}% chance of Heads`
+			);
+
+		if (cmd != "score" || cmd != "leaderboard" || cmd != "flip-chance") {
 			fs.writeFile(
 				"../MugiBot/assets/json/bbgm.json",
 				JSON.stringify(bbgmDiscord),
