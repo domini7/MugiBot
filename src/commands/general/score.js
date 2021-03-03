@@ -160,7 +160,7 @@ module.exports = {
 		if (cmd === "raid" && message.channel.name === "bot-spam") {
 			if (raidCooldown.has(message.author.id)) {
 				message.reply(
-					"wait 30 minutes before trying to raid someone again"
+					"wait 15 minutes before trying to raid someone again"
 				);
 				return;
 			}
@@ -182,7 +182,7 @@ module.exports = {
 			const stolenPoints = bbgm[user] * 0.08;
 			const lostPoints = bbgm[raider] * 0.08;
 
-			if (Math.random() > 0.749) {
+			if (Math.random() >= 0.5) {
 				bbgm[raider] += +stolenPoints;
 				bbgm[user] -= stolenPoints;
 				message.reply(
@@ -207,7 +207,7 @@ module.exports = {
 			raidCooldown.add(message.author.id);
 			setTimeout(() => {
 				raidCooldown.delete(message.author.id);
-			}, 30 * 60000);
+			}, 15 * 60000);
 		}
 
 		if (cmd === "give") {

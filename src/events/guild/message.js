@@ -23,7 +23,7 @@ module.exports = (Discord, client, message) => {
 			// each character typed is 0.05 points
 			let charCount = message.content.length / 20;
 
-			bbgm[player] += Math.min(charCount, 3);
+			bbgm[player] += Math.min(charCount, 6);
 
 			fs.writeFile(
 				"../MugiBot/assets/json/bbgm.json",
@@ -84,45 +84,42 @@ module.exports = (Discord, client, message) => {
 		client.commands.get(cmd) ||
 		client.commands.find((a) => a.aliases && a.aliases.includes(cmd));
 
-	if (command) {
-		try {
-			// ignore commands in specific channels
-			if (ignoredChannels.includes(message.channel.id)) return;
-			if (
-				cooldowns.has(message.author.id) &&
-				message.channel.name != "bot-spam"
-			) {
-				message.author.send(
-					"Cooldowns enabled in that server, wait 50 seconds. (#bot-spam excluded)"
-				);
-				console.log(colors.green(commandLogger));
-				return;
-			}
-
-			command.execute(client, message, args, Discord, cmd);
+	if (!command) return;
+	try {
+		// ignore commands in specific channels
+		if (ignoredChannels.includes(message.channel.id)) return;
+		if (
+			cooldowns.has(message.author.id) &&
+			message.channel.name != "bot-spam"
+		) {
+			message.author.send(
+				"Cooldowns enabled in that server, wait 50 seconds. (#bot-spam excluded)"
+			);
 			console.log(colors.green(commandLogger));
-
-			if (
-				message.author.id === "188530356394131456" ||
-				message.guild === null
-			)
-				return;
-
-			if (
-				message.channel.name != "bot-spam" &&
-				message.guild.id === "290013534023057409"
-			) {
-				cooldowns.add(message.author.id);
-				setTimeout(() => {
-					cooldowns.delete(message.author.id);
-				}, 50000);
-			}
-		} catch (error) {
-			console.log("Error: " + colors.green(commandLogger));
-			console.error(error);
-			message.reply("There was an error trying to execute that command!");
+			return;
 		}
-	} else {
-		message.reply("That commmand does not exist.");
+
+		command.execute(client, message, args, Discord, cmd);
+		console.log(colors.green(commandLogger));
+
+		if (
+			message.author.id === "188530356394131456" ||
+			message.guild === null
+		)
+			return;
+
+		if (
+			message.channel.name != "bot-spam" &&
+			message.guild.id === "290013534023057409"
+		) {
+			cooldowns.add(message.author.id);
+			setTimeout(() => {
+				cooldowns.delete(message.author.id);
+			}, 50000);
+		}
+	} catch (error) {
+		console.log("Error: " + colors.green(commandLogger));
+		console.error(error);
+		message.reply("There was an error trying to execute that command!");
 	}
 };

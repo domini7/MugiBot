@@ -9,6 +9,7 @@ module.exports = {
 	description: "Search a question on stackoverflow",
 	cooldown: 120,
 	async execute(client, message, args, Discord) {
+		if (message.author.id === "814893991874002984" || message.author.id === "443583939207233536") return;
 		const query = args.join(" ");
 		try {
 			const { body } = await request
