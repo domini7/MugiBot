@@ -23,7 +23,7 @@ module.exports = (Discord, client, message) => {
 			// each character typed is 0.05 points
 			let charCount = message.content.length / 20;
 
-			bbgm[player] += Math.min(charCount, 6);
+			bbgm[player] += Math.min(charCount, 8);
 
 			fs.writeFile(
 				"../MugiBot/assets/json/bbgm.json",

@@ -53,7 +53,7 @@ module.exports = {
 					)}\nRank: ${search.bestMatchIndex + 1} / ${keys.length}`
 				)
 				.setFooter(
-					"0.05 PTs per char typed outside #bot-spam\nResets on Mar 13th\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
+					"0.05 PTs per char typed outside #bot-spam\nResets on Mar 16th\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
 				);
 
 			message.channel.send(embed);
@@ -103,7 +103,7 @@ module.exports = {
 					inline: true,
 				})
 				.setFooter(
-					`Resets on Mar 13th${
+					`Resets on Mar 16th${
 						botSpam != "bot-spam"
 							? "\nCheck your score with `;score` in #bot-spam\nBet points in #bot-spam with `;flip <coin> #/all`\nTry to win points with `;lottery`"
 							: "\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
@@ -133,21 +133,21 @@ module.exports = {
 				return;
 			}
 
-			if (bbgm[user] < 4) {
-				return message.reply("You need 4 points to play the lottery");
+			if (bbgm[user] < 3) {
+				return message.reply("You need 3 points to play the lottery");
 			}
 
-			if (Math.random() >= 0.99) {
-				bbgm[user] += 150;
+			if (Math.random() >= 0.95) {
+				bbgm[user] += 100;
 				message.reply(
-					`**WINNER**: 150 points have been awarded! New score: **${formatNumber(
+					`**WINNER**: 100 points have been awarded! New score: **${formatNumber(
 						bbgm[user]
 					)}**`
 				);
 			} else {
-				bbgm[user] -= 4;
+				bbgm[user] -= 3;
 				message.reply(
-					"you didn't win! You lose **4** points. Try again in five minutes for a chance to win 150 points."
+					"you didn't win! You lose **3** points. Try again in five minutes for a chance to win 100 points."
 				);
 			}
 
@@ -160,7 +160,7 @@ module.exports = {
 		if (cmd === "raid" && message.channel.name === "bot-spam") {
 			if (raidCooldown.has(message.author.id)) {
 				message.reply(
-					"wait 15 minutes before trying to raid someone again"
+					"wait 10 minutes before trying to raid someone again"
 				);
 				return;
 			}
@@ -173,8 +173,8 @@ module.exports = {
 
 			if (raider === user)
 				return message.reply("you can't raid yourself");
-			if (bbgm[raider] < 30)
-				return message.reply("you need 30 points to raid");
+			if (bbgm[raider] < 25)
+				return message.reply("you need 25 points to raid");
 			if (bbgm[user] < 1)
 				return message.reply("that user doesn't have enough points");
 
@@ -220,7 +220,7 @@ module.exports = {
 
 			if (!args.length)
 				return message.reply(
-					"You need to give points. `;give doobie mugi 25`"
+					"You need to give points. `;give doobie mugi 30`"
 				);
 
 			const join = args.join(" ");
@@ -232,9 +232,10 @@ module.exports = {
 
 			if (sender === user)
 				return message.reply("you can't give yourself");
-			if (isNaN(num) || num < 0) return message.reply("send a valid number.");
-			if (num > 25)
-				return message.reply("you can't send more than 25 points");
+			if (isNaN(num) || num < 0)
+				return message.reply("send a valid number.");
+			if (num > 30)
+				return message.reply("you can't send more than 30 points");
 			if (num > bbgm[sender])
 				return message.reply("you can't give more points than you own");
 

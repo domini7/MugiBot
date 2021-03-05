@@ -64,8 +64,8 @@ module.exports = {
 				);
 			}
 
-			if (bet > 20) {
-				return message.reply("you can't bet more than 20 points!");
+			if (bet > 15) {
+				return message.reply("you can't bet more than 15 points!");
 			}
 
 			if (bet <= 0) {
@@ -86,10 +86,10 @@ module.exports = {
 			message.reply(
 				`you ${result} **${bet}** points! New amount: ${rnd(
 					bbgm[player]
-				)}, try again in ${bet} seconds`
+				)}, try again in ${bet / 2} seconds`
 			);
 		} else {
-			message.reply("please enter a valid gamble `;flip <coin> 20`");
+			message.reply("please enter a valid gamble `;flip <coin> 15`");
 		}
 
 		if (bbgm[player] < 1) {
@@ -99,7 +99,7 @@ module.exports = {
 		flipCooldown.add(message.author.id);
 		setTimeout(() => {
 			flipCooldown.delete(message.author.id);
-		}, bet * 1000);
+		}, (bet / 2) * 1000);
 
 		fs.writeFile(
 			"../MugiBot/assets/json/bbgm.json",
