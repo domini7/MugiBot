@@ -3,6 +3,7 @@ const { stripIndents } = require("common-tags");
 const { shuffle, formatNumber, toTitleCase } = require("../../util/Utils.js");
 // for specific code block
 const bbgmDiscord = require("../../../assets/json/bbgm");
+const fs = require("fs");
 
 module.exports = {
 	name: "quiz",
@@ -84,7 +85,9 @@ module.exports = {
 				});
 
 				if (!messages.size)
-					return message.reply(`Time's up. It was ${toTitleCase(correct)}.`);
+					return message.reply(
+						`Time's up. It was ${toTitleCase(correct)}.`
+					);
 
 				const win =
 					shuffled[
@@ -123,6 +126,13 @@ module.exports = {
 							)}`
 						);
 					}
+					fs.writeFile(
+						"../MugiBot/assets/json/bbgm.json",
+						JSON.stringify(bbgmDiscord),
+						(error) => {
+							if (error) console.log(error);
+						}
+					);
 				}
 			} catch (error) {
 				return message.reply(`Error: \`${error.message}\``);
