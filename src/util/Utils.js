@@ -80,6 +80,13 @@ class Utils {
 		}${arr.slice(-1)}`;
 	}
 
+	static firstUpperCase(text, split = " ") {
+		return text
+			.split(split)
+			.map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
+			.join(" ");
+	}
+
 	static async verify(
 		channel,
 		user,
