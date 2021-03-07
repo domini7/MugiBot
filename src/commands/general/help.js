@@ -49,8 +49,9 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`;quiz (difficulty)`**",
-					value: "Get asked an easy, medium, or hard question.",
+					name: "**`;quiz (diff)(category)`**",
+					value:
+						"Get asked an easy, medium, or hard question with optional category # (see ;categories).",
 					inline: false,
 				},
 				{
