@@ -84,7 +84,7 @@ module.exports = {
 				});
 
 				if (!messages.size)
-					return message.reply(`Time's up. It was ${correct}.`);
+					return message.reply(`Time's up. It was ${toTitleCase(correct)}.`);
 
 				const win =
 					shuffled[
@@ -94,7 +94,7 @@ module.exports = {
 				if (win) {
 					message.reply("correct!");
 				} else {
-					message.reply(`Nope, it's ${correct}.`);
+					message.reply(`Nope, it's ${toTitleCase(correct)}.`);
 				}
 
 				// All this code til the catch is for a specific points system in a server. Feel free to remove this and the require.
