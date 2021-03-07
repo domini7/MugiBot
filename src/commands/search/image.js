@@ -18,7 +18,12 @@ module.exports = {
 			image_query = args.join(" ");
 		}
 
-		if (image_query === "pottery") image_query = "cat";
+		if (
+			image_query.includes("pottery") ||
+			image_query.includes("clay") ||
+			image_query.includes("pots")
+		)
+			image_query = "cat";
 
 		const image_results = await google.scrape(image_query, 65);
 
