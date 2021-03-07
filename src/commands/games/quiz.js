@@ -101,7 +101,7 @@ module.exports = {
 				}
 
 				// All this code til the catch is for a specific points system in a server. Feel free to remove this and the require.
-				if (message.channel.id === "788821945214435340") {
+				if (message.channel.id === "788821945214435340" && categ === 0) {
 					const player = message.author.username;
 					const bbgm = bbgmDiscord["bbgmDiscord"];
 					if (!bbgm[player]) bbgm[player] = 0;
