@@ -49,7 +49,7 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`;quiz (diff)(category)`**",
+					name: "**`;quiz (diff) (OPTIONAL: Category)`**",
 					value:
 						"Get asked an easy, medium, or hard question with optional category # (see ;categories).",
 					inline: false,
