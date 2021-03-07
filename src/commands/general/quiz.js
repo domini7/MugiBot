@@ -1,11 +1,13 @@
 const request = require("node-superfetch");
 const { stripIndents } = require("common-tags");
-const { shuffle, list } = require("../../util/Utils.js");
+const { shuffle, formatNumber } = require("../../util/Utils.js");
+// for specific code block
+const bbgmDiscord = require("../../../assets/json/bbgm");
 
 module.exports = {
 	name: "quiz",
 	descriptions: "Sends a question with answer choices",
-	async execute(client, message, args, Discord) {
+	async execute(client, message, args) {
 		const difficulties = ["easy", "medium", "hard"];
 		const choices = ["A", "B", "C", "D"];
 
@@ -14,10 +16,12 @@ module.exports = {
 				"choose a difficulty! `;quiz <easy | medium | hard>`"
 			);
 
-		const choice = args[0];
+		const choice = args[0].toLowerCase();
 
 		if (!difficulties.includes(choice))
-			return message.reply("difficulty choice should be easy, medium, or hard");
+			return message.reply(
+				"difficulty choice should be easy, medium, or hard"
+			);
 
 		try {
 			const { body } = await request
@@ -45,7 +49,7 @@ module.exports = {
 			const shuffled = shuffle(answers);
 
 			await message.reply(stripIndents`
-				**You have 15 seconds. The category is _${decodeURIComponent(
+				**you have 15 seconds. The category is _${decodeURIComponent(
 					body.results[0].category
 				)}_.**
 				${decodeURIComponent(body.results[0].question)}
@@ -69,13 +73,39 @@ module.exports = {
 					choices.indexOf(messages.first().content.toUpperCase())
 				] === correct;
 
-			if (!win) return message.reply(`Nope, it's ${correct}.`);
+			if (win) {
+				message.reply("correct!");
+			} else {
+				message.reply(`Nope, it's ${correct}.`);
+			}
 
-			return message.reply("Correct");
+			// All this code til the catch is for a specific points system in a server. Feel free to remove this and the require.
+			if (message.channel.id === "788821945214435340") {
+				const player = message.author.username;
+				const bbgm = bbgmDiscord["bbgmDiscord"];
+				if (!bbgm[player]) bbgm[player] = 0;
+
+				let score = 5;
+
+				if (choice === "medium") score = 10;
+				if (choice === "hard") score = 15;
+
+				if (win) {
+					bbgm[player] += +score;
+					message.channel.send(
+						`You earn ${score} points, current total: ${bbgm[player]}`
+					);
+				} else {
+					bbgm[player] -= score;
+					message.channel.send(
+						`You lose ${score} points, current total: ${formatNumber(
+							bbgm[player]
+						)}`
+					);
+				}
+			}
 		} catch (error) {
-			return message.reply(
-				`Error: \`${error.message}\``
-			);
+			return message.reply(`Error: \`${error.message}\``);
 		}
 	},
 };

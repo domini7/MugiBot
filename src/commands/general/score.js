@@ -7,6 +7,7 @@ const lotteryCooldown = new Set();
 const raidCooldown = new Set();
 const giveCooldown = new Set();
 
+// All of this code is for a points system in a specific channel, feel free to delete this file.
 module.exports = {
 	name: "score",
 	aliases: [
