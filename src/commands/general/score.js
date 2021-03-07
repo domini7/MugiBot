@@ -22,6 +22,8 @@ module.exports = {
 	execute(client, message, args, Discord, cmd) {
 		const bbgm = bbgmDiscord["bbgmDiscord"];
 
+		if (!bbgm[message.author.id]) bbgm[message.author.id] = 0;
+
 		if (cmd === "score") {
 			if (
 				message.channel.name != "bot-spam" &&
@@ -137,7 +139,7 @@ module.exports = {
 				return message.reply("You need 3 points to play the lottery");
 			}
 
-			if (Math.random() >= 0.95) {
+			if (Math.random() >= 0.92) {
 				bbgm[user] += 100;
 				message.reply(
 					`**WINNER**: 100 points have been awarded! New score: **${formatNumber(
@@ -207,7 +209,7 @@ module.exports = {
 			raidCooldown.add(message.author.id);
 			setTimeout(() => {
 				raidCooldown.delete(message.author.id);
-			}, 15 * 60000);
+			}, 10 * 60000);
 		}
 
 		if (cmd === "give") {

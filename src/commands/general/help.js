@@ -49,6 +49,11 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`;quiz (difficulty)`**",
+					value: "Get asked an easy, medium, or hard question.",
+					inline: false,
+				}
+				{
 					name: "**`;userinfo`**",
 					value: "Displays basic info, must be used in a server.",
 					inline: false,

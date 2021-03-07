@@ -1,6 +1,6 @@
 {
   "name": "MugiBot",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "a discord bot",
   "main": "main.js",
   "scripts": {
@@ -22,6 +22,7 @@
     "@discordjs/opus": "^0.3.3",
     "booste": "0.0.6",
     "colors": "^1.4.0",
+    "common-tags": "^1.8.0",
     "dayjs": "^1.10.3",
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",

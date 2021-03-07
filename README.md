@@ -33,6 +33,7 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 ```
 ;help                  | DM's you the list of commands.
 ;flip                  | Flip a coin. Optionally guess the result.
+;quiz [difficulty]     | Try to answer an easy, medium, or hard question.
 ;userinfo              | Displays basic user info, must be used in a server.
 ;version               | Checks current version and date last updated.
 ;suggest               | Send a suggestion to me.

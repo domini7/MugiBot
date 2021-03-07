@@ -1,6 +1,6 @@
 // Needed for betting points in a specific server
 const bbgmDiscord = require("../../../assets/json/bbgm");
-const { rnd } = require("../../util/Utils.js");
+const { rnd, formatNumber } = require("../../util/Utils.js");
 const fs = require("fs");
 
 const flipCooldown = new Set();
@@ -86,8 +86,9 @@ module.exports = {
 			message.reply(
 				`you ${result} **${bet}** points! New amount: ${rnd(
 					bbgm[player]
-				)}, try again in ${bet / 2} seconds`
+				)}, try again in ${formatNumber(bet / 1.5)} seconds`
 			);
+
 		} else {
 			message.reply("please enter a valid gamble `;flip <coin> 15`");
 		}
@@ -99,7 +100,7 @@ module.exports = {
 		flipCooldown.add(message.author.id);
 		setTimeout(() => {
 			flipCooldown.delete(message.author.id);
-		}, (bet / 2) * 1000);
+		}, (bet / 1.5) * 1000);
 
 		fs.writeFile(
 			"../MugiBot/assets/json/bbgm.json",
