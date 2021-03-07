@@ -93,7 +93,9 @@ module.exports = {
 				if (win) {
 					bbgm[player] += +score;
 					message.channel.send(
-						`You earn ${score} points, current total: ${bbgm[player]}`
+						`You earn ${score} points, current total: ${formatNumber(
+							bbgm[player]
+						)}`
 					);
 				} else {
 					bbgm[player] -= score;
