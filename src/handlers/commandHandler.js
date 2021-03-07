@@ -65,4 +65,17 @@ module.exports = (client) => {
 			continue;
 		}
 	}
+
+	const gamesCommandFiles = fs
+		.readdirSync("./src/commands/games/")
+		.filter((file) => file.endsWith(".js"));
+
+	for (const file of gamesCommandFiles) {
+		const command = require(`../commands/games/${file}`);
+		if (command.name) {
+			client.commands.set(command.name, command);
+		} else {
+			continue;
+		}
+	}
 };

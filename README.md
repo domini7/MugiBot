@@ -15,6 +15,7 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 	* [Music](https://github.com/domini7/MugiBot#music)
 	* [Bot](https://github.com/domini7/MugiBot#bot)
 	* [Search](https://github.com/domini7/MugiBot#search)
+	* [Games](https://github.com/domini7/MugiBot#games)
 * [Installation](https://github.com/domini7/MugiBot#installation)
 	* [Get API Keys](https://github.com/domini7/MugiBot#where-to-get-api-keys)
 	* [Required Permissions](https://github.com/domini7/MugiBot#permissions-the-bot-needs)
@@ -33,7 +34,6 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 ```
 ;help                  | DM's you the list of commands.
 ;flip                  | Flip a coin. Optionally guess the result.
-;quiz (diff)(category) | Answer an easy, medium, or hard question along with an optional category number (See ;categories).
 ;userinfo              | Displays basic user info, must be used in a server.
 ;version               | Checks current version and date last updated.
 ;suggest               | Send a suggestion to me.
@@ -77,6 +77,12 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 ;define (keyword)      | Define a word using urban dictionary. Potentially NSFW.
 ;wiki (query)          | Search wikipedia.
 ;stackoverflow (query) | Search for a question on StackOverflow
+```
+### Games
+
+```
+;quiz (diff)(category) | Answer an easy, medium, or hard question along with an optional category number (See ;categories).
+;akinator              | Play with the akinator.
 ```
 
 ## Installation

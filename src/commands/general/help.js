@@ -36,6 +36,11 @@ module.exports = {
 					name: "**Search**",
 					value: "Search the internet and display data.",
 					inline: false,
+				},
+				{
+					name: "**Games**",
+					value: "Simple games to play.",
+					inline: false,
 				}
 			);
 
@@ -46,12 +51,6 @@ module.exports = {
 				{
 					name: "**`;flip (OPTIONAL: Guess)`**",
 					value: "Flip a coin.",
-					inline: false,
-				},
-				{
-					name: "**`;quiz (diff) (OPTIONAL: Category)`**",
-					value:
-						"Get asked an easy, medium, or hard question with optional category # (see ;categories).",
 					inline: false,
 				},
 				{
@@ -221,6 +220,22 @@ module.exports = {
 					inline: false,
 				}
 			);
+		const games = new Discord.MessageEmbed()
+			.setTitle("Games")
+			.setColor("RANDOM")
+			.addFields(
+				{
+					name: "**`;quiz (diff) (OPTIONAL: Category)`**",
+					value:
+						"Get asked an easy, medium, or hard question with optional category # (see ;categories).",
+					inline: false,
+				},
+				{
+					name: "**`;akinator`**",
+					value: "Play with the akinator.",
+					inline: false,
+				}
+			);
 
 		const dm = message.author;
 
@@ -245,12 +260,16 @@ module.exports = {
 			case "search":
 				dm.send(search);
 				break;
+			case "games":
+				dm.send(games);
+				break;
 			case "all":
 				dm.send(general);
 				dm.send(nba);
 				dm.send(music);
 				dm.send(bot);
 				dm.send(search);
+				dm.send(games);
 				break;
 			default:
 				dm.send("Couldn't find that category! (Check spelling?)");
