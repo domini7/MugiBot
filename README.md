@@ -77,6 +77,7 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 ;define (keyword)      | Define a word using urban dictionary. Potentially NSFW.
 ;wiki (query)          | Search wikipedia.
 ;stackoverflow (query) | Search for a question on StackOverflow
+;horoscope (sign)      | Get a daily horoscope for a sign.
 ```
 ### Games
 

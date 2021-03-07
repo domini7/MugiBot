@@ -218,6 +218,11 @@ module.exports = {
 					name: "**`;stackoverflow (query)`**",
 					value: "Search for a question on StackOverflow.",
 					inline: false,
+				},
+				{
+					name: "**`;horoscope (sign)`**",
+					value: "Get a daily horoscope for a sign.",
+					inline: false,
 				}
 			);
 		const games = new Discord.MessageEmbed()
