@@ -50,8 +50,8 @@ module.exports = {
 
 			await message.reply(stripIndents`
 				**you have 15 seconds. The category is _${decodeURIComponent(
-					body.results[0].category
-				)}_.**
+		body.results[0].category
+	)}_.**
 				${decodeURIComponent(body.results[0].question)}
 				${shuffled.map((answer, i) => `**${choices[i]}.** ${answer}`).join("\n")}
 			`);
