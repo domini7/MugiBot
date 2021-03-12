@@ -52,13 +52,12 @@ module.exports = (Discord, client, message) => {
 	)
 		return;
 
+	const football = ["nfl roster", "nfl file"];
 	if (!responseBlackList.includes(message.author.id)) {
 		// this crap is for a specific discord server
 		if (
-			(message.channel.name === "football-gm-discussion" &&
-				message.content.toLowerCase().includes("nfl roster")) ||
-			(message.channel.name === "football-gm-discussion" &&
-				message.content.toLowerCase().includes("nfl file"))
+			message.channel.name === "football-gm-discussion" &&
+			football.includes(message.content.toLowerCase())
 		) {
 			message.channel.send(
 				"<https://www.dropbox.com/s/66nd5plzfummyqu/FBGM_NFL_Roster_2021_regular_season_0-0.json?dl=0>"
