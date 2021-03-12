@@ -193,6 +193,11 @@ module.exports = {
 					inline: false,
 				},
 				{
+					name: "**`;gif (keyword)`**",
+					value: "Get a gif.",
+					inline: false,
+				},
+				{
 					name: "**`;inspirobot`**",
 					value: "Bot sends an inspirational image from inspirobot.",
 					inline: false,

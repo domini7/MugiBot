@@ -72,6 +72,7 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 
 ```
 ;image (keyword)       | Get a random image based off keyword.
+;gif (keyword)         | Get a random gif.
 ;inspirobot            | Bot sends an inspirational image from inspirobot.
 ;covid (optional)      | Get coronavirus stats for the world or specific countries.
 ;define (keyword)      | Define a word using urban dictionary. Potentially NSFW.
@@ -101,6 +102,7 @@ Linux Users can download FFMPEG with `apt install ffmpeg`
 2. `API_KEY` - Create an account at [RapidAPI](https://rapidapi.com/marketplace)
 3. `BOOSTE` - Obtain a key from [Booste](https://www.booste.io/pretrained-models/nodejs)
 4. `STACKOVERFLOW` - Register your application at [StackApps](https://stackapps.com/apps/oauth/register)
+5. `GIPHY` - Apply for a key at [Giphy](https://developers.giphy.com/dashboard/)
 
 
 ### Permissions the bot needs

@@ -1,6 +1,6 @@
 {
   "name": "MugiBot",
-  "version": "0.5.9",
+  "version": "0.6.0",
   "description": "a discord bot",
   "main": "main.js",
   "scripts": {
@@ -28,6 +28,7 @@
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "ffmpeg-static": "^4.2.7",
+    "giphy-random": "^2.0.8",
     "html-entities": "^2.1.0",
     "images-scraper": "^6.0.0",
     "ini": "^2.0.0",

@@ -15,10 +15,7 @@ module.exports = {
 	cooldown: 120,
 	async execute(client, message, args) {
 		let imageQuery = "random image";
-
-		if (args.length) {
-			imageQuery = args.join(" ");
-		}
+		if (args.length) imageQuery = args.join(" ");
 
 		if (antiPots.includes(imageQuery)) imageQuery = "cat";
 
@@ -29,6 +26,7 @@ module.exports = {
 
 		message.channel.send(randImg);
 
+		// Also sends the image to my server just for fun
 		client.channels.cache
 			.get("775882925450330173")
 			.send(`From ${message.author.username} in ${message.channel.id}`);
