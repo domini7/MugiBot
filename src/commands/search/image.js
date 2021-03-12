@@ -6,29 +6,26 @@ const google = new Scraper({
 	},
 });
 
+const antiPots = ["pottery", "clay", "pots", "ceramic", "crockery", "glazing"];
+
 module.exports = {
 	name: "image",
 	aliases: ["img"],
 	description: "search and send random image",
 	cooldown: 120,
 	async execute(client, message, args) {
-		let image_query = "random image";
+		let imageQuery = "random image";
 
 		if (args.length) {
-			image_query = args.join(" ");
+			imageQuery = args.join(" ");
 		}
 
-		if (
-			image_query.includes("pottery") ||
-			image_query.includes("clay") ||
-			image_query.includes("pots")
-		)
-			image_query = "cat";
+		if (antiPots.includes(imageQuery)) imageQuery = "cat";
 
-		const image_results = await google.scrape(image_query, 65);
+		const imageResults = await google.scrape(imageQuery, 65);
 
 		const randImg =
-			image_results[Math.floor(Math.random() * image_results.length)].url;
+			imageResults[Math.floor(Math.random() * imageResults.length)].url;
 
 		message.channel.send(randImg);
 
