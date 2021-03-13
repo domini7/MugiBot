@@ -6,7 +6,7 @@ const google = new Scraper({
 	},
 });
 
-const antiPots = ["pottery", "clay", "pots", "ceramic", "crockery", "glazing"];
+const antiPots = ["pottery", "clay", "pots", "pot", "ceramics", "ceramic", "crockery", "glazing"];
 
 module.exports = {
 	name: "image",
@@ -17,7 +17,9 @@ module.exports = {
 		let imageQuery = "random image";
 		if (args.length) imageQuery = args.join(" ");
 
-		if (antiPots.includes(imageQuery)) imageQuery = "cat";
+		for (const arg of args) {
+			if (antiPots.includes(arg)) imageQuery = "cat";
+		}
 
 		const imageResults = await google.scrape(imageQuery, 65);
 
