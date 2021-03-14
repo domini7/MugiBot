@@ -1,0 +1,18 @@
+{
+    "yes": [
+        "yes",
+        "y",
+        "ye",
+        "yeah",
+        "yup",
+        "yea",
+        "ya",
+        "hai",
+        "si",
+        "sí",
+        "oui",
+        "はい",
+        "correct"
+    ],
+    "no": ["no", "n", "nah", "nope", "nop", "iie", "いいえ", "non", "fuck off"]
+}

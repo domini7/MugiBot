@@ -1,29 +1,4 @@
-const yes = [
-	"yes",
-	"y",
-	"ye",
-	"yeah",
-	"yup",
-	"yea",
-	"ya",
-	"hai",
-	"si",
-	"sí",
-	"oui",
-	"はい",
-	"correct",
-];
-const no = [
-	"no",
-	"n",
-	"nah",
-	"nope",
-	"nop",
-	"iie",
-	"いいえ",
-	"non",
-	"fuck off",
-];
+const answer = require("../../assets/json/yes-no");
 
 class Utils {
 	// turns birthdate into age
@@ -96,8 +71,8 @@ class Utils {
 			const value = res.content.toLowerCase();
 			return (
 				(user ? res.author.id === user.id : true) &&
-				(yes.includes(value) ||
-					no.includes(value) ||
+				(answer.yes.includes(value) ||
+					answer.no.includes(value) ||
 					extraYes.includes(value) ||
 					extraNo.includes(value))
 			);
@@ -108,8 +83,10 @@ class Utils {
 		});
 		if (!verify.size) return 0;
 		const choice = verify.first().content.toLowerCase();
-		if (yes.includes(choice) || extraYes.includes(choice)) return true;
-		if (no.includes(choice) || extraNo.includes(choice)) return false;
+		if (answer.yes.includes(choice) || extraYes.includes(choice))
+			return true;
+		if (answer.no.includes(choice) || extraNo.includes(choice))
+			return false;
 		return false;
 	}
 }
