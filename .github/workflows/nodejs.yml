@@ -14,5 +14,3 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install
       run: npm install
-    - name: ESLint
-      run: npm run lint
