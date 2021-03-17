@@ -51,6 +51,8 @@ module.exports = {
 		const player = message.author.username;
 		const coinResult = coin[coin.length - 1];
 
+		if (!bbgm[player]) bbgm[player] = 0;
+
 		if (bbgm[player] <= 0)
 			return message.reply("you don't have points to bet!");
 
@@ -64,8 +66,8 @@ module.exports = {
 				);
 			}
 
-			if (bet > 20) {
-				return message.reply("you can't bet more than 20 points!");
+			if (bet > 25) {
+				return message.reply("you can't bet more than 25 points!");
 			}
 
 			if (bet <= 0) {
@@ -86,21 +88,21 @@ module.exports = {
 			message.reply(
 				`you ${result} **${bet}** points! New amount: ${rnd(
 					bbgm[player]
-				)}, try again in ${formatNumber(bet / 2)} seconds`
+				)}, try again in ${formatNumber(bet / 2.5)} seconds`
 			);
 
 		} else {
-			message.reply("please enter a valid gamble `;flip <coin> 20`");
+			message.reply("please enter a valid gamble `;flip <coin> 25`");
 		}
 
-		if (bbgm[player] < 1) {
-			message.reply("use `;buyin` to reset back to 1 point");
+		if (bbgm[player] < 2) {
+			message.reply("use `;buyin` to reset back to 2 point");
 		}
 
 		flipCooldown.add(message.author.id);
 		setTimeout(() => {
 			flipCooldown.delete(message.author.id);
-		}, (bet / 2) * 1000);
+		}, (bet / 2.5) * 1000);
 
 		fs.writeFile(
 			"../MugiBot/assets/json/bbgm.json",

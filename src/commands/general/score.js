@@ -23,7 +23,7 @@ module.exports = {
 	execute(client, message, args, Discord, cmd) {
 		const bbgm = bbgmDiscord["bbgmDiscord"];
 
-		if (!bbgm[message.author.id]) bbgm[message.author.id] = 0;
+		if (!bbgm[message.author.username]) bbgm[message.author.username] = 0;
 
 		if (cmd === "score") {
 			if (
@@ -56,7 +56,7 @@ module.exports = {
 					)}\nRank: ${search.bestMatchIndex + 1} / ${keys.length}`
 				)
 				.setFooter(
-					"0.05 PTs per char typed outside #bot-spam\nResets on Mar 16th\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
+					"0.05 PTs per char typed outside #bot-spam\nResets on Apr 1st, 12AM PST\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
 				);
 
 			message.channel.send(embed);
@@ -115,7 +115,7 @@ module.exports = {
 					inline: true,
 				})
 				.setFooter(
-					`Resets on Mar 16th${
+					`Resets on Apr 1st, 12AM PST${
 						botSpam != "bot-spam"
 							? "\nCheck your score with `;score` in #bot-spam\nBet points in #bot-spam with `;flip <coin> #/all`\nTry to win points with `;lottery`"
 							: "\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
@@ -127,12 +127,12 @@ module.exports = {
 
 		if (cmd === "buyin" && message.channel.name === "bot-spam") {
 			const user = message.author.username;
-			if (bbgm[user] >= 1) {
+			if (bbgm[user] >= 2) {
 				return message.reply("You already have enough points.");
 			}
 
-			bbgm[user] = 1;
-			message.reply("Your points have been set back to 1");
+			bbgm[user] = 2;
+			message.reply("Your points have been set back to 2");
 		}
 
 		if (cmd === "lottery" && message.channel.name === "bot-spam") {
