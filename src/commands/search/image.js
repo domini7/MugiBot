@@ -13,8 +13,11 @@ module.exports = {
 	cooldown: 120,
 	async execute(client, message, args) {
 		let imageQuery = "random image";
-		
+
 		if (args.length) imageQuery = args.join(" ");
+
+		// for specific user
+		if (message.author.id === "443583939207233536") imageQuery = "cute cat";
 
 		const imageResults = await google.scrape(imageQuery, 65);
 

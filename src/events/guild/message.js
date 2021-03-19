@@ -57,7 +57,7 @@ module.exports = (Discord, client, message) => {
 		// this crap is for a specific discord server
 		if (
 			message.channel.name === "football-gm-discussion" &&
-			football.includes(message.content.toLowerCase())
+			football.some((f) => message.content.toLowerCase().includes(f))
 		) {
 			message.channel.send(
 				"<https://www.dropbox.com/s/66nd5plzfummyqu/FBGM_NFL_Roster_2021_regular_season_0-0.json?dl=0>"
