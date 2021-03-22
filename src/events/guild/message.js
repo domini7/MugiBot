@@ -52,17 +52,16 @@ module.exports = (Discord, client, message) => {
 	)
 		return;
 
+	// this crap is for a specific discord server
 	const football = ["nfl roster", "nfl file"];
-	if (!responseBlackList.includes(message.author.id)) {
-		// this crap is for a specific discord server
-		if (
-			message.channel.name === "football-gm-discussion" &&
-			football.some((f) => message.content.toLowerCase().includes(f))
-		) {
-			message.channel.send(
-				"<https://www.dropbox.com/s/66nd5plzfummyqu/FBGM_NFL_Roster_2021_regular_season_0-0.json?dl=0>"
-			);
-		}
+	if (
+		!responseBlackList.includes(message.author.id) &&
+		message.channel.name === "football-gm-discussion" &&
+		football.some((f) => message.content.toLowerCase().includes(f))
+	) {
+		message.channel.send(
+			"<https://www.dropbox.com/s/66nd5plzfummyqu/FBGM_NFL_Roster_2021_regular_season_0-0.json?dl=0>"
+		);
 	}
 
 	const prefix = ";";
