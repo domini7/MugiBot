@@ -66,8 +66,8 @@ module.exports = {
 				);
 			}
 
-			if (bet > 25) {
-				return message.reply("you can't bet more than 25 points!");
+			if (bet > 30) {
+				return message.reply("you can't bet more than 30 points!");
 			}
 
 			if (bet <= 0) {
@@ -92,7 +92,7 @@ module.exports = {
 			);
 
 		} else {
-			message.reply("please enter a valid gamble `;flip <coin> 25`");
+			message.reply("please enter a valid gamble `;flip <coin> 30`");
 		}
 
 		if (bbgm[player] < 2) {

@@ -56,7 +56,7 @@ module.exports = {
 					)}\nRank: ${search.bestMatchIndex + 1} / ${keys.length}`
 				)
 				.setFooter(
-					"0.05 PTs per char typed outside #bot-spam\nResets on Apr 1st, 12AM PST\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
+					"0.05 PTs per char typed outside #bot-spam\nResets on May 1st, 12AM PST\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
 				);
 
 			message.channel.send(embed);
@@ -115,7 +115,7 @@ module.exports = {
 					inline: true,
 				})
 				.setFooter(
-					`Resets on Apr 1st, 12AM PST${
+					`Resets on May 1st, 12AM PST${
 						botSpam != "bot-spam"
 							? "\nCheck your score with `;score` in #bot-spam\nBet points in #bot-spam with `;flip <coin> #/all`\nTry to win points with `;lottery`"
 							: "\nBet points with `;flip <coin> #/all`\nTry to win points with `;lottery`"
@@ -145,21 +145,21 @@ module.exports = {
 				return;
 			}
 
-			if (bbgm[user] < 3) {
-				return message.reply("You need 3 points to play the lottery");
+			if (bbgm[user] < 5) {
+				return message.reply("You need 5 points to play the lottery");
 			}
 
 			if (Math.random() >= 0.93) {
-				bbgm[user] += 125;
+				bbgm[user] += 150;
 				message.reply(
-					`**WINNER**: 100 points have been awarded! New score: **${formatNumber(
+					`**WINNER**: 150 points have been awarded! New score: **${formatNumber(
 						bbgm[user]
 					)}**`
 				);
 			} else {
-				bbgm[user] -= 3;
+				bbgm[user] -= 5;
 				message.reply(
-					"you didn't win! You lose **3** points. Try again in four minutes for a chance to win 125 points."
+					"you didn't win! You lose **5** points. Try again in four minutes."
 				);
 			}
 
@@ -172,7 +172,7 @@ module.exports = {
 		if (cmd === "raid" && message.channel.name === "bot-spam") {
 			if (raidCooldown.has(message.author.id)) {
 				message.reply(
-					"wait 8 minutes before trying to raid someone again"
+					"wait 10 minutes before trying to raid someone again"
 				);
 				return;
 			}
@@ -185,20 +185,20 @@ module.exports = {
 
 			if (raider === user)
 				return message.reply("you can't raid yourself");
-			if (bbgm[raider] < 25)
-				return message.reply("you need 25 points to raid");
+			if (bbgm[raider] < 40)
+				return message.reply("you need 40 points to raid");
 			if (bbgm[user] < 1)
 				return message.reply("that user doesn't have enough points");
 
 			// stolen is the raided user, lost is raider
-			const stolenPoints = bbgm[user] * 0.07;
-			const lostPoints = bbgm[raider] * 0.07;
+			const stolenPoints = bbgm[user] * 0.075;
+			const lostPoints = bbgm[raider] * 0.075;
 
 			if (Math.random() >= 0.5) {
 				bbgm[raider] += +stolenPoints;
 				bbgm[user] -= stolenPoints;
 				message.reply(
-					`success! You stole 7% (**${formatNumber(
+					`success! You stole 7.5% (**${formatNumber(
 						stolenPoints
 					)}**) from ${user}. New total: **${formatNumber(
 						bbgm[raider]
@@ -208,7 +208,7 @@ module.exports = {
 				bbgm[raider] -= lostPoints;
 				bbgm[user] += +lostPoints;
 				message.reply(
-					`failed! You lost 7% (**${formatNumber(
+					`failed! You lost 7.5% (**${formatNumber(
 						lostPoints
 					)}**) of your points to ${user}. New total: **${formatNumber(
 						bbgm[raider]
@@ -219,7 +219,7 @@ module.exports = {
 			raidCooldown.add(message.author.id);
 			setTimeout(() => {
 				raidCooldown.delete(message.author.id);
-			}, 8 * 60000);
+			}, 10 * 60000);
 		}
 
 		if (cmd === "give") {
