@@ -1,9 +1,6 @@
 const request = require("node-superfetch");
 const { stripIndents } = require("common-tags");
-const { shuffle, formatNumber, toTitleCase } = require("../../util/Utils.js");
-// for specific code block
-const bbgmDiscord = require("../../../assets/json/bbgm");
-const fs = require("fs");
+const { shuffle, toTitleCase } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "quiz",
@@ -99,41 +96,7 @@ module.exports = {
 				} else {
 					message.reply(`Nope, it's ${toTitleCase(correct)}.`);
 				}
-
-				// All this code til the catch is for a specific points system in a server. Feel free to remove this and the require.
-				if (message.channel.id === "788821945214435340" && categ === 0) {
-					const player = message.author.username;
-					const bbgm = bbgmDiscord["bbgmDiscord"];
-					if (!bbgm[player]) bbgm[player] = 0;
-
-					let score = 5;
-
-					if (choice === "medium") score = 10;
-					if (choice === "hard") score = 15;
-
-					if (win) {
-						bbgm[player] += +score;
-						message.channel.send(
-							`You earn ${score} points, current total: ${formatNumber(
-								bbgm[player]
-							)}`
-						);
-					} else {
-						bbgm[player] -= score;
-						message.channel.send(
-							`You lose ${score} points, current total: ${formatNumber(
-								bbgm[player]
-							)}`
-						);
-					}
-					fs.writeFile(
-						"../MugiBot/assets/json/bbgm.json",
-						JSON.stringify(bbgmDiscord),
-						(error) => {
-							if (error) console.log(error);
-						}
-					);
-				}
+				
 			} catch (error) {
 				return message.reply(`Error: \`${error.message}\``);
 			}
