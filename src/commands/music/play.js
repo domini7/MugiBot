@@ -10,6 +10,9 @@ module.exports = {
 	aliases: ["skip", "stop"],
 	description: "Music control",
 	async execute(client, message, args, Discord, cmd) {
+		if (message.guild === null)
+			return message.reply("You cannot use this command in DMs");
+		
 		const voiceChannel = message.member.voice.channel;
 		if (!voiceChannel)
 			return message.channel.send(
@@ -78,7 +81,6 @@ module.exports = {
 			}
 		} else if (cmd === "skip") skipSong(message, serverQueue);
 		else if (cmd === "stop") stopSong(message, serverQueue);
-		
 	},
 };
 
