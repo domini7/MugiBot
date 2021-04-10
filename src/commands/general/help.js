@@ -3,6 +3,12 @@ module.exports = {
 	description: "Displays public commands",
 	cooldown: 10,
 	execute(client, message, args, Discord) {
+		const embed = new Discord.MessageEmbed()
+			.setColor("RANDOM")
+			.setTitle("Check DM's!");
+
+		if (message.channel.type === "text") message.channel.send(embed);
+
 		const help = new Discord.MessageEmbed()
 			.setColor("#808080")
 			.setAuthor("MugiBot", "", "https://github.com/domini7/MugiBot")
@@ -255,34 +261,34 @@ module.exports = {
 			const cat = args[0].toLowerCase();
 
 			switch (cat) {
-			case "general":
-				dm.send(general);
-				break;
-			case "nba":
-				dm.send(nba);
-				break;
-			case "music":
-				dm.send(music);
-				break;
-			case "bot":
-				dm.send(bot);
-				break;
-			case "search":
-				dm.send(search);
-				break;
-			case "games":
-				dm.send(games);
-				break;
-			case "all":
-				dm.send(general);
-				dm.send(nba);
-				dm.send(music);
-				dm.send(bot);
-				dm.send(search);
-				dm.send(games);
-				break;
-			default:
-				dm.send("Couldn't find that category! (Check spelling?)");
+				case "general":
+					dm.send(general);
+					break;
+				case "nba":
+					dm.send(nba);
+					break;
+				case "music":
+					dm.send(music);
+					break;
+				case "bot":
+					dm.send(bot);
+					break;
+				case "search":
+					dm.send(search);
+					break;
+				case "games":
+					dm.send(games);
+					break;
+				case "all":
+					dm.send(general);
+					dm.send(nba);
+					dm.send(music);
+					dm.send(bot);
+					dm.send(search);
+					dm.send(games);
+					break;
+				default:
+					dm.send("Couldn't find that category! (Check spelling?)");
 			}
 		}
 	},
