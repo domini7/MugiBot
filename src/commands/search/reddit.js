@@ -38,6 +38,8 @@ module.exports = {
 				);
 			});
 
+			if (!filteredData.length) return message.reply("Couldn't find any links!");
+
 			for (let i = 0; i < filteredData.length; i++) {
 				links.push(
 					`<https://reddit.com${filteredData[i].data.permalink}>`
