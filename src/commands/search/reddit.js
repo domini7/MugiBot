@@ -8,16 +8,16 @@ module.exports = {
 		let links = [];
 
 		// How old can the posts be in hours
-		let maxAgeInHours = 3;
+		let maxAgeInHours = args[0] ? args[0] : 3;
 
 		// Max # of comments on a post
-		let maxComments = 100;
+		let maxComments = args[1] ? args[1] : 100;
 
 		// Min # of comments on a post
 		let minComments = 10;
 
 		// Minimum upvotes for a post
-		let minUpvotes = 1000;
+		let minUpvotes = args[2] ? args[2] : 1000;
 
 		try {
 			// Gets the best 100 post on r/all, can't search for more sadly.
