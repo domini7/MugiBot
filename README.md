@@ -79,6 +79,7 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 ;wiki (query)          | Search wikipedia.
 ;stackoverflow (query) | Search for a question on StackOverflow
 ;horoscope (sign)      | Get a daily horoscope for a sign.
+;reddit (age|com|ups)  | Get links from r/all. Args are optional, age is max post age, com is max comments, ups is min upvotes.
 ```
 ### Games
 

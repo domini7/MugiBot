@@ -234,6 +234,11 @@ module.exports = {
 					name: "**`;horoscope (sign)`**",
 					value: "Get a daily horoscope for a sign.",
 					inline: false,
+				},
+				{
+					name: "**`;reddit (max age (hours)) (max comments) (min upvotes)`**",
+					value: "Search r/All for post to farm in, all args are optional.",
+					inline: false,
 				}
 			);
 		const games = new Discord.MessageEmbed()
