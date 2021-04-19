@@ -261,34 +261,34 @@ module.exports = {
 			const cat = args[0].toLowerCase();
 
 			switch (cat) {
-				case "general":
-					dm.send(general);
-					break;
-				case "nba":
-					dm.send(nba);
-					break;
-				case "music":
-					dm.send(music);
-					break;
-				case "bot":
-					dm.send(bot);
-					break;
-				case "search":
-					dm.send(search);
-					break;
-				case "games":
-					dm.send(games);
-					break;
-				case "all":
-					dm.send(general);
-					dm.send(nba);
-					dm.send(music);
-					dm.send(bot);
-					dm.send(search);
-					dm.send(games);
-					break;
-				default:
-					dm.send("Couldn't find that category! (Check spelling?)");
+			case "general":
+				dm.send(general);
+				break;
+			case "nba":
+				dm.send(nba);
+				break;
+			case "music":
+				dm.send(music);
+				break;
+			case "bot":
+				dm.send(bot);
+				break;
+			case "search":
+				dm.send(search);
+				break;
+			case "games":
+				dm.send(games);
+				break;
+			case "all":
+				dm.send(general);
+				dm.send(nba);
+				dm.send(music);
+				dm.send(bot);
+				dm.send(search);
+				dm.send(games);
+				break;
+			default:
+				dm.send("Couldn't find that category! (Check spelling?)");
 			}
 		}
 	},
