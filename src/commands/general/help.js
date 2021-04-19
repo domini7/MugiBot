@@ -236,8 +236,8 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`;reddit (max age (hours)) (max comments) (min upvotes)`**",
-					value: "Search r/All for post to farm in, all args are optional.",
+					name: "**`;reddit Sub|Age|MaxComments|MinUpvotes`**",
+					value: "Search for Reddit links. Args are optional.",
 					inline: false,
 				}
 			);
