@@ -5,19 +5,19 @@ module.exports = {
 	description: "Get filtered r/all links",
 	cooldown: 50,
 	async execute(client, message, args) {
-		let links = [];
-
 		// How old can the posts be in hours
-		let maxAgeInHours = args[0] ? args[0] : 3;
+		let maxAgeInHours = args[0] ? args[0] : 4;
 
 		// Max # of comments on a post
-		let maxComments = args[1] ? args[1] : 100;
+		let maxComments = args[1] ? args[1] : 120;
 
 		// Min # of comments on a post
 		let minComments = 10;
 
 		// Minimum upvotes for a post
 		let minUpvotes = args[2] ? args[2] : 1000;
+
+		let links = [];
 
 		try {
 			// Gets the best 100 post on r/all, can't search for more sadly.
@@ -45,7 +45,7 @@ module.exports = {
 			}
 			message.channel.send(links);
 		} catch (error) {
-			message.reply("Error");
+			message.reply(`Error: ${error.message}`);
 			console.error(error);
 		}
 	},
