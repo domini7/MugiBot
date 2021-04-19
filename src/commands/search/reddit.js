@@ -6,16 +6,16 @@ module.exports = {
 	cooldown: 50,
 	async execute(client, message, args) {
 		// How old can the posts be in hours
-		let maxAgeInHours = args[0] ? args[0] : 4;
+		let maxAgeInHours = args[0] ? args[0] : 3.5;
 
 		// Max # of comments on a post
-		let maxComments = args[1] ? args[1] : 120;
+		let maxComments = args[1] ? args[1] : 100;
 
 		// Min # of comments on a post
-		let minComments = 10;
+		let minComments = 15;
 
 		// Minimum upvotes for a post
-		let minUpvotes = args[2] ? args[2] : 1000;
+		let minUpvotes = args[2] ? args[2] : 2500;
 
 		let links = [];
 
