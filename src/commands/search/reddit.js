@@ -6,19 +6,19 @@ module.exports = {
 	cooldown: 50,
 	async execute(client, message, args) {
 		// Sub to search?
-		let subreddit = args[0] ? args[0] : "all";
+		const subreddit = args[0] ?? "all";
 
 		// How old can the posts be in hours
-		let maxAgeInHours = args[1] ? args[1] : 3.5;
+		const maxAgeInHours = args[1] ?? 4;
 
 		// Max # of comments on a post
-		let maxComments = args[2] ? args[2] : 100;
+		const maxComments = args[2] ?? 120;
 
 		// Min # of comments on a post
-		let minComments = 15;
+		const minComments = 15;
 
 		// Minimum upvotes for a post
-		let minUpvotes = args[3] ? args[3] : 2500;
+		const minUpvotes = args[3] ?? 2000;
 
 		let links = [];
 
