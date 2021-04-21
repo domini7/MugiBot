@@ -80,7 +80,7 @@ Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?c
 ;stackoverflow (query) | Search for a question on StackOverflow
 ;horoscope (sign)      | Get a daily horoscope for a sign.
 ;reddit                | Get links from Reddit.
-OPTIONAL ARGS: Subreddit | Age (Hours) | Max Comments | Min Upvotes
+OPTIONAL ARGS: Subreddit | Age (Hours) | Max Comments
 ```
 ### Games
 

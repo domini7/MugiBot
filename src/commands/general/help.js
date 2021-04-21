@@ -236,7 +236,7 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`;reddit Sub|Age|MaxComments|MinUpvotes`**",
+					name: "**`;reddit Sub|Age|MaxComments`**",
 					value: "Search for Reddit links. Args are optional.",
 					inline: false,
 				}
