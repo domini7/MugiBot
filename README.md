@@ -3,9 +3,9 @@
 # MugiBot
 
 
-This is a multi-purpose personal Discord bot built using JavaScript. DM's are open for commands at MugiBot#9444
+This is a multi-purpose personal Discord bot built using JavaScript.
 
-Want MugiBot in your server? [Click here](https://discord.com/oauth2/authorize?client_id=776681738654580746&scope=bot&permissions=3267648)
+[Click here to add MugiBot to your server](https://discord.com/oauth2/authorize?client_id=776681738654580746&scope=bot&permissions=3267648)
 
 ## Contents
 * [Info](https://github.com/domini7/MugiBot#info)
