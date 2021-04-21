@@ -83,7 +83,7 @@ module.exports = {
 
 			// Send the links every 1.25 to avoid spam protection.
 			for (const post of qualifiedPost) {
-				message.channel.send(post);
+				message.channel.send(`<${post}>`);
 				await timer(1250);
 			}
 		} catch (error) {
