@@ -20,8 +20,6 @@ module.exports = {
 		// Minimum upvotes for a post
 		const minUpvotes = args[3] ?? 2000;
 
-		let links = [];
-
 		try {
 			// Gets the best 100 post on r/all, can't search for more sadly.
 			const { body } = await request.get(
@@ -45,12 +43,13 @@ module.exports = {
 				return message.reply("Couldn't find any links!");
 
 			for (let i = 0; i < filteredData.length; i++) {
-				links.push(
-					`<https://reddit.com${filteredData[i].data.permalink}>`
-				);
+				// Send a link every 0.9 seconds to avoid spam blocks.
+				setTimeout(() => {
+					message.channel.send(
+						`<https://reddit.com${filteredData[i].data.permalink}>`
+					);
+				}, 900);
 			}
-
-			message.channel.send(links);
 		} catch (error) {
 			message.reply(`Error: ${error.message}`);
 			console.error(error);
