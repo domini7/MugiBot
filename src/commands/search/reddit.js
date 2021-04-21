@@ -42,13 +42,14 @@ module.exports = {
 			if (!filteredData.length)
 				return message.reply("Couldn't find any links!");
 
+			// Send a link every 1.25 seconds to avoid spam blocks.
+			const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+
 			for (let i = 0; i < filteredData.length; i++) {
-				// Send a link every 0.9 seconds to avoid spam blocks.
-				setTimeout(() => {
-					message.channel.send(
-						`<https://reddit.com${filteredData[i].data.permalink}>`
-					);
-				}, 900);
+				message.channel.send(
+					`<https://reddit.com${filteredData[i].data.permalink}>`
+				);
+				await timer(1250);
 			}
 		} catch (error) {
 			message.reply(`Error: ${error.message}`);
