@@ -11,13 +11,13 @@ module.exports = {
 		const subreddit = args[0] ?? "all";
 
 		// How old can the posts be in hours
-		const maxAgeInHours = args[1] ?? 6;
+		const maxAgeInHours = args[1] ?? 4.5;
 
 		// Max # of comments on a post
-		const maxComments = args[2] ?? 120;
+		const maxComments = args[2] ?? 110;
 
 		// Top comment has to be getting this many upvotes per min to qualify
-		const minUpvotesPerMin = args[3] ?? 0.82;
+		const minUpvotesPerMin = args[3] ?? 0.8;
 
 		const seconds = Date.now() / 1000;
 
