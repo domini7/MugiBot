@@ -32,7 +32,7 @@
     "html-entities": "^2.3.2",
     "images-scraper": "^6.3.0",
     "ini": "^2.0.0",
-    "mathjs": "^9.3.2",
+    "mathjs": "^9.4.0",
     "merge-options": "^3.0.3",
     "nba": "^4.15.0",
     "node-fetch": "^2.6.1",
@@ -41,7 +41,7 @@
     "unirest": "^0.6.0",
     "wikipedia": "^1.1.1",
     "yt-search": "^2.8.0",
-    "ytdl-core": "^4.7.0"
+    "ytdl-core": "^4.8.0"
   },
   "devDependencies": {
     "eslint": "^7.26.0"
