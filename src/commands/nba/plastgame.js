@@ -16,16 +16,6 @@ module.exports = {
 		const player = args.join(" ");
 		const pid = NBA.findPlayer(player);
 
-		/* NBA.findPlayer contains
-		firstName
-		lastName
-		playerId
-		teamId
-		fullName
-		downcaseName
-		We'll be using playerId for this command
-		*/
-
 		if (!pid) return message.channel.send("No Player Found");
 
 		const profile = await NBA.stats.playerProfile({
@@ -40,6 +30,7 @@ module.exports = {
 		try {
 			const stats = await NBA.stats.playerSplits({
 				Season: lastSeason,
+				SeasonType: "Regular Season",
 				PlayerID: pid.playerId,
 				LastNGames: "1",
 			});
