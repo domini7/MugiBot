@@ -15,16 +15,6 @@ module.exports = {
 		// Takes in arg and seaches for that player
 		const player = args.join(" ");
 		const pid = NBA.findPlayer(player);
-
-		/* NBA.findPlayer contains
-		firstName
-		lastName
-		playerId
-		teamId
-		fullName
-		downcaseName
-		*/
-
 		if (!pid) return message.channel.send("No Player Found");
 
 		const info = await NBA.stats.playerInfo({ PlayerID: pid.playerId });
