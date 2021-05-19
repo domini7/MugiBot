@@ -4,10 +4,10 @@ const { rnd } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "pstats",
-	aliases: ["ps", "stats"],
+	aliases: ["ps", "stats", "pstats-per36", "ps36", "per36"],
 	description: "Displays basic NBA player stats",
 	cooldown: 40,
-	async execute(client, message, args, Discord) {
+	async execute(client, message, args, Discord, cmd) {
 		if (!args.length)
 			return message.reply(
 				"You need to search a player name. Example: `;pstats lillard`"
@@ -66,46 +66,96 @@ module.exports = {
 			const efg = (p.fgm + 0.5 * p.fG3M) / p.fga;
 			const ts = p.pts / (2 * (p.fga + 0.44 * p.fta));
 
-			const newEmbed = new Discord.MessageEmbed()
-				.setThumbnail(
-					"https://cdn.nba.com/headshots/nba/latest/1040x760/" +
-						p.playerId +
-						".png"
-				)
-				.setColor("#FF0000")
-				.setTitle(`${p.playerName}`)
-				.setURL("https://www.nba.com/player/" + p.playerId)
-				.setDescription(`${p.teamAbbreviation}`)
-				.addFields(
-					{
-						name: "GP / MPG / WIN%",
-						value: `${p.gp} / ${p.min} / ${rnd(p.wPct * 100)}%`,
-					},
-					{
-						name: "PPG / TRB / AST",
-						value: `${p.pts} / ${p.reb} / ${p.ast}`,
-					},
-					{
-						name: "STL / BLK / TOV",
-						value: `${p.stl} / ${p.blk} / ${p.tov}`,
-					},
-					{
-						name: "FG / 3P / FT",
-						value: `(${p.fgm} | ${p.fga})/(${p.fG3M} | ${p.fG3A})/(${p.ftm} | ${p.fta})`,
-					},
-					{
-						name: "FG% / 3P% / FT%",
-						value: `${rnd(p.fgPct * 100)}% / ${rnd(
-							p.fg3Pct * 100
-						)}% / ${rnd(p.ftPct * 100)}%`,
-					},
-					{
-						name: "eFG% | TS%",
-						value: `${rnd(efg * 100)}% | ${rnd(ts * 100)}%`,
-					}
-				)
-				.setFooter(`Basic ${season} stats`);
-			message.channel.send(newEmbed);
+			const playerImage = `https://cdn.nba.com/headshots/nba/latest/1040x760/${p.playerId}.png`;
+
+			// Send basic or per36 stats
+			if (["pstats", "ps", "stats"].includes(cmd)) {
+				const basicStats = new Discord.MessageEmbed()
+					.setThumbnail(playerImage)
+					.setColor("#FF0000")
+					.setTitle(`${p.playerName}`)
+					.setURL(`https://www.nba.com/player/${p.playerId}`)
+					.setDescription(`${p.teamAbbreviation}`)
+					.addFields(
+						{
+							name: "GP / MPG / WIN%",
+							value: `${p.gp} / ${p.min} / ${rnd(p.wPct * 100)}%`,
+						},
+						{
+							name: "PPG / TRB / AST",
+							value: `${p.pts} / ${p.reb} / ${p.ast}`,
+						},
+						{
+							name: "STL / BLK / TOV",
+							value: `${p.stl} / ${p.blk} / ${p.tov}`,
+						},
+						{
+							name: "FG / 3P / FT",
+							value: `(${p.fgm} | ${p.fga})/(${p.fG3M} | ${p.fG3A})/(${p.ftm} | ${p.fta})`,
+						},
+						{
+							name: "FG% / 3P% / FT%",
+							value: `${rnd(p.fgPct * 100)}% / ${rnd(
+								p.fg3Pct * 100
+							)}% / ${rnd(p.ftPct * 100)}%`,
+						},
+						{
+							name: "eFG% | TS%",
+							value: `${rnd(efg * 100)}% | ${rnd(ts * 100)}%`,
+						}
+					)
+					.setFooter(`Basic ${season} stats`);
+
+				message.channel.send(basicStats);
+			} else {
+				const per36Stats = new Discord.MessageEmbed()
+					.setThumbnail(playerImage)
+					.setColor("#FF0000")
+					.setTitle(`${p.playerName}`)
+					.setURL(`https://www.nba.com/player/${p.playerId}`)
+					.setDescription(`${p.teamAbbreviation}`)
+					.addFields(
+						{
+							name: "GP / MPG / WIN%",
+							value: `${p.gp} / ${p.min} / ${rnd(p.wPct * 100)}%`,
+						},
+						{
+							name: "PPG / TRB / AST",
+							value: `${rnd((p.pts * 36) / p.min)} / ${rnd(
+								(p.reb * 36) / p.min
+							)} / ${rnd((p.ast * 36) / p.min)}`,
+						},
+						{
+							name: "STL / BLK / TOV",
+							value: `${rnd((p.stl * 36) / p.min)} / ${rnd(
+								(p.blk * 36) / p.min
+							)} / ${rnd((p.tov * 36) / p.min)}`,
+						},
+						{
+							name: "FG / 3P / FT",
+							value: `(${rnd((p.fgm * 36) / p.min)} | ${rnd(
+								(p.fga * 36) / p.min
+							)})/(${rnd((p.fG3M * 36) / p.min)} | ${rnd(
+								(p.fG3A * 36) / p.min
+							)})/(${rnd((p.ftm * 36) / p.min)} | ${rnd(
+								(p.fta * 36) / p.min
+							)})`,
+						},
+						{
+							name: "FG% / 3P% / FT%",
+							value: `${rnd(p.fgPct * 100)}% / ${rnd(
+								p.fg3Pct * 100
+							)}% / ${rnd(p.ftPct * 100)}%`,
+						},
+						{
+							name: "eFG% | TS%",
+							value: `${rnd(efg * 100)}% | ${rnd(ts * 100)}%`,
+						}
+					)
+					.setFooter(`${season} PER36 stats`);
+
+				message.channel.send(per36Stats);
+			}
 		} catch (error) {
 			message.channel.send(
 				"Error searching for that player and/or season!"
