@@ -16,9 +16,6 @@ module.exports = {
 
 		if (args.length) imageQuery = args.join(" ");
 
-		// for specific user
-		if (message.author.id === "443583939207233536") imageQuery = "cute cat";
-
 		const imageResults = await google.scrape(imageQuery, 65);
 
 		const randImg =
