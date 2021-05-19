@@ -6,20 +6,20 @@ module.exports = {
 	description: "Displays current NBA standings",
 	cooldown: 600,
 	async execute(client, message, args, Discord) {
-		const num = parseInt(args[0]);
+		const searchedSeason = parseInt(args[0]);
 
 		let season = "06/06/2021";
 
 		if (args.length) {
 			season = "06/06/" + args[0];
 
-			if (!num)
+			if (!searchedSeason)
 				return message.reply(
 					"You need to specify a season. `;standings 2013`"
 				);
 		}
 
-		if (num < 2005 || num > 9999)
+		if (searchedSeason < 2005 || searchedSeason > 9999)
 			return message.reply(
 				"Can't search for standings before 2005, sorry!"
 			);
