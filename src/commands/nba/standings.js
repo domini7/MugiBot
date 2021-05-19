@@ -1,4 +1,5 @@
 const NBA = require("nba");
+const { stripIndents } = require("common-tags");
 
 module.exports = {
 	name: "standings",
@@ -33,7 +34,7 @@ module.exports = {
 			.addFields(
 				{
 					name: "**East Standings**",
-					value: `**Sd. Team W/L**
+					value: stripIndents`
 					**1.** ${east[0].team}: ${east[0].w} - ${east[0].l}
 					**2.** ${east[1].team}: ${east[1].w} - ${east[1].l}
 					**3.** ${east[2].team}: ${east[2].w} - ${east[2].l}
@@ -48,12 +49,13 @@ module.exports = {
 					12. ${east[11].team}: ${east[11].w} - ${east[11].l}
 					13. ${east[12].team}: ${east[12].w} - ${east[12].l}
 					14. ${east[13].team}: ${east[13].w} - ${east[13].l}
-					15. ${east[14].team}: ${east[14].w} - ${east[14].l}`,
+					15. ${east[14].team}: ${east[14].w} - ${east[14].l}
+					`,
 					inline: true,
 				},
 				{
 					name: "**West Standings**",
-					value: `**Sd. Team W/L**
+					value: stripIndents`
 					**1.** ${west[0].team}: ${west[0].w} - ${west[0].l}
 					**2.** ${west[1].team}: ${west[1].w} - ${west[1].l}
 					**3.** ${west[2].team}: ${west[2].w} - ${west[2].l}
@@ -68,7 +70,8 @@ module.exports = {
 					12. ${west[11].team}: ${west[11].w} - ${west[11].l}
 					13. ${west[12].team}: ${west[12].w} - ${west[12].l}
 					14. ${west[13].team}: ${west[13].w} - ${west[13].l}
-					15. ${west[14].team}: ${west[14].w} - ${west[14].l}`,
+					15. ${west[14].team}: ${west[14].w} - ${west[14].l}
+					`,
 					inline: true,
 				}
 			);
