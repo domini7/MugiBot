@@ -91,6 +91,12 @@ module.exports = {
 					value: "Same as pstats but with per 36 min numbers.",
 					inline: false,
 				},
+
+				{
+					name: "**`;pstats-playoffs`**",
+					value: "Playoff Stats.",
+					inline: false,
+				},
 				{
 					name: "**`;pbio (player)`**",
 					value: "Check a NBA player's basic info.",
@@ -236,8 +242,8 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`;reddit Sub|Age|MaxComments`**",
-					value: "Search for Reddit links. Args are optional.",
+					name: "**`;reddit`**",
+					value: "Get Reddit links.",
 					inline: false,
 				}
 			);
