@@ -5,13 +5,19 @@ const { rnd, seasonString } = require("../../util/Utils.js");
 module.exports = {
 	name: "pstats",
 	aliases: [
+		// Reg season
 		"ps",
-		"stats",
-		"pstats-per36",
 		"ps36",
-		"per36",
+		"pstats-per36",
 		"pstats-simple",
 		"ps-simple",
+		// Playoffs
+		"pstats-playoffs",
+		"ps-playoffs",
+		"ps36-playoffs",
+		"pstats-per36-playoffs",
+		"pstats-simple-playoffs",
+		"ps-simple-playoffs",
 	],
 	description: "Displays basic NBA player stats",
 	cooldown: 40,
@@ -25,10 +31,20 @@ module.exports = {
 		let player = args.join(" ");
 
 		let season = "2020-21";
-		let seasonType = "Regular Season";
+
+		const playoffCommands = [
+			"pstats-playoffs",
+			"ps-playoffs",
+			"ps36-playoffs",
+			"pstats-per36-playoffs",
+			"pstats-simple-playoffs",
+			"ps-simple-playoffs",
+		];
+		const seasonType = playoffCommands.includes(cmd)
+			? "Playoffs"
+			: "Regular Season";
 
 		let lastArg = args[args.length - 1];
-
 		// Check if a player is searching for a season
 		if (!isNaN(lastArg)) {
 			// Seperate searched player from year
@@ -67,8 +83,10 @@ module.exports = {
 			const playerImage = `https://cdn.nba.com/headshots/nba/latest/1040x760/${p.playerId}.png`;
 			const playerLink = `https://www.nba.com/player/${p.playerId}`;
 
-			// Send basic or per36 stats
-			if (["pstats", "ps", "stats"].includes(cmd)) {
+			// Send basic, per36, or simple stats
+			if (
+				["pstats", "ps", "pstats-playoffs", "ps-playoffs"].includes(cmd)
+			) {
 				const basicStats = new Discord.MessageEmbed()
 					.setThumbnail(playerImage)
 					.setColor("#FF0000")
@@ -103,10 +121,17 @@ module.exports = {
 							value: `${rnd(efg * 100)}% | ${rnd(ts * 100)}%`,
 						}
 					)
-					.setFooter(`Basic ${season} stats`);
+					.setFooter(`${season} ${seasonType}`);
 
 				message.channel.send(basicStats);
-			} else if (["pstats-per36", "ps36", "per36"].includes(cmd)) {
+			} else if (
+				[
+					"pstats-per36",
+					"ps36",
+					"ps36-playoffs",
+					"pstats-per36-playoffs",
+				].includes(cmd)
+			) {
 				const per36Stats = new Discord.MessageEmbed()
 					.setThumbnail(playerImage)
 					.setColor("#FF0000")
@@ -151,7 +176,7 @@ module.exports = {
 							value: `${rnd(efg * 100)}% | ${rnd(ts * 100)}%`,
 						}
 					)
-					.setFooter(`${season} PER36 stats`);
+					.setFooter(`${season} ${seasonType} PER36`);
 
 				message.channel.send(per36Stats);
 			} else {
@@ -173,7 +198,7 @@ module.exports = {
 							)}% / ${rnd(p.ftPct * 100)}%`,
 						}
 					)
-					.setFooter(`${season} stats`);
+					.setFooter(`${season} ${seasonType}`);
 
 				message.channel.send(simpleStats);
 			}
