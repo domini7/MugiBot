@@ -47,8 +47,8 @@ module.exports = {
 			const efg = (p.fgm + 0.5 * p.fG3M) / p.fga;
 			const ts = p.pts / (2 * (p.fga + 0.44 * p.fta));
 
-			const playerImage = `https://cdn.nba.com/headshots/nba/latest/1040x760/${p.playerId}.png`;
-			const playerLink = `https://www.nba.com/player/${p.playerId}`;
+			const playerImage = `https://cdn.nba.com/headshots/nba/latest/1040x760/${pid.playerId}.png`;
+			const playerLink = `https://www.nba.com/player/${pid.playerId}`;
 
 			if (["plastgame", "plg"].includes(cmd)) {
 				const lastGame = new Discord.MessageEmbed()
