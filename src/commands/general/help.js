@@ -123,6 +123,12 @@ module.exports = {
 					value: "Displays league leaders.",
 					inline: false,
 				},
+
+				{
+					name: "**`;leaders-playoffs`**",
+					value: "leaders command for playoffs.",
+					inline: false,
+				},
 				{
 					name: "**`;retire (player) [OPTIONAL YEAR]`**",
 					value: "Guesses the chance of a player retiring.",

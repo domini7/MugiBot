@@ -43,11 +43,13 @@ This is a multi-purpose personal Discord bot built using JavaScript.
 ```
 ;pstats (name) [year]  | Check a NBA player's basic season stats with season as optional arg.
 ;pstats-per36          | Same as pstats but with per 36 min numbers.
+;pstats-playoffs       | Playoff stats
 ;pbio (name)           | Check a NBA player's basic info.
 ;plastgame (name)      | Check a player's last game.
 ;tstats (team) [year]  | Check a NBA team's current or *optionally* past season stats.
 ;standings [year]      | Check current NBA standings or optionally check past seasons.
 ;leaders [year]        | Displays league leaders.
+;leaders-playoffs      | Leaders command for playoffs
 ;retire (name) [year]  | Guesses the chance of a player retiring.
 ```
 ### Music
