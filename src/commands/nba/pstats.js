@@ -4,7 +4,15 @@ const { rnd } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "pstats",
-	aliases: ["ps", "stats", "pstats-per36", "ps36", "per36"],
+	aliases: [
+		"ps",
+		"stats",
+		"pstats-per36",
+		"ps36",
+		"per36",
+		"pstats-simple",
+		"ps-simple",
+	],
 	description: "Displays basic NBA player stats",
 	cooldown: 40,
 	async execute(client, message, args, Discord, cmd) {
@@ -67,6 +75,7 @@ module.exports = {
 			const ts = p.pts / (2 * (p.fga + 0.44 * p.fta));
 
 			const playerImage = `https://cdn.nba.com/headshots/nba/latest/1040x760/${p.playerId}.png`;
+			const playerLink = `https://www.nba.com/player/${p.playerId}`;
 
 			// Send basic or per36 stats
 			if (["pstats", "ps", "stats"].includes(cmd)) {
@@ -74,7 +83,7 @@ module.exports = {
 					.setThumbnail(playerImage)
 					.setColor("#FF0000")
 					.setTitle(`${p.playerName}`)
-					.setURL(`https://www.nba.com/player/${p.playerId}`)
+					.setURL(playerLink)
 					.setDescription(`${p.teamAbbreviation}`)
 					.addFields(
 						{
@@ -107,12 +116,12 @@ module.exports = {
 					.setFooter(`Basic ${season} stats`);
 
 				message.channel.send(basicStats);
-			} else {
+			} else if (["pstats-per36", "ps36", "per36"].includes(cmd)) {
 				const per36Stats = new Discord.MessageEmbed()
 					.setThumbnail(playerImage)
 					.setColor("#FF0000")
 					.setTitle(`${p.playerName}`)
-					.setURL(`https://www.nba.com/player/${p.playerId}`)
+					.setURL(playerLink)
 					.setDescription(`${p.teamAbbreviation}`)
 					.addFields(
 						{
@@ -155,6 +164,28 @@ module.exports = {
 					.setFooter(`${season} PER36 stats`);
 
 				message.channel.send(per36Stats);
+			} else {
+				const simpleStats = new Discord.MessageEmbed()
+					.setThumbnail(playerImage)
+					.setColor("#FF0000")
+					.setTitle(`${p.playerName}`)
+					.setURL(playerLink)
+					.setDescription(`${p.teamAbbreviation}`)
+					.addFields(
+						{
+							name: "PPG / TRB / AST",
+							value: `${p.pts} / ${p.reb} / ${p.ast}`,
+						},
+						{
+							name: "FG% / 3P% / FT%",
+							value: `${rnd(p.fgPct * 100)}% / ${rnd(
+								p.fg3Pct * 100
+							)}% / ${rnd(p.ftPct * 100)}%`,
+						}
+					)
+					.setFooter(`${season} stats`);
+
+				message.channel.send(simpleStats);
 			}
 		} catch (error) {
 			message.channel.send(
