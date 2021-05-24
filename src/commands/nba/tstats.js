@@ -1,4 +1,5 @@
 const NBA = require("nba");
+const { seasonString } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "tstats",
@@ -17,26 +18,16 @@ module.exports = {
 
 		let season = "2020-21";
 
-		// This is all for a season search, takes last arg if its a number and converts it into proper seasonId
+		// Check if a player is searching for a season
 		if (!isNaN(lastArg)) {
-			// nameOnly will be used to seperate the arg searching for a name from the year
+			// Seperate searched team from year
 			let nameOnly = team.length - lastArg.length - 1;
-
 			team = team.slice(0, nameOnly);
 
-			// convert season arg into a number to subtract from
-			let num0 = parseInt(lastArg);
+			if (lastArg < 1947) lastArg = "1947";
+			if (lastArg > 2021) lastArg = "2021";
 
-			if (num0 < 1947 || num0 > 2021)
-				return message.reply("You can't search for that year!");
-
-			const num1 = lastArg;
-
-			let num2 = num0 - 1;
-
-			toString(num2);
-
-			season = num2 + "-" + num1.slice(num1.length - 2);
+			season = seasonString(lastArg);
 		}
 
 		try {

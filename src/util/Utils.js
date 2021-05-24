@@ -50,6 +50,7 @@ class Utils {
 		const len = arr.length;
 		if (len === 0) return "";
 		if (len === 1) return arr[0];
+
 		return `${arr.slice(0, -1).join(", ")}${
 			len > 1 ? `${len > 2 ? "," : ""} ${conj} ` : ""
 		}${arr.slice(-1)}`;
@@ -77,17 +78,29 @@ class Utils {
 					extraNo.includes(value))
 			);
 		};
+
 		const verify = await channel.awaitMessages(filter, {
 			max: 1,
 			time,
 		});
 		if (!verify.size) return 0;
+
 		const choice = verify.first().content.toLowerCase();
 		if (answer.yes.includes(choice) || extraYes.includes(choice))
 			return true;
+
 		if (answer.no.includes(choice) || extraNo.includes(choice))
 			return false;
+
 		return false;
+	}
+
+	// Example: "2020" to "2019-20"
+	static seasonString(searchedSeason) {
+		const input = parseInt(searchedSeason);
+		return (
+			input - 1 + "-" + searchedSeason.slice(searchedSeason.length - 2)
+		);
 	}
 }
 
