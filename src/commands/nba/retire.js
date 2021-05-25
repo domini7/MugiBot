@@ -1,6 +1,6 @@
 const NBA = require("nba");
 const stringSimilarity = require("string-similarity");
-const { rnd } = require("../../util/Utils.js");
+const { rnd, seasonString } = require("../../util/Utils.js");
 
 module.exports = {
 	name: "retire",
