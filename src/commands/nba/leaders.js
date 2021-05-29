@@ -51,7 +51,7 @@ module.exports = {
 					`https://www.nba.com/stats/leaders/?Season=${season}&SeasonType=Regular%20Season`
 				)
 				.setColor("#C0C0C0")
-				.setTitle("League Leaders")
+				.setTitle(`${season} ${seasonType} Leaders`)
 				.addFields(
 					{
 						name: "Points",
@@ -73,8 +73,7 @@ module.exports = {
 						name: "Blocks",
 						value: `${p.blk[0].playerName} - **${p.blk[0].blk}**\n${p.blk[1].playerName} - **${p.blk[1].blk}**\n${p.blk[2].playerName} - **${p.blk[2].blk}**`,
 					}
-				)
-				.setFooter(`${season} ${seasonType} Leaders`);
+				);
 			message.channel.send(newEmbed);
 		} catch (error) {
 			console.error(error);
