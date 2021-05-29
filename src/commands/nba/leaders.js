@@ -33,7 +33,6 @@ module.exports = {
 			const numLeaders = 3;
 			const categories = ["pts", "reb", "ast", "stl", "blk"];
 			const p = {};
-			// Should fix this by sorting by each category then pushing the top three
 			for (const category of categories) {
 				p[category] = [];
 				leaders.sort(function (a, b) {

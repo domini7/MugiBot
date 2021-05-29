@@ -50,7 +50,9 @@ This is a multi-purpose personal Discord bot built using JavaScript.
 ;standings [year]      | Check current NBA standings or optionally check past seasons.
 ;leaders [year]        | Displays league leaders.
 ;leaders-playoffs      | Leaders command for playoffs
-;retire (name) [year]  | Guesses the chance of a player retiring.
+;retire (name)         | Guesses the chance of a player retiring.
+;top-players (stat)    | Search top players in a year by stat 
+;top-players-playoffs  | Playoffs for top-players
 ```
 ### Music
 

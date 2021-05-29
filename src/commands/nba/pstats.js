@@ -76,7 +76,6 @@ module.exports = {
 			const p = stats["leagueDashPlayerStats"].find(
 				(x) => x.playerName === search["bestMatch"].target
 			);
-			console.log(p);
 
 			const efg = (p.fgm + 0.5 * p.fG3M) / p.fga;
 			const ts = p.pts / (2 * (p.fga + 0.44 * p.fta));

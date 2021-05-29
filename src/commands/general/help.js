@@ -82,19 +82,13 @@ module.exports = {
 			.setColor("RANDOM")
 			.addFields(
 				{
-					name: "**`;pstats (player) [OPTIONAL YEAR]`**",
+					name: "**`;pstats[-playoffs] (player) [year]`**",
 					value: "Check a NBA player's basic season stats.",
 					inline: false,
 				},
 				{
 					name: "**`;pstats-per36`**",
 					value: "Same as pstats but with per 36 min numbers.",
-					inline: false,
-				},
-
-				{
-					name: "**`;pstats-playoffs`**",
-					value: "Playoff Stats.",
 					inline: false,
 				},
 				{
@@ -109,28 +103,27 @@ module.exports = {
 					inline: false,
 				},
 				{
-					name: "**`;tstats (team) [OPTIONAL YEAR]`**",
+					name: "**`;tstats (team) [year]`**",
 					value: "Displays basic NBA team stats.",
 					inline: false,
 				},
 				{
-					name: "**`;standings [OPTIONAL YEAR]`**",
+					name: "**`;standings [year]`**",
 					value: "Displays current NBA standings.",
 					inline: false,
 				},
 				{
-					name: "**`;leaders [OPTIONAL YEAR]`**",
+					name: "**`;leaders[-playoffs] [year]`**",
 					value: "Displays league leaders.",
 					inline: false,
 				},
-
 				{
-					name: "**`;leaders-playoffs`**",
-					value: "leaders command for playoffs.",
+					name: "**`;top-players[-playoffs] [stat] [year]`**",
+					value: "See top players in a year by stat.",
 					inline: false,
 				},
 				{
-					name: "**`;retire (player) [OPTIONAL YEAR]`**",
+					name: "**`;retire (player) [year]`**",
 					value: "Guesses the chance of a player retiring.",
 					inline: false,
 				}
@@ -278,34 +271,34 @@ module.exports = {
 			const cat = args[0].toLowerCase();
 
 			switch (cat) {
-			case "general":
-				dm.send(general);
-				break;
-			case "nba":
-				dm.send(nba);
-				break;
-			case "music":
-				dm.send(music);
-				break;
-			case "bot":
-				dm.send(bot);
-				break;
-			case "search":
-				dm.send(search);
-				break;
-			case "games":
-				dm.send(games);
-				break;
-			case "all":
-				dm.send(general);
-				dm.send(nba);
-				dm.send(music);
-				dm.send(bot);
-				dm.send(search);
-				dm.send(games);
-				break;
-			default:
-				dm.send("Couldn't find that category! (Check spelling?)");
+				case "general":
+					dm.send(general);
+					break;
+				case "nba":
+					dm.send(nba);
+					break;
+				case "music":
+					dm.send(music);
+					break;
+				case "bot":
+					dm.send(bot);
+					break;
+				case "search":
+					dm.send(search);
+					break;
+				case "games":
+					dm.send(games);
+					break;
+				case "all":
+					dm.send(general);
+					dm.send(nba);
+					dm.send(music);
+					dm.send(bot);
+					dm.send(search);
+					dm.send(games);
+					break;
+				default:
+					dm.send("Couldn't find that category! (Check spelling?)");
 			}
 		}
 	},
