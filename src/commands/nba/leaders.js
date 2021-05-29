@@ -21,15 +21,14 @@ module.exports = {
 			season = seasonString(searchedSeason);
 		}
 
-		const seasonType = cmd === "leaders" ? "Regular Season" : "Playoffs";
-
 		try {
+			const seasonType =
+				cmd === "leaders" ? "Regular Season" : "Playoffs";
 			const stats = await NBA.stats.playerStats({
 				Season: season,
 				SeasonType: seasonType,
 			});
-
-			const leaders = stats["leagueDashPlayerStats"];
+			let leaders = stats["leagueDashPlayerStats"];
 
 			const numLeaders = 3;
 			const categories = ["pts", "reb", "ast", "stl", "blk"];
@@ -37,10 +36,11 @@ module.exports = {
 			// Should fix this by sorting by each category then pushing the top three
 			for (const category of categories) {
 				p[category] = [];
-				for (let i = 1; i <= numLeaders; i++) {
-					p[category].push(
-						leaders.find((x) => x[`${category}Rank`] === i)
-					);
+				leaders.sort(function (a, b) {
+					return b[category] - a[category];
+				});
+				for (let i = 0; i < numLeaders; i++) {
+					p[category].push(leaders[i]);
 				}
 			}
 
