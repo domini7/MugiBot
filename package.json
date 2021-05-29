@@ -24,7 +24,7 @@
     "booste": "0.0.6",
     "colors": "^1.4.0",
     "common-tags": "^1.8.0",
-    "dayjs": "^1.10.3",
+    "dayjs": "^1.10.5",
     "discord.js": "^12.5.3",
     "dotenv": "^8.6.0",
     "ffmpeg-static": "^4.3.0",
@@ -41,7 +41,7 @@
     "unirest": "^0.6.0",
     "wikipedia": "^1.1.1",
     "yt-search": "^2.8.0",
-    "ytdl-core": "^4.8.0"
+    "ytdl-core": "^4.8.2"
   },
   "devDependencies": {
     "eslint": "^7.27.0"
