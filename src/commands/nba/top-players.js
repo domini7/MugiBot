@@ -81,6 +81,7 @@ module.exports = {
 				.setDescription(statArray)
 				.setFooter("Search using abbreviated stat names");
 
+			// Checks if command wasn't called in DM's
 			if (message.channel.type === "text")
 				message.channel.send("Sent to DM's to avoid clutter.");
 			return message.author.send(availableStats);
@@ -116,8 +117,9 @@ module.exports = {
 				Season: season,
 				SeasonType: seasonType,
 			});
-			const leaders = stats["leagueDashPlayerStats"];
-			let topPlayers = leaders.filter(function (stat) {
+			const indexedStats = stats["leagueDashPlayerStats"];
+			// No game # requirement for playoffs
+			let topPlayers = indexedStats.filter(function (stat) {
 				if (cmd === "top-players") {
 					return stat.gp > 5 && stat.min > 3;
 				} else {
@@ -130,6 +132,7 @@ module.exports = {
 				return b[usedStat] - a[usedStat];
 			});
 
+			// Get the full stat name of searched stat
 			const statName = statNames.find((x) => x.stat === searchedStat);
 			const topPlayersEmbed = new Discord.MessageEmbed()
 				.setColor("RANDOM")
