@@ -73,7 +73,7 @@ module.exports = {
 		if (cmd === "stats") {
 			let statArray = [];
 			for (const s of statNames) {
-				statArray.push(`${s.stat}: ${s.name}`);
+				statArray.push(`**${s.stat}**: ${s.name}`);
 			}
 			const availableStats = new Discord.MessageEmbed()
 				.setColor("RANDOM")
