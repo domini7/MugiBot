@@ -61,7 +61,7 @@ module.exports = (Discord, client, message) => {
 		football.some((f) => message.content.toLowerCase().includes(f))
 	) {
 		message.channel.send(
-			"<https://www.dropbox.com/s/66nd5plzfummyqu/FBGM_NFL_Roster_2021_regular_season_0-0.json?dl=0>"
+			"<https://www.dropbox.com/s/6v1ojecc9ei1qjl/FBGM2021roster.json?dl=0>"
 		);
 	}
 
