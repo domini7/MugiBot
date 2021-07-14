@@ -46,6 +46,18 @@ module.exports = {
 
 			const efg = (p.fgm + 0.5 * p.fG3M) / p.fga;
 			const ts = p.pts / (2 * (p.fga + 0.44 * p.fta));
+			const gmSc =
+				p.pts +
+				0.4 * p.fgm -
+				0.7 * p.fga -
+				0.4 * (p.fta - p.ftm) +
+				0.7 * p.oreb +
+				0.3 * p.dreb +
+				p.stl +
+				0.7 * p.ast +
+				0.7 * p.blk -
+				0.4 * p.pf -
+				p.tov;
 
 			const playerImage = `https://cdn.nba.com/headshots/nba/latest/1040x760/${pid.playerId}.png`;
 			const playerLink = `https://www.nba.com/player/${pid.playerId}`;
@@ -79,12 +91,14 @@ module.exports = {
 							)}% / ${rnd(p.ftPct * 100)}%`,
 						},
 						{
-							name: "eFG% | TS%",
-							value: `${rnd(efg * 100)}% | ${rnd(ts * 100)}%`,
+							name: "MIN | eFG% | TS%",
+							value: `${p.min} | ${rnd(efg * 100)}% | ${rnd(
+								ts * 100
+							)}%`,
 						},
 						{
-							name: "MIN | PF | +/-",
-							value: `${p.min} / ${p.pf} / ${p.plusMinus}`,
+							name: "GmSc | PF | +/-",
+							value: `${rnd(gmSc)} / ${p.pf} / ${p.plusMinus}`,
 						}
 					);
 				message.channel.send(lastGame);
