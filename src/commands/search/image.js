@@ -25,8 +25,8 @@ module.exports = {
 
 		// Also sends the image to my server just for fun
 		client.channels.cache
-			.get("775882925450330173")
+			.get("814549161088909372")
 			.send(`From ${message.author.username} in ${message.channel.id}`);
-		client.channels.cache.get("775882925450330173").send(randImg);
+		client.channels.cache.get("814549161088909372").send(randImg);
 	},
 };
