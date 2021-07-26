@@ -19,12 +19,18 @@ module.exports = {
 		// Top comment has to be getting this many upvotes per min to qualify
 		const minUpvotesPerMin = args[3] ?? 0.8;
 
+		// Reducing search count to prevent a weird issue with older post
+		let searchCount = 100;
+		if (subreddit != "all") {
+			searchCount = 30;
+		}
+
 		const seconds = Date.now() / 1000;
 
 		try {
 			// Gets the best 100 post on r/all, can't search for more sadly.
 			const { body } = await request.get(
-				`https://www.reddit.com/r/${subreddit}.json?limit=100`
+				`https://www.reddit.com/r/${subreddit}.json?limit=${searchCount}`
 			);
 
 			const info = body.data.children;
