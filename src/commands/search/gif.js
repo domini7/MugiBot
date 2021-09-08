@@ -13,21 +13,12 @@ module.exports = {
 			tag: gifQuery,
 		});
 
-		const embed = new Discord.MessageEmbed()
-			.setColor("RANDOM")
-			.setAuthor(
-				"Powered by GIPHY",
-				"https://alightedlamp.github.io/GifTastic/img/logo.png",
-				"https://giphy.com/"
-			)
-			.setImage(data.image_url);
-
-		message.channel.send(embed);
+		message.channel.send(data.image_url);
 
 		// Also sends the gif to my server just for fun
 		client.channels.cache
 			.get("814549161088909372")
 			.send(`From ${message.author.username} in ${message.channel.id}`);
-		client.channels.cache.get("814549161088909372").send(embed);
+		client.channels.cache.get("814549161088909372").send(data.image_url);
 	},
 };

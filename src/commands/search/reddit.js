@@ -20,7 +20,7 @@ module.exports = {
 		const minUpvotesPerMin = args[3] ?? 0.8;
 
 		// Reducing search count to prevent a weird issue with older post
-		let searchCount = 100;
+		let searchCount = 80;
 		if (subreddit != "all") {
 			searchCount = 30;
 		}

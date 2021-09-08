@@ -2,9 +2,6 @@ module.exports = {
 	name: "echo",
 	cooldown: 20,
 	execute(client, message, args) {
-		// Blocking command from being used in specific server
-		
-
 		if (!args.length)
 			return message.reply("say something! `;echo Hello!`");
 
