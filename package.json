@@ -24,26 +24,26 @@
     "booste": "0.0.6",
     "colors": "^1.4.0",
     "common-tags": "^1.8.0",
-    "dayjs": "^1.10.5",
+    "dayjs": "^1.10.6",
     "discord.js": "^12.5.3",
     "dotenv": "^8.6.0",
-    "ffmpeg-static": "^4.3.0",
+    "ffmpeg-static": "^4.4.0",
     "giphy-random": "^2.0.8",
     "html-entities": "^2.3.2",
-    "images-scraper": "^6.3.0",
+    "images-scraper": "^6.4.0",
     "ini": "^2.0.0",
-    "mathjs": "^9.4.1",
+    "mathjs": "^9.4.4",
     "merge-options": "^3.0.3",
     "nba": "^4.15.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.2",
     "node-superfetch": "^0.1.11",
     "string-similarity": "^4.0.4",
     "unirest": "^0.6.0",
-    "wikipedia": "^1.1.1",
-    "yt-search": "^2.8.0",
+    "wikipedia": "^1.1.5",
+    "yt-search": "^2.10.1",
     "ytdl-core": "^4.9.1"
   },
   "devDependencies": {
-    "eslint": "^7.27.0"
+    "eslint": "^7.32.0"
   }
 }
