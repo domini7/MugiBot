@@ -4,7 +4,7 @@ module.exports = {
 	name: "gif",
 	description: "search and send random gif on giphy",
 	cooldown: 120,
-	async execute(client, message, args, Discord) {
+	async execute(client, message, args) {
 		let gifQuery = "gif";
 		if (args.length) gifQuery = args.join(" ");
 
