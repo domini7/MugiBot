@@ -155,7 +155,24 @@ module.exports = {
 					message.channel.send(
 						`<https://reddit.com${data.permalink}>`
 					);
-					await timer(1325);
+					await timer(1350);
+
+					if (submissionType === "comment") {
+						const embed = new Discord.MessageEmbed()
+							.setColor("RANDOM")
+							.setTitle(`u/${data.author}`)
+							.setFooter(`${data.body}`);
+
+						message.channel.send(embed);
+					} else {
+						const embed = new Discord.MessageEmbed()
+							.setColor("RANDOM")
+							.setTitle(`u/${data.author} - ${data.title}`)
+							.setFooter(`${data.selftext}`);
+
+						message.channel.send(embed);
+					}
+					await timer(1350);
 				}
 			} catch (error) {
 				message.reply(`Error: ${error.message}`);
@@ -175,15 +192,31 @@ module.exports = {
 						q: `${phrases}`,
 					});
 
+				// If nothing found, add to the var
 				if (!body.data.length) {
 					checkForResults++;
 				}
-
 				for (const data of body.data) {
 					message.channel.send(
 						`<https://reddit.com${data.permalink}>`
 					);
-					await timer(1325);
+					await timer(1350);
+
+					if (postType === "comment") {
+						const embed = new Discord.MessageEmbed()
+							.setColor("RANDOM")
+							.setFooter(`${data.body}`);
+
+						message.channel.send(embed);
+					} else {
+						const embed = new Discord.MessageEmbed()
+							.setColor("RANDOM")
+							.setTitle(`${data.title}`)
+							.setFooter(`${data.selftext}`);
+
+						message.channel.send(embed);
+					}
+					await timer(1350);
 				}
 			}
 
