@@ -88,6 +88,7 @@ module.exports = {
 							continue;
 						}
 
+						// Check a reply's upvotes for 75% of minUpvotesPerMin
 						const checkForReplies = comments.replies;
 						if (checkForReplies != "") {
 							const replyComment =
@@ -129,6 +130,7 @@ module.exports = {
 				console.error(error);
 			}
 		} else {
+			// For post/comment command
 			try {
 				const query = args.join(" ");
 
