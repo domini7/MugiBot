@@ -89,6 +89,21 @@ module.exports = {
 						}
 
 						const checkForReplies = comments.replies;
+						if (checkForReplies != "") {
+							const replyComment =
+								checkForReplies.data.children[0].data;
+
+							const replyCommentAge =
+								(seconds - replyComment.created_utc) / 60;
+
+							if (
+								comments.ups / replyCommentAge <
+								minUpvotesPerMin / 1.5
+							) {
+								continue;
+							}
+						}
+
 						// Checks the comment or the first reply for replies, if there are none, push the link.
 						if (
 							checkForReplies === "" ||
@@ -130,7 +145,9 @@ module.exports = {
 						after: "72h",
 					});
 				for (const data of body.data) {
-					message.channel.send(`<https://reddit.com${data.permalink}>`);
+					message.channel.send(
+						`<https://reddit.com${data.permalink}>`
+					);
 					await timer(1325);
 				}
 			} catch (error) {
