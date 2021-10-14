@@ -1,10 +1,11 @@
 const request = require("node-superfetch");
+const slurs = require("../../../assets/json/blacklistphrases");
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
 module.exports = {
 	name: "reddit",
-	aliases: ["reddit", "comment", "post"],
+	aliases: ["reddit", "comment", "post", "check"],
 	description: "Get filtered r/all links",
 	cooldown: 50,
 	async execute(client, message, args, Discord, cmd) {
@@ -98,8 +99,8 @@ module.exports = {
 								(seconds - replyComment.created_utc) / 60;
 
 							if (
-								comments.ups / replyCommentAge <
-								minUpvotesPerMin / 1.5
+								replyComment.ups / replyCommentAge <
+								minUpvotesPerMin * 0.75
 							) {
 								continue;
 							}
@@ -129,8 +130,7 @@ module.exports = {
 				message.reply(`Error: ${error.message}`);
 				console.error(error);
 			}
-		} else {
-			// For post/comment command
+		} else if (cmd === "comment" || cmd === "post") {
 			try {
 				const query = args.join(" ");
 
@@ -146,6 +146,11 @@ module.exports = {
 						size: 10,
 						after: "72h",
 					});
+
+				if (!body.data.length) {
+					return message.reply("no results found");
+				}
+
 				for (const data of body.data) {
 					message.channel.send(
 						`<https://reddit.com${data.permalink}>`
@@ -155,6 +160,35 @@ module.exports = {
 			} catch (error) {
 				message.reply(`Error: ${error.message}`);
 				console.error(error);
+			}
+		} else if (cmd === "check") {
+			const searchedUser = args[0];
+
+			const phrases = slurs.join("|");
+
+			let checkForResults = 0;
+			for (const postType of ["submission", "comment"]) {
+				const { body } = await request
+					.get(`https://api.pushshift.io/reddit/search/${postType}/`)
+					.query({
+						author: searchedUser,
+						q: `${phrases}`,
+					});
+
+				if (!body.data.length) {
+					checkForResults++;
+				}
+
+				for (const data of body.data) {
+					message.channel.send(
+						`<https://reddit.com${data.permalink}>`
+					);
+					await timer(1325);
+				}
+			}
+
+			if (checkForResults === 2) {
+				message.reply("no results found");
 			}
 		}
 	},
