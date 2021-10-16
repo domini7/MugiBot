@@ -57,7 +57,11 @@ module.exports = {
 							item.data.num_comments <= maxComments &&
 							item.data.created_utc >=
 								seconds - maxAgeInHours * 3600 &&
-							item.data.locked === false
+							item.data.locked === false &&
+							item.data.contest_mode === false &&
+							(item.data.suggested_sort === "confidence" ||
+								item.data.suggested_sort === "top" ||
+								item.data.suggested_sort === null)
 						);
 					});
 					for (let i = 0; i < filteredData.length; i++) {
@@ -82,14 +86,14 @@ module.exports = {
 
 						const comments = body[1].data.children[index].data;
 
-						// If the comment isn't getting 0.8 upvotes a minute, continue.
+						// If the comment isn't doing better than minUpvotesPerMin, continue.
 						const commentAge =
 							(seconds - comments.created_utc) / 60;
 						if (comments.ups / commentAge < minUpvotesPerMin) {
 							continue;
 						}
 
-						// Check a reply's upvotes for 75% of minUpvotesPerMin
+						// Check a reply's upvotes for 50% of minUpvotesPerMin
 						const checkForReplies = comments.replies;
 						if (checkForReplies != "") {
 							const replyComment =
@@ -100,7 +104,7 @@ module.exports = {
 
 							if (
 								replyComment.ups / replyCommentAge <
-								minUpvotesPerMin * 0.75
+								minUpvotesPerMin * 0.5
 							) {
 								continue;
 							}
@@ -197,6 +201,10 @@ module.exports = {
 					checkForResults++;
 				}
 				for (const data of body.data) {
+					if (!data.permalink) {
+						continue;
+					}
+
 					message.channel.send(
 						`<https://reddit.com${data.permalink}>`
 					);
