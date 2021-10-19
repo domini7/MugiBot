@@ -16,7 +16,7 @@ module.exports = {
 
 		let lastArg = args[args.length - 1];
 
-		let season = "2020-21";
+		let season = "2021-22";
 
 		// Check if a player is searching for a season
 		if (!isNaN(lastArg)) {
@@ -25,7 +25,7 @@ module.exports = {
 			team = team.slice(0, nameOnly);
 
 			if (lastArg < 1947) lastArg = "1947";
-			if (lastArg > 2021) lastArg = "2021";
+			if (lastArg > 2022) lastArg = "2022";
 
 			season = seasonString(lastArg);
 		}

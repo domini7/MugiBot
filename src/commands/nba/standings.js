@@ -8,7 +8,7 @@ module.exports = {
 	async execute(client, message, args, Discord) {
 		const searchedSeason = parseInt(args[0]);
 
-		let season = "06/06/2021";
+		let season = "06/06/2022";
 
 		if (args.length) {
 			season = "06/06/" + args[0];

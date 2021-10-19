@@ -30,7 +30,7 @@ module.exports = {
 		try {
 			const stats = await NBA.stats.playerSplits({
 				Season: lastSeason,
-				SeasonType: "Playoffs",
+				SeasonType: "Regular Season",
 				PlayerID: pid.playerId,
 				LastNGames: "1",
 			});

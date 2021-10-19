@@ -30,7 +30,7 @@ module.exports = {
 		// Takes in arg and seaches for that player
 		let player = args.join(" ");
 
-		let season = "2020-21";
+		let season = "2021-22";
 
 		const playoffCommands = [
 			"pstats-playoffs",
@@ -56,7 +56,7 @@ module.exports = {
 			// String because it's not detected as int
 			if (lastArg === "2000")
 				return message.reply("Can't search for stats in 2000");
-			if (lastArg > 2021) lastArg = "2021";
+			if (lastArg > 2022) lastArg = "2022";
 
 			season = seasonString(lastArg);
 		}

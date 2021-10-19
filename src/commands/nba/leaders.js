@@ -7,7 +7,7 @@ module.exports = {
 	description: "Displays NBA league leaders",
 	cooldown: 40,
 	async execute(client, message, args, Discord, cmd) {
-		let season = "2020-21";
+		let season = "2021-22";
 		let searchedSeason = args[0];
 		// Check if a player is searching for a season
 		if (!isNaN(searchedSeason)) {
@@ -16,7 +16,7 @@ module.exports = {
 			// String because it's not detected as int
 			if (searchedSeason === "2000")
 				return message.reply("Can't search for stats in 2000");
-			if (searchedSeason > 2021) searchedSeason = "2021";
+			if (searchedSeason > 2022) searchedSeason = "2022";
 
 			season = seasonString(searchedSeason);
 		}

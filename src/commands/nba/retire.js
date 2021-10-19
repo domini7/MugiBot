@@ -16,7 +16,7 @@ module.exports = {
 		// Takes in arg and seaches for that player
 		let player = args.join(" ");
 
-		let season = "2020-21";
+		let season = "2021-22";
 
 		let lastArg = args[args.length - 1];
 		// Check if a player is searching for a season
