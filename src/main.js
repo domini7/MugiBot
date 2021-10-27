@@ -11,6 +11,7 @@ client.events = new Discord.Collection();
 
 client.login(process.env.TOKEN);
 
+// Leave msg for specific server
 client.on("guildMemberRemove", (member) => {
 	const channel = member.guild.channels.cache.find(
 		(channel) => channel.id === "880517957032247356"
