@@ -83,7 +83,6 @@ This is a multi-purpose personal Discord bot built using JavaScript.
 ;wiki (query)          | Search wikipedia.
 ;stackoverflow (query) | Search for a question on StackOverflow
 ;horoscope (sign)      | Get a daily horoscope for a sign.
-;reddit                | Get links from Reddit.
 ```
 ### Games
 

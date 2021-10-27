@@ -71,6 +71,12 @@ module.exports = {
 					}
 				}
 
+				message.channel.send(
+					`**${potentialPost.length}** potential links found out of ${
+						iterateCount * 100
+					}`
+				);
+
 				let qualifiedPost = [];
 				// This loop will be checking the top comment for qualifications.
 				for (const post of potentialPost) {
@@ -104,7 +110,9 @@ module.exports = {
 
 							if (
 								replyComment.ups / replyCommentAge <
-								minUpvotesPerMin * 0.5
+									minUpvotesPerMin * 0.5 ||
+								// Ignore comments with hidden score
+								replyComment.score_hidden
 							) {
 								continue;
 							}
